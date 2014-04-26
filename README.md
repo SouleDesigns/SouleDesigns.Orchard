@@ -1,6 +1,6 @@
 Soule Designs Orchard
 =======
-Customized version of Orchard CMS for the Soule Designs site.  Tried not to modify the core but madea minor change to CorePartsFeedItemBuilder allow for truncating descriptions using a "trim" parameter and other minor project reference updates to solve build warning.  
+Customized version of Orchard CMS for the Soule Designs site.  Tried not to modify the core but made a minor change to CorePartsFeedItemBuilder allow for truncating descriptions using a "trim" parameter and other minor project reference updates to solve build warning.  
 
 As of the inital release using these 3rd party modules:
 
