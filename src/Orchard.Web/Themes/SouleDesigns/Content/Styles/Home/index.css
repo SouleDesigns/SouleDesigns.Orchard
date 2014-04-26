@@ -1,0 +1,193 @@
+﻿/*
+Soule Designs Home page style
+*/
+
+.home
+{
+    text-align: center;
+}
+
+.home h1
+{        
+    color:  #666;
+    font-weight: 300; 
+    font-size: 60px;     
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.home p.lead
+{
+    font-weight: 300; 
+    font-size: 27px; 
+    padding-top: 0px; 
+    margin-top: 0px;
+}
+
+.home hr
+{
+    border-top-width: 6px; 
+    border-top-style: double; 
+    border-top-color: #eee; 
+    width: 30%;
+}
+
+.home hr.top
+{            
+    margin-top: 45px;  
+    margin-bottom: 25px; 
+}
+
+.home hr.bottom
+{
+    
+    margin-top: 30px; 
+    margin-bottom: 55px;    
+}
+
+.home-icons
+{
+    padding-top: 115px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.home-icons p
+{
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.home-icons h2
+{
+    font-weight: 300;    
+    /*text-transform: uppercase;*/
+}
+
+.home-icons-cg
+{
+    background:  transparent url(../../Images/Home/home-icons-cg.png) no-repeat top center;
+	/* Svg overrides png in supported browsers */
+	background-image: url(../../Images/Home/home-icons-cg.svg), none;
+}
+
+.home-icons-design
+{
+    background:  transparent url(../../Images/Home/home-icons-design.png) no-repeat top center;
+	/* Svg overrides png in supported browsers */
+	background-image: url(../../Images/Home/home-icons-design.svg), none;
+}
+
+.home-icons-dev
+{
+    background:  transparent url(../../Images/Home/home-icons-dev.png) no-repeat top center;
+	/* Svg overrides png in supported browsers */
+	background-image: url(../../Images/Home/home-icons-dev.svg), none;
+}
+
+.featured
+{
+    background-color: #fff;
+    margin-top: -50px;
+    min-height: 400px;
+}
+
+
+    /* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 0px;
+}
+
+.carousel h1 {
+    color: #eee;
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+  text-align: left!important;  
+}
+
+    .carousel-caption h1, .carousel-caption p {
+        color: #fff;
+    }
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #eee;
+}
+.carousel-inner .item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;  
+}
+
+.carousel-control {
+    font-size: 35px;
+}
+
+.left.carousel-control, .right.carousel-control {
+    background-image: none!important;    
+}
+
+ .carousel .carousel-inner img { 
+     width: 100%; 
+ } 
+
+ 
+@media screen and (min-width: 768px) {
+    .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next 
+     {
+        width: 38px!important;
+        height: 38px!important;
+        margin-top: -19px!important;
+        margin-left: -19px!important;
+        font-size: 38px!important;
+     }
+}
+
+ @media screen and (min-width: 1024px)
+{
+     .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next 
+     {
+        width: 52px!important;
+        height: 52px!important;
+        margin-top: -26px!important;
+        margin-left: -26px!important;
+        font-size: 52px!important;
+     }
+ }
+ .carousel.fade {
+  opacity: 1;
+}
+.carousel.fade .item {
+  -moz-transition: opacity ease-in-out .7s;
+  -o-transition: opacity ease-in-out .7s;
+  -webkit-transition: opacity ease-in-out .7s;
+  transition: opacity ease-in-out .7s;
+  left: 0 !important;
+  opacity: 0;
+  top:0;
+  position:absolute;
+  width: 100%;
+  display:block !important;
+  z-index:1;
+}
+.carousel.fade .item:first-child {
+  top:auto;
+  position:relative;
+}
+.carousel.fade .item.active {
+  opacity: 1;
+  -moz-transition: opacity ease-in-out .7s;
+  -o-transition: opacity ease-in-out .7s;
+  -webkit-transition: opacity ease-in-out .7s;
+  transition: opacity ease-in-out .7s;
+  z-index:2;
+}

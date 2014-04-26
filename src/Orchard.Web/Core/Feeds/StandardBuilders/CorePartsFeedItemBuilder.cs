@@ -9,6 +9,7 @@ using Orchard.ContentManagement;
 using Orchard.Core.Feeds.Models;
 using Orchard.Mvc.Extensions;
 using Orchard.Services;
+using Orchard.Utility.Extensions;
 
 namespace Orchard.Core.Feeds.StandardBuilders {
     [UsedImplicitly]
@@ -27,6 +28,13 @@ namespace Orchard.Core.Feeds.StandardBuilders {
         }
 
         public void Populate(FeedContext context) {
+            
+            // Optional trim parameter for trimming the description
+            var trimValue = context.ValueProvider.GetValue("trim");
+            var trim = 0;
+            if (trimValue != null)
+                trim = (int)trimValue.ConvertTo(typeof(int));
+
             foreach (var feedItem in context.Response.Items.OfType<FeedItem<ContentItem>>()) {
 
                 var inspector = new ItemInspector(
@@ -49,8 +57,8 @@ namespace Orchard.Core.Feeds.StandardBuilders {
                                                    });
 
                     feedItem.Element.SetElementValue("title", inspector.Title);
-                    feedItem.Element.Add(link);
-                    feedItem.Element.SetElementValue("description", inspector.Description);
+                    feedItem.Element.Add(link);                               
+                    feedItem.Element.SetElementValue("description", trim > 0 ? inspector.Description.RemoveTags().Ellipsize(trim) : inspector.Description);                                        
 
                     if ( inspector.PublishedUtc != null ) {
                         // RFC833 
@@ -70,8 +78,8 @@ namespace Orchard.Core.Feeds.StandardBuilders {
                                                        var urlHelper = new UrlHelper(requestContext, _routes);
                                                        context.Builder.AddProperty(context, feedItem1, "link", urlHelper.RouteUrl(inspector.Link));
                                                    });
-                    context.Builder.AddProperty(context, feedItem, "title", inspector.Title);
-                    context.Builder.AddProperty(context, feedItem, "description", inspector.Description);
+                    context.Builder.AddProperty(context, feedItem, "title", inspector.Title);                                       
+                    context.Builder.AddProperty(context, feedItem, "description", trim > 0 ? inspector.Description.RemoveTags().Ellipsize(trim) : inspector.Description); 
 
                     if (inspector.PublishedUtc != null)
                         context.Builder.AddProperty(context, feedItem, "published-date", Convert.ToString(inspector.PublishedUtc)); // format? cvt to generic T?

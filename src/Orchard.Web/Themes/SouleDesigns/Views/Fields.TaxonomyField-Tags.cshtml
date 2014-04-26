@@ -1,0 +1,10 @@
+﻿@*Override specific for "Tags" taxonomy which is used exclusively by the blogs area on Soule Designs*@
+@using Orchard.Utility.Extensions;
+@{
+    var terms = (IEnumerable<Orchard.Taxonomies.Models.TermPart>)Model.Terms;    
+}
+@if (Model.Terms.Count > 0) {
+    @(new HtmlString( string.Join(", ", terms.Select(t => Html.ItemDisplayLink(t.Name, t.ContentItem ).ToString()).ToArray()) ))
+} else {
+    @Html.Raw("No tags")
+}

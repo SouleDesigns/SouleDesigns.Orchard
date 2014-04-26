@@ -1,0 +1,6 @@
+﻿@using Orchard.Comments.Models
+
+@{    
+    CommentPart comment = Model.ContentPart;
+}
+<a href="#" class="comment-reply pull-right" data-id="@comment.Id"><i class="fa fa-reply"></i>&nbsp;@T("Reply")</a>

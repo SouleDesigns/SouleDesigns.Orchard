@@ -1,0 +1,49 @@
+﻿@using Orchard.ContentManagement;
+
+@{     
+    // Setup the fancybox plugin - tons o includes!
+    Script.Include("jquery.mousewheel-3.0.6.pack.js");
+    Script.Include("~/Themes/SouleDesigns/Content/Fancybox/jquery.fancybox.js?v=2.1.5");
+    Script.Include("~/Themes/SouleDesigns/Content/Fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7");
+    Script.Include("~/Themes/SouleDesigns/Content/Fancybox/helpers/jquery.fancybox-media.js?v=1.0.6");
+    Script.Include("blog-post.js");    
+    Style.Include("~/Themes/SouleDesigns/Content/Fancybox/jquery.fancybox.css?v=2.1.5");
+    Style.Include("~/Themes/SouleDesigns/Content/Fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7");
+        
+    var blogPost = Model.ContentItem;    
+}
+<div class="blogpost">
+    @*<div class="post-image">
+    </div>*@
+    <div class="post-header">
+        <h3 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
+        <div class="post-meta">
+
+            <div class="post-meta-date pull-left">
+                <i class="fa fa-calendar"></i>
+                @blogPost.CommonPart.CreatedUtc.ToString("MMMM d, yyyy")
+            </div>
+
+@*            <div class="post-meta-author pull-left">
+                <i class="fa fa-user"></i>
+                <a href="/Search?q=@blogPost.CommonPart.Owner.UserName">@blogPost.CommonPart.Owner.UserName</a>
+            </div>*@
+
+            <div class="post-comments pull-left">
+                <i class="fa fa-comments"></i>
+                @Display(Model.CommentsCount)
+            </div>
+
+            <div class="taxonomy-field tags pull-left">
+                <i class="fa fa-tags"></i>                
+                @Display(Model.Terms)
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="post-content">
+        @Display(Model.Summary)
+    </div>
+</div>
+@Display(Model.Footer)

@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{544F1BB5-CDCD-43D0-A5C3-A5AA04F2621A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Contrib.ImportExport</RootNamespace>
+    <AssemblyName>Contrib.ImportExport</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BlogML">
+      <HintPath>packages\blogml.2.2.0\lib\BlogML.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Blogger, Version=2.2.0.0, Culture=neutral, PublicKeyToken=6f8943d33947d761, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Google.GData.Blogger.2.2.0.0\lib\Google.GData.Blogger.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Client, Version=2.2.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Google.GData.Client.2.2.0.0\lib\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\..\..\lib\dotnetzip\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\newtonsoft.json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminMenu.cs" />
+    <Compile Include="Commands\ImportCommands.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\DateTimeHelpers.cs" />
+    <Compile Include="InternalSchema\Author\Author.cs" />
+    <Compile Include="InternalSchema\Author\Authors.cs" />
+    <Compile Include="InternalSchema\Blog.cs" />
+    <Compile Include="InternalSchema\Category\Categories.cs" />
+    <Compile Include="InternalSchema\Category\Category.cs" />
+    <Compile Include="InternalSchema\Common\Content.cs" />
+    <Compile Include="InternalSchema\Common\Node.cs" />
+    <Compile Include="InternalSchema\Common\Title.cs" />
+    <Compile Include="InternalSchema\ExtendedProperty\ExtendedProperties.cs" />
+    <Compile Include="InternalSchema\ExtendedProperty\ExtendedProperty.cs" />
+    <Compile Include="InternalSchema\Post\Additional\TagReference.cs" />
+    <Compile Include="InternalSchema\Post\Additional\TagReferences.cs" />
+    <Compile Include="InternalSchema\Post\Attachment.cs" />
+    <Compile Include="InternalSchema\Post\Attachments.cs" />
+    <Compile Include="InternalSchema\Post\AuthorReference.cs" />
+    <Compile Include="InternalSchema\Post\AuthorReferences.cs" />
+    <Compile Include="InternalSchema\Post\CategoryReference.cs" />
+    <Compile Include="InternalSchema\Post\CategoryReferences.cs" />
+    <Compile Include="InternalSchema\Post\Comment.cs" />
+    <Compile Include="InternalSchema\Post\Comments.cs" />
+    <Compile Include="InternalSchema\Post\Post.cs" />
+    <Compile Include="InternalSchema\Post\Posts.cs" />
+    <Compile Include="InternalSchema\Post\Trackback.cs" />
+    <Compile Include="InternalSchema\Post\Trackbacks.cs" />
+    <Compile Include="InternalSchema\Tag\Tag.cs" />
+    <Compile Include="InternalSchema\Tag\Tags.cs" />
+    <Compile Include="Migrations.cs" />
+    <Compile Include="Models\ImportSettings.cs" />
+    <Compile Include="Permissions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Blogger\BloggerBlogAssembler.cs" />
+    <Compile Include="Providers\BlogML\BlogMLBlogAssembler.cs" />
+    <Compile Include="Providers\IBlogAssembler.cs" />
+    <Compile Include="Providers\Wordpress\Constants.cs" />
+    <Compile Include="Providers\Wordpress\Extensions.cs" />
+    <Compile Include="Providers\Wordpress\InternalSchemaAssemblers.cs" />
+    <Compile Include="Providers\Wordpress\WordpressBlogAssembler.cs" />
+    <Compile Include="Providers\Wordpress\WordpressNamespaces.cs" />
+    <Compile Include="Routes.cs" />
+    <Compile Include="Services\DataCleaner.cs" />
+    <Compile Include="Services\IImportService.cs" />
+    <Compile Include="Services\ImportService.cs" />
+    <Compile Include="Services\Strategies\AuthorsImportStrategy.cs" />
+    <Compile Include="Services\Strategies\BlogImportStrategy.cs" />
+    <Compile Include="Services\Strategies\BlogPostImportStrategy.cs" />
+    <Compile Include="Services\Strategies\CategoryReferencesImportStrategy.cs" />
+    <Compile Include="Services\Strategies\CommentsImportStrategy.cs" />
+    <Compile Include="Services\Strategies\IBlogPostImportStrategy.cs" />
+    <Compile Include="Services\Strategies\IImportStrategy.cs" />
+    <Compile Include="Services\Strategies\IMultipleImportStrategy.cs" />
+    <Compile Include="Services\Strategies\ScheduledBlogPostCollectionImport.cs" />
+    <Compile Include="Services\Strategies\TagReferencesImportStrategy.cs" />
+    <Compile Include="Services\TaxonomyImportService.cs" />
+    <Compile Include="Services\UserServices.cs" />
+    <Compile Include="ViewModels\ImportFeedAdminViewModel.cs" />
+    <Compile Include="ViewModels\ImportAdminViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
+      <Project>{2D1D92BB-4555-4CBE-8D0E-63563D6CE4C6}</Project>
+      <Name>Orchard.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Orchard.Core.csproj">
+      <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
+      <Name>Orchard.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Autoroute\Orchard.Autoroute.csproj">
+      <Project>{66FCCD76-2761-47E3-8D11-B45D0001DDAA}</Project>
+      <Name>Orchard.Autoroute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Blogs\Orchard.Blogs.csproj">
+      <Project>{63FBD4D9-E1DA-4A7B-AA6A-D6074FE50867}</Project>
+      <Name>Orchard.Blogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Comments\Orchard.Comments.csproj">
+      <Project>{14C049FD-B35B-415A-A824-87F26B26E7FD}</Project>
+      <Name>Orchard.Comments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Taxonomies\Orchard.Taxonomies.csproj">
+      <Project>{e649ea64-d213-461b-87f7-d67035801443}</Project>
+      <Name>Orchard.Taxonomies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Users\Orchard.Users.csproj">
+      <Project>{79AED36E-ABD0-4747-93D3-8722B042454B}</Project>
+      <Name>Orchard.Users</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Module.txt" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages\blogml.2.2.0\lib\BlogML.dll" />
+    <Content Include="packages\blogml.2.2.0\license.txt" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\HAPIcon.png" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net20\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net20\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net20\HtmlAgilityPack.xml" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net40-client\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net40-client\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net40-client\HtmlAgilityPack.xml" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl3-wp\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl3-wp\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl3-wp\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl4-windowsphone71\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl4-windowsphone71\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl4-windowsphone71\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl4\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl4\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl4\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl5\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl5\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\sl5\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\winrt45\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\winrt45\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\winrt45\HtmlAgilityPack.xml" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\readme.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Import.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ImportFeed.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\blogml.2.2.0\blogml.2.2.0.nupkg" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\HtmlAgilityPack.1.4.6.nupkg" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\HtmlAgilityPack.1.4.6.nuspec" />
+    <Content Include="packages\HtmlAgilityPack.1.4.6\lib\winrt45\HtmlAgilityPack.pri" />
+    <Content Include="packages\repositories.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54635</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://www.themayneissue.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

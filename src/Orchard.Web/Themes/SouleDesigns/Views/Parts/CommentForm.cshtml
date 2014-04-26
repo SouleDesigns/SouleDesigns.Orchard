@@ -1,0 +1,48 @@
+﻿@using Orchard.Comments;
+@using Orchard.Comments.Models
+@using Orchard.Comments.Settings
+@using Orchard.Utility.Extensions;
+
+@{  
+    CommentsPart commentsPart = Model.ContentPart;
+    var commentsSettings = commentsPart.TypePartDefinition.Settings.GetModel<CommentsPartSettings>();
+}
+
+@if (!Model.ContentPart.CommentsActive) {
+    if (Model.ContentPart.Comments.Count > 0) {
+        <div class="comments">
+            <h4>@T("Comments have been disabled for this content.")</h4>
+        </div>
+    }
+}
+else if (commentsSettings.MustBeAuthenticated && WorkContext.CurrentUser == null) {
+    <div class="comments">
+        <h4>Leave a Comment</h4>
+        <p>@T("You must {0} to comment.", Html.ActionLink(T("sign in").ToString(), "LogOn",
+            new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = string.Format("{0}#addacomment", Context.Request.RawUrl) }))
+        </p>
+    </div>
+}
+else if (WorkContext.CurrentUser == null && !AuthorizedFor(Permissions.AddComment)) {
+    <div class="comments">
+        <h4>Leave a Comment</h4>
+        <p>@T("You must {0} to comment.", Html.ActionLink(T("sign in").ToString(), "LogOn",
+            new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = string.Format("{0}#addacomment", Context.Request.RawUrl) }))
+        </p>
+    </div>
+}
+else {
+    <span id="comment-form-beacon"></span>
+    using (Html.BeginFormAntiForgeryPost(Url.Action("Create", "Comment", new { Area = "Orchard.Comments", ReturnUrl = Context.Request.ToUrlString() }), FormMethod.Post, new { id = "commentform", @class = "comment-form" })) {
+        <div class="comments">
+            <h4>Leave a Comment</h4>
+            @Html.ValidationSummary()
+            @if (TempData.ContainsKey("Comments.InvalidCommentEditorShape")) {
+                @Display(TempData["Comments.InvalidCommentEditorShape"]);
+            }
+            else {
+                @Display(Model.EditorShape)
+            }
+        </div>
+    }
+}

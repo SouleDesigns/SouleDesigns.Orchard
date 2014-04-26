@@ -1,0 +1,10 @@
+﻿@using System.Text.RegularExpressions;
+@{
+    var text = Model.Text.ToString();
+    var countIndexStart = text.LastIndexOf("(");
+    var countIndexEnd = text.LastIndexOf(")");
+    var linkText = text.Substring(0, countIndexStart - 1);
+    var countText = text.Substring(countIndexStart + 1, countIndexEnd - countIndexStart - 1);
+        
+}
+<div class="blog-tag-item"><a href="@Model.Href">@linkText</a> <span class="small">(@countText)</span></div>

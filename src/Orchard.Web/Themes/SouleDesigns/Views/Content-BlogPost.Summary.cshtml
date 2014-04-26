@@ -1,0 +1,44 @@
+﻿@using Orchard.ContentManagement;
+
+@{     
+    var blogPost = Model.ContentItem;
+}
+
+<div id="blogpost-@blogPost.Id" class="blogpost summary">    
+
+    <div class="row">
+        <div class="post-image col-md-2">
+        </div>
+        <div class="col-md-10">
+            <div class="post-header">
+                <h3 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
+                <div class="post-meta">
+                    <div class="post-meta-date pull-left">
+                        <i class="fa fa-calendar"></i>
+                        @blogPost.CommonPart.CreatedUtc.ToString("MMMM d, yyyy")
+                    </div>
+                                
+ @*                   <div class="post-meta-author pull-left">
+                        <i class="fa fa-user"></i>
+                        <a href="/Search?q=@blogPost.CommonPart.Owner.UserName">@blogPost.CommonPart.Owner.UserName</a>
+                    </div>     *@               
+
+                    <div class="post-comments pull-left">
+                        <i class="fa fa-comments"></i>
+                        @Display(Model.CommentsCount)
+                    </div>
+
+                    <div class="taxonomy-field tags pull-left">
+                        <i class="fa fa-tags"></i>                        
+                        @Display(Model.Terms)
+                    </div>                                       
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="post-content">
+                @Display(Model.Summary)
+            </div>
+        </div>    
+    </div>
+</div>

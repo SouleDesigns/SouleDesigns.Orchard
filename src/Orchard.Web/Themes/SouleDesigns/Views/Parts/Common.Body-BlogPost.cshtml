@@ -1,0 +1,36 @@
+﻿@{
+    
+    //string bodyHtml = Model.Html.ToString();
+
+    //var firstIMG = bodyHtml.IndexOf("<img");
+    //var firstSlashIMG = bodyHtml.IndexOf("/>", firstIMG >= 0 ? firstIMG : 0);
+
+    //if (firstIMG >= 0 && firstSlashIMG > firstIMG) {
+    //    bodyHtml = bodyHtml.Substring(firstIMG, firstSlashIMG + 2 - firstIMG);
+    //    bodyHtml = bodyHtml.Replace("<img", "<img class=\"img-responsive\"");
+    //}
+
+    //var firstImage = new HtmlString(bodyHtml);
+
+    //bodyHtml = bodyHtml.Replace(" class=\"img-responsive\"", string.Empty);
+    
+    //string blogText = Model.Html.ToString();
+    
+    //// remove first image from blog text if we're displaying it elsewhere
+    //if (firstIMG >= 0 && firstSlashIMG > firstIMG) {
+    //    blogText = blogText.Replace(bodyHtml, string.Empty);
+    //}
+    
+    //var blogHtml = new HtmlString(blogText);
+    string bodyHtml = Model.Html.ToString();
+    //bodyHtml = bodyHtml.Replace("<img", "<img class=\"img-responsive\"");
+    var blogHtml = new HtmlString(bodyHtml);
+}
+
+@*if (firstIMG >= 0 && firstSlashIMG > firstIMG) {
+    <script type="text/javascript">
+        $('.post-image').html('@firstImage');
+    </script>
+}*@
+
+@blogHtml

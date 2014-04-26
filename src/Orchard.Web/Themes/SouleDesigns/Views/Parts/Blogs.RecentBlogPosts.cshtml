@@ -1,0 +1,51 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Blogs.Models;
+@using System.Text.RegularExpressions;
+
+@{
+    IEnumerable<object> blogPosts = Model.ContentItems.ContentItems;
+}
+
+@if (blogPosts == null || blogPosts.Count() < 1) {
+    <p>@T("No posts.")</p>
+}
+else {
+    <ul class="recent-posts">
+        @foreach (dynamic post in blogPosts) {
+            
+                        
+            DateTime date = post.ContentItem.CommonPart.CreatedUtc;
+            ContentItem contentItem = post.ContentItem;
+            var blogPostPart = contentItem.As<BlogPostPart>();            
+            
+            string bodyHtml = blogPostPart.Text.ToString();
+            var bodyText = Html.Excerpt(bodyHtml, 130).ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>");
+            var body = new MvcHtmlString(Regex.Replace(bodyText, "<[^>]*(>|$)", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase));
+            
+            // Image in the list thingee, not used by my theme but still kind of cool?
+            //var firstIMG = bodyHtml.IndexOf("<img");
+            //var firstSlashIMG = bodyHtml.IndexOf("/>", firstIMG >= 0 ? firstIMG : 0);
+            //if (firstIMG >= 0 && firstSlashIMG > firstIMG) {
+            //    bodyHtml = bodyHtml.Substring(firstIMG, firstSlashIMG + 2 - firstIMG);
+            //    bodyHtml = bodyHtml.Replace("<img", "<img class='img-responsive'");
+            //}
+            //var firstImage = new HtmlString(bodyHtml);
+                                                                   
+            <li>
+                @*                
+                @if (firstIMG >= 0 && firstSlashIMG > firstIMG) {
+                    <a href="@Url.ItemDisplayUrl(contentItem)">@firstImage</a>
+                }
+                *@
+                <div>
+                    <span class="meta pull-right">
+                        @date.ToString("MMM d")
+                    </span>
+                    <i class="fa fa-file"></i> <strong class="strong-link">@Html.ItemDisplayLink(blogPostPart)</strong><br />
+                    @body <br />
+@*                    @Html.ItemDisplayLink("Read more", contentItem)*@
+                </div>
+            </li>
+        }
+    </ul>
+}
