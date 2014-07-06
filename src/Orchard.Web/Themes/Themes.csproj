@@ -92,6 +92,8 @@
     <Content Include="SouleDesigns\Content\Fancybox\jquery.fancybox.js" />
     <Content Include="SouleDesigns\Content\Fancybox\jquery.fancybox.pack.js" />
     <Content Include="SouleDesigns\Content\Flexslider\flexslider.css" />
+    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.svg" />
+    <Content Include="SouleDesigns\Content\Flexslider\Images\bg_play_pause.png" />
     <Content Include="SouleDesigns\Content\Flexslider\jquery.flexslider-min.js" />
     <Content Include="SouleDesigns\Content\Flexslider\jquery.flexslider.js" />
     <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.svg" />
@@ -339,8 +341,6 @@
     <Content Include="SouleDesigns\Views\Parts\Blogs.RecentBlogPosts.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\Comment.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\CommentForm.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Common.Body-BlogPost.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Common.Body.Summary-BlogPost.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\Common.Body.Summary.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\ListOfComments.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\Tags.ShowTags.cshtml" />
@@ -383,9 +383,6 @@
     <Content Include="SouleDesigns\Views\Widget-Name-RotatorSlides.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SouleDesigns\Views\Parts\Common.Body.Summary-PortfolioPiece.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -393,6 +390,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SouleDesigns\Views\Parts\Title-Categories2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.eot" />
+    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.ttf" />
+    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

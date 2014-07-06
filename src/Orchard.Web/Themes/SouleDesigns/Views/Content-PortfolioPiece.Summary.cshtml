@@ -8,7 +8,7 @@
 <div class="portfolio-piece summary">
     <div class="row">
         <div class="piece-image col-md-2">
-            <img src="@Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: mediaPart.MediaUrl)" />
+            <a href="@Url.ItemDisplayUrl((IContent)portfolioPiece)"><img src="@Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: mediaPart.MediaUrl)" /></a>
         </div>
         <div class="col-md-10">
             <div class="piece-header">
