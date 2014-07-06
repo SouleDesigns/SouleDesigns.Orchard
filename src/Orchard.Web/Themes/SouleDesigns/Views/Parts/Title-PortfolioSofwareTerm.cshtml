@@ -1,0 +1,19 @@
+@{
+    Layout.Title = Model.Title;
+}
+
+<div class="row">
+    <div class="col-xs-9">
+        <h1><span class="small">Portfolio pieces created with </span> @Model.Title</h1>
+    </div>
+    <div class="col-xs-3 list-all-button"><a href="@Url.Content("~/portfolio")"><i class="fa fa-list"></i> View All</a></div>
+</div>
+<hr />
+@using (Script.Foot())
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("ul.menu-main-menu li a:Contains('Portfolio')").parent().addClass("active");
+        });
+    </script>
+}

@@ -48,6 +48,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web" />
@@ -68,6 +69,13 @@
     <Compile Include="SouleDesigns\Helpers\ThemeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SouleDesigns\Content\Cubeportfolio\css\cubeportfolio.css" />
+    <Content Include="SouleDesigns\Content\Cubeportfolio\css\cubeportfolio.min.css" />
+    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-loading-popup.gif" />
+    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-loading.gif" />
+    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-sprite.png" />
+    <Content Include="SouleDesigns\Content\Cubeportfolio\js\jquery.cubeportfolio.js" />
+    <Content Include="SouleDesigns\Content\Cubeportfolio\js\jquery.cubeportfolio.min.js" />
     <Content Include="SouleDesigns\Content\Fancybox\blank.gif" />
     <Content Include="SouleDesigns\Content\Fancybox\fancybox_loading%402x.gif" />
     <Content Include="SouleDesigns\Content\Fancybox\fancybox_loading.gif" />
@@ -83,8 +91,13 @@
     <Content Include="SouleDesigns\Content\Fancybox\jquery.fancybox.css" />
     <Content Include="SouleDesigns\Content\Fancybox\jquery.fancybox.js" />
     <Content Include="SouleDesigns\Content\Fancybox\jquery.fancybox.pack.js" />
+    <Content Include="SouleDesigns\Content\Flexslider\flexslider.css" />
+    <Content Include="SouleDesigns\Content\Flexslider\jquery.flexslider-min.js" />
+    <Content Include="SouleDesigns\Content\Flexslider\jquery.flexslider.js" />
     <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.svg" />
     <Content Include="SouleDesigns\Content\Fonts\Glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-demo.html" />
+    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.svg" />
     <Content Include="SouleDesigns\Content\Images\Contact\souleovision.png" />
     <Content Include="SouleDesigns\Content\Images\Home\home-icons-cg.png" />
     <Content Include="SouleDesigns\Content\Images\Home\home-icons-cg.svg" />
@@ -108,6 +121,7 @@
     <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap.css" />
     <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap.min.css" />
     <Content Include="SouleDesigns\Content\Styles\Home\index.css" />
+    <Content Include="SouleDesigns\Content\Styles\Portfolio\portfolio-piece.css" />
     <Content Include="SouleDesigns\Content\Styles\Shared\alt-main.css" />
     <Content Include="SouleDesigns\Content\Styles\Shared\font-awesome.css" />
     <Content Include="SouleDesigns\Content\Styles\Shared\font-awesome.min.css" />
@@ -119,9 +133,13 @@
     <Content Include="SouleDesigns\Scripts\bootstrap.min.js" />
     <Content Include="SouleDesigns\Scripts\holder.js" />
     <Content Include="SouleDesigns\Scripts\html5shiv.js" />
+    <Content Include="SouleDesigns\Scripts\jquery.backstretch.min.js" />
     <Content Include="SouleDesigns\Scripts\jquery.mousewheel-3.0.6.pack.js" />
     <Content Include="SouleDesigns\Scripts\jquery.validate.min.js" />
+    <Content Include="SouleDesigns\Scripts\portfolio-piece.js" />
+    <Content Include="SouleDesigns\Scripts\portfolio.js" />
     <Content Include="SouleDesigns\Scripts\respond.min.js" />
+    <Content Include="SouleDesigns\Scripts\home.js" />
     <Content Include="SouleDesigns\Scripts\shared.js" />
     <Content Include="SouleDesigns\SouleDesigns.csproj" />
     <Content Include="SouleDesigns\Styles\prettyPhoto.css" />
@@ -230,6 +248,10 @@
       <Project>{14c049fd-b35b-415a-a824-87f26b26e7fd}</Project>
       <Name>Orchard.Comments</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\Orchard.MediaLibrary\Orchard.MediaLibrary.csproj">
+      <Project>{73a7688a-5bd3-4f7e-adfa-ce36c5a10e3b}</Project>
+      <Name>Orchard.MediaLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\Orchard.Search\Orchard.Search.csproj">
       <Project>{4be4eb01-ac56-4048-924e-2ca77f509aba}</Project>
       <Name>Orchard.Search</Name>
@@ -328,10 +350,49 @@
     <Content Include="SouleDesigns\Views\Widget-Name-HomePage.cshtml" />
     <Content Include="SouleDesigns\Views\Widget-Name-SouleDesignsContact.cshtml" />
     <Content Include="SouleDesigns\Views\Widget.Wrapper.cshtml" />
-    <Content Include="SouleDesigns\Web.config" />
+    <Content Include="SouleDesigns\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SouleDesigns\Views\Parts\Title-Tags2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.eot" />
+    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.ttf" />
+    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Content-182.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-sprite.psd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Layout-Wide.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Widget-Name-RelatedItems.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Widget-Name-RotatorSlides.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Parts\Common.Body.Summary-PortfolioPiece.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Summary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Parts\Title-PortfolioSofwareTerm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\Parts\Title-Categories2.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,15 +1,6 @@
 ﻿@using Orchard.ContentManagement;
 
-@{     
-    // Setup the fancybox plugin - tons o includes!
-    Script.Include("jquery.mousewheel-3.0.6.pack.js");
-    Script.Include("~/Themes/SouleDesigns/Content/Fancybox/jquery.fancybox.js?v=2.1.5");
-    Script.Include("~/Themes/SouleDesigns/Content/Fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7");
-    Script.Include("~/Themes/SouleDesigns/Content/Fancybox/helpers/jquery.fancybox-media.js?v=1.0.6");
-    Script.Include("blog-post.js");    
-    Style.Include("~/Themes/SouleDesigns/Content/Fancybox/jquery.fancybox.css?v=2.1.5");
-    Style.Include("~/Themes/SouleDesigns/Content/Fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7");
-        
+@{             
     var blogPost = Model.ContentItem;    
 }
 <div class="blogpost">

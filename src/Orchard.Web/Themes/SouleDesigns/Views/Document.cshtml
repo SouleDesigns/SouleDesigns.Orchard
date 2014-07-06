@@ -7,7 +7,6 @@
     Style.Include("~/Themes/SouleDesigns/Content/Styles/Bootstrap/bootstrap-theme.min.css");
     Style.Include("~/Themes/SouleDesigns/Content/Styles/Shared/font-awesome.min.css");
     Style.Include("~/Themes/SouleDesigns/Content/Styles/Shared/main.css");
-    //Style.Include("~/Themes/SouleDesigns/Content/Styles/Shared/alt-main.css");    
     Script.Require("jQuery").AtHead();
     Script.Include("bootstrap.min.js");
     Script.Include("holder.js");
@@ -40,7 +39,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon-114.png"))">
     <link rel="apple-touch-icon" sizes="144x144" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon-144.png"))">*@    
     <title>@Html.Title(title, siteName)</title>
-    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>    
     @Display(Model.Head)
 </head>
 <body>    

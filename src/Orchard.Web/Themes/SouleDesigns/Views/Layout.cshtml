@@ -83,7 +83,6 @@
                 </div>  <!-- / end sd nav fill -->
             </div>  <!-- / end navbar -->
         </div>
-@*        <div id="fauxbar"></div>*@
 
     @if (Model.Featured != null) {
         <div class="featured">
@@ -203,7 +202,7 @@
                     }
                     else 
                     {    
-                        <a href="@Url.Action("LogOn", "Account", new {Area = "Orchard.Users", ReturnUrl = (Request.QueryString["ReturnUrl"] ?? Request.RawUrl) })" rel="nofollow"><i class="fa fa-sign-in"></i> Log In</a>                                               
+                        <a href="@Url.Action("LogOn", "Account", new {Area = "Orchard.Users", ReturnUrl = (Request.QueryString["ReturnUrl"] ?? Url.Content("~/Admin")) })" rel="nofollow"><i class="fa fa-sign-in"></i> Log In</a>                                               
                     }                                                
                     </p>               
             </footer>

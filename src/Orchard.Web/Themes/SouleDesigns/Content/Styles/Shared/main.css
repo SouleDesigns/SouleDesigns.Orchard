@@ -1,9 +1,25 @@
 /* Soule Designs main css & bootstrap overrides */
 
 
+
+/*Soule Designs title font, exluded for now but could include if necessary 
+  in the future
+    @font-face {
+    font-family: 'Japan';
+    src: url('../../Fonts/Japan/japan-webfont.eot');
+    src: url('../../Fonts/Japan/japan-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../Fonts/Japan/japan-webfont.woff') format('woff'),
+         url('../../Fonts/Japan/japan-webfont.ttf') format('truetype'),
+         url('../../Fonts/Japan/japan-webfont.svg#japanregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}*/
+
 body
 {
-	font-family: 'Lato', Arial, sans-serif;
+	/*font-family: 'Lato', Arial, sans-serif;*/
+    font-family: 'Droid Serif', serif;
 	font-size: 16px;
 	color: #666666;	
     background: #fff url(../../Images/Shared/textured-paper.png) repeat top right;
@@ -13,8 +29,8 @@ body
 
 h1, h2, h3, h4, h1 > .small
 {
-    font-family: 'Oswald' ,Arial, sans-serif;
-    font-weight: 300;
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight:  300;
 }
 
 h1, h2, h3
@@ -435,7 +451,9 @@ Footer
     background: #fcfcfc url(../../Images/Shared/textured-paper.png) repeat top right;	
     color: #9DAD8D;
 	padding: 30px 0px 0px;
+    position: relative;
 	margin-top: 50px;
+    z-index: 3;
 }
 
 #footer-wrapper footer
@@ -446,6 +464,9 @@ Footer
 #footer-wrapper h3
 {
     color: #aaaaaa;
+    /*font-family: 'Japan';
+    font-size: 35px;
+    opacity: 0.6;*/
 }
 
 #footer-wrapper a, #footer-wrapper a:visited
@@ -791,6 +812,24 @@ Contact Form
 }    
 
 
+/*------------------------------------------------------
+ Portfolio Lists
+ ------------------------------------------------------*/
+.portfolio-piece.summary .piece-image img
+{
+    width: 150px;
+    margin: 1.2em 0;
+    border: 1px solid rgba(203,211,184, 0.6);    
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
+}
+
+.portfolio-piece .piece-header
+{
+    padding-bottom: 0px;
+}
+
+
  /*------------------------------------------------------
 Orchard Overall Overrides (OOO)
 ------------------------------------------------------*/
@@ -836,9 +875,37 @@ blockquote
     padding-left: 0px;    
 }
 
+.field-validation-error {
+  color: #a94442;
+}
+
+.input-validation-error.form-control {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.input-validation-error.form-control:focus {
+  border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+}
+
+
 hr
 {
       border-top: 1px solid #eeeeee; 
+}
+
+.list-all-button
+{
+    text-align: right;
+}
+
+.list-all-button a
+{
+    margin-top: 50px;
+    display: inline-block;
 }
 
 .message
@@ -940,3 +1007,22 @@ hr
 {
     padding-bottom: 10px;
 }
+
+
+.topspace15
+{
+    padding-top: 15px;
+}
+
+.topspace20
+{
+    padding-top: 20px;
+}
+.topspace25
+{
+    padding-top: 25px;
+}
+
+.validation-summary-errors { display: inline-block; }
+.validation-summary-errors ul { list-style: none; margin: 0; padding: 0; }
+.validation-summary-errors ul li { display: inline-block; }

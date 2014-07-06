@@ -45,9 +45,43 @@
     </Match>
   </Match>
 
+  <!-- Portfolio Piece -->
+  <Match ContentType="PortfolioPiece">
+    <Match DisplayType="Summary">
+      <Place
+          Fields_TaxonomyField-PortfolioCategories="Content:before"
+          Fields_TaxonomyField-Software="Content:before"
+          Fields_Common_Text-Blurb="-"
+          Fields_Common_Text-VimeoUrl1="-"
+          Fields_Numeric-VimeoUrl1Index="-"
+          Fields_Common_Text-VimeoUrl2="-"
+          Fields_Numeric-VimeoUrl2Index="-"
+          Parts_Common_Metadata_Summary="-" />
+    </Match>
+  </Match>
+
+  <!-- Portfolio Categories -->
+  <Match ContentType="Categories2">
+    <Match DisplayType="Detail">
+      <Place
+          Parts_Title_Summary="-"
+          Parts_Description="-"
+          Parts_Common_Metadata="-" />
+    </Match>
+  </Match>
+
+  <!-- Portfolio Software -->
+  <Match ContentType="PortfolioSofwareTerm">
+    <Match DisplayType="Detail">
+      <Place                    
+          Parts_Title_Summary="-"
+          Parts_Description="-"
+          Parts_Common_Metadata="-" />
+    </Match>      
+  </Match>  
+
   <Match Path="/">
-    <Place 
-        Parts_Share_ShareBar="-"/>
+    <Place Parts_Share_ShareBar="-"/>
   </Match>
 
 </Placement>

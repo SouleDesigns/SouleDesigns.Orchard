@@ -4,50 +4,58 @@
     var userCanRegister = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().UsersCanRegister;
     var enableLostPassword = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().EnableLostPassword;
 }
-<div class="well well-sm logreg col-xs-12 col-md-6 col-md-offset-3">
-    <h3><i class="fa fa-sign-in"></i> Log In <span class="small"></span></h3>
-    <br />
-    @using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "form-horizontal" })) {
-        <!-- Username -->
-        <div class="form-group">
-            <label for="userNameOrEmail" class="col-lg-3 control-label">@T("Username")</label>
-            <div class="col-lg-9">
-                @Html.TextBox("userNameOrEmail", "", new { id = "username-email", @class = "form-control", autofocus = "autofocus" })
-                @Html.ValidationMessage("userNameOrEmail")
-            </div>
-        </div>
-        <!-- Password -->
-        <div class="form-group">
-            <label for="password" class="col-lg-3 control-label">@T("Password")</label>
-            <div class="col-lg-9">
-                @Html.Password("password", string.Empty, new { @class = "form-control" })
-                @Html.ValidationMessage("password")
-            </div>
-        </div>
-        <!-- Remember me -->
-        <div class="form-group">
-            <div class="col-lg-offset-3 col-lg-9">
-                <div class="checkbox">
-                    <label>
-                        @Html.CheckBox("rememberMe", new { id = "remember-me" })
-                        @T("Remember me")
-                    </label>
-                </div>
-            </div>
-        </div>
-        <!-- Buttons -->
-        <div class="form-group">
-            <div class="col-lg-offset-3 col-lg-9">
-                <button type="submit" class="btn btn-primary">@T("Login")</button>
-                <button type="reset" class="btn btn-default">@T("Reset")</button>
-            </div>
-        </div>
+
+@{
+    using (Script.Foot())
+    {
+        <script type="text/javascript">
+            $(function () {
+                $(".alert").alert();
+            });
+        </script>
     }
-    @if (userCanRegister) {
-        <hr />
-        <div class="lregister">
-            Don't have Account? @Html.ActionLink(T("Register").Text, "Register")<br />
-            @if (enableLostPassword) { @Html.ActionLink(T("Lost your Password?").Text, "RequestLostPassword") }
-        </div>
-    }
+}
+
+@if (Html.ValidationSummary() != null)
+{
+    <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Error:</strong>
+        <p>@Html.ValidationSummary()</p>
+    </div>
+}
+
+<div class="col-xs-12 col-md-6">
+    <h3>@*<i class="fa fa-sign-in"></i>*@ @T("Log In").ToString() <span class="small"></span></h3>
+    <p>
+
+        @T("Please enter your username and password. ")
+        @if (userCanRegister)
+        { @Html.ActionLink(T("Register").Text, "Register", new { ReturnUrl = Request.QueryString["ReturnUrl"] }) @T(" if you don't have an account.") }
+    </p>
 </div>
+<div class="clearfix"></div>    
+
+@using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "col-xs-12 col-md-6" }))
+{
+    <div class="form-group">
+        <label for="userNameOrEmail" class="control-label">@T("Username or Email")</label>
+        @Html.TextBox("userNameOrEmail", "", new { @class = "form-control", autofocus = "autofocus", placeholder = "Username or Email" })
+    </div>
+    <div class="form-group">
+        @if (enableLostPassword)
+        {
+            @Html.ActionLink(T("Forgot password?").Text, "RequestLostPassword", null, new { @class = "pull-right" })
+        }
+        <label for="password" class="control-label">@T("Password")</label>
+        @Html.Password("password", null, new { @class = "form-control", placeholder = "Password" })
+    </div>
+    <div class="checkbox pull-right">
+        <label for="remember-me">
+            @Html.CheckBox("rememberMe")
+            <input type="checkbox">
+            @T("Remember Me")
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">@T("Log In")</button>
+}
