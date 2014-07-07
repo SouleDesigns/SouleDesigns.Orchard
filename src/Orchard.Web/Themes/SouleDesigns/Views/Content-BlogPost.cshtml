@@ -1,11 +1,20 @@
 ﻿@using Orchard.ContentManagement;
 
 @{             
-    var blogPost = Model.ContentItem;    
+    var blogPost = Model.ContentItem;
+    var title = blogPost.TitlePart.Title;
+
+    if (!string.IsNullOrEmpty(title))
+    {
+        Layout.Title = title;
+    }
+    
+    
+
 }
 <div class="blogpost">
     <div class="post-header">
-        <h3 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
+        <h3 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@title</a></h3>
         <div class="post-meta">
 
             <div class="post-meta-date pull-left">

@@ -66,6 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SouleDesigns\Gravatar\Gravatar.cs" />
+    <Compile Include="SouleDesigns\Gravatar\Gremail.cs" />
+    <Compile Include="SouleDesigns\Gravatar\Grofile.cs" />
+    <Compile Include="SouleDesigns\Gravatar\GrofileInfo.cs" />
+    <Compile Include="SouleDesigns\Gravatar\Html\HtmlHelperExtensions.cs" />
+    <Compile Include="SouleDesigns\Gravatar\Html\UrlHelperExtensions.cs" />
     <Compile Include="SouleDesigns\Helpers\ThemeHelper.cs" />
   </ItemGroup>
   <ItemGroup>

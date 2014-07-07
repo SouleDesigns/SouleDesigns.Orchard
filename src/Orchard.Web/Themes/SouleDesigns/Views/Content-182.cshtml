@@ -6,11 +6,8 @@
 @using Orchard.MediaLibrary.Models;
 @using Orchard.Taxonomies.Models;
 
-@{
-    if (Model.Title != null)
-    {
-        Layout.Title = Model.Title;
-    }
+@{    
+    Layout.Title = "Portfolio";    
 
     // Get portfolio items from the projection
     var portfolioItems = ((List<dynamic>)Model.Content.Items)
