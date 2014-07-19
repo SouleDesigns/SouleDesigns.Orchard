@@ -13,8 +13,8 @@
     if(imageMatch.Groups != null && imageMatch.Groups.Count > 0 && !string.IsNullOrEmpty(imageMatch.Groups[1].Value)) 
     {
         // Get image from group and make thumbnail
-        imageUrl = imageMatch.Groups[1].Value;
-        imageUrl = Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: imageUrl).ToString();
+        var imageMatchValue = imageMatch.Groups[1].Value;
+        imageUrl = Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: imageMatchValue).ToString();
     } 
     else 
     {    

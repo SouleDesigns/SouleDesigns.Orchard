@@ -8,9 +8,6 @@ if (mediaLibraryEnabled) {
     mediaPlugins += ",medialibrary";
 }
 
-// Soule designs custom plugin
-mediaPlugins += ",imgwrap";
-
 tinyMCE.init({
     theme: "advanced",
     schema: "html5",

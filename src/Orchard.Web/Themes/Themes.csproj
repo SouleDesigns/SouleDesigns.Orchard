@@ -60,7 +60,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Routing" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -113,6 +112,8 @@
     <Content Include="SouleDesigns\Content\Images\Home\home-icons-design.svg" />
     <Content Include="SouleDesigns\Content\Images\Home\home-icons-dev.png" />
     <Content Include="SouleDesigns\Content\Images\Home\home-icons-dev.svg" />
+    <Content Include="SouleDesigns\Content\Images\Portfolio\portfolio-sprite.fw.png" />
+    <Content Include="SouleDesigns\Content\Images\Portfolio\portfolio-sprite.png" />
     <Content Include="SouleDesigns\Content\Images\Shared\favicon.ico" />
     <Content Include="SouleDesigns\Content\Images\Shared\footer-bg.png" />
     <Content Include="SouleDesigns\Content\Images\Shared\navbar-background.jpg" />
@@ -140,6 +141,7 @@
     <Content Include="SouleDesigns\Scripts\bootstrap.js" />
     <Content Include="SouleDesigns\Scripts\bootstrap.min.js" />
     <Content Include="SouleDesigns\Scripts\holder.js" />
+    <Content Include="SouleDesigns\Scripts\home.js" />
     <Content Include="SouleDesigns\Scripts\html5shiv.js" />
     <Content Include="SouleDesigns\Scripts\jquery.backstretch.min.js" />
     <Content Include="SouleDesigns\Scripts\jquery.mousewheel-3.0.6.pack.js" />
@@ -147,7 +149,6 @@
     <Content Include="SouleDesigns\Scripts\portfolio-piece.js" />
     <Content Include="SouleDesigns\Scripts\portfolio.js" />
     <Content Include="SouleDesigns\Scripts\respond.min.js" />
-    <Content Include="SouleDesigns\Scripts\home.js" />
     <Content Include="SouleDesigns\Scripts\shared.js" />
     <Content Include="SouleDesigns\SouleDesigns.csproj" />
     <Content Include="SouleDesigns\Styles\prettyPhoto.css" />
@@ -248,42 +249,6 @@
       <Name>Orchard.Framework</Name>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Modules\Orchard.Blogs\Orchard.Blogs.csproj">
-      <Project>{63fbd4d9-e1da-4a7b-aa6a-d6074fe50867}</Project>
-      <Name>Orchard.Blogs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\Orchard.Comments\Orchard.Comments.csproj">
-      <Project>{14c049fd-b35b-415a-a824-87f26b26e7fd}</Project>
-      <Name>Orchard.Comments</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\Orchard.MediaLibrary\Orchard.MediaLibrary.csproj">
-      <Project>{73a7688a-5bd3-4f7e-adfa-ce36c5a10e3b}</Project>
-      <Name>Orchard.MediaLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\Orchard.Search\Orchard.Search.csproj">
-      <Project>{4be4eb01-ac56-4048-924e-2ca77f509aba}</Project>
-      <Name>Orchard.Search</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\Orchard.Taxonomies\Orchard.Taxonomies.csproj">
-      <Project>{e649ea64-d213-461b-87f7-d67035801443}</Project>
-      <Name>Orchard.Taxonomies</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\Orchard.Themes\Orchard.Themes.csproj">
-      <Project>{cde24a24-01d3-403c-84b9-37722e18dfb7}</Project>
-      <Name>Orchard.Themes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\Orchard.Users\Orchard.Users.csproj">
-      <Project>{79aed36e-abd0-4747-93d3-8722b042454b}</Project>
-      <Name>Orchard.Users</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\Orchard.Widgets\Orchard.Widgets.csproj">
-      <Project>{194d3ccc-1153-474d-8176-fde8d7d0d0bd}</Project>
-      <Name>Orchard.Widgets</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\PlanetTelex.ContactForm\PlanetTelex.ContactForm.csproj">
-      <Project>{bc2ad33d-ba86-4bef-b5f4-32cd47e026a1}</Project>
-      <Name>PlanetTelex.ContactForm</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="TheThemeMachine\Views\Pager.cshtml" />
@@ -294,6 +259,10 @@
     <Content Include="TheAdmin\Views\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-sprite.psd" />
+    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.eot" />
+    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.ttf" />
+    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.woff" />
     <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.eot" />
     <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.ttf" />
     <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.woff" />
@@ -301,6 +270,9 @@
     <Content Include="SouleDesigns\Content\Fonts\Glyphicons\glyphicons-halflings-regular.eot" />
     <Content Include="SouleDesigns\Content\Fonts\Glyphicons\glyphicons-halflings-regular.ttf" />
     <Content Include="SouleDesigns\Content\Fonts\Glyphicons\glyphicons-halflings-regular.woff" />
+    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.eot" />
+    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.ttf" />
+    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.woff" />
     <Content Include="SouleDesigns\Content\Web.config" />
     <Content Include="SouleDesigns\Placement.info" />
     <Content Include="SouleDesigns\Scripts\Web.config" />
@@ -310,12 +282,16 @@
     <Content Include="SouleDesigns\Views\CommentMetadata.cshtml" />
     <Content Include="SouleDesigns\Views\CommentReplyButton.cshtml" />
     <Content Include="SouleDesigns\Views\CommentText.cshtml" />
+    <Content Include="SouleDesigns\Views\Content-182.cshtml" />
     <Content Include="SouleDesigns\Views\Content-BlogPost.cshtml" />
     <Content Include="SouleDesigns\Views\Content-BlogPost.Summary.cshtml" />
+    <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Detail.cshtml" />
+    <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Summary.cshtml" />
     <Content Include="SouleDesigns\Views\DisplayTemplates\Parts\ContactForm.cshtml" />
     <Content Include="SouleDesigns\Views\Document.cshtml" />
     <Content Include="SouleDesigns\Views\EditorTemplates\Parts.Comment.cshtml" />
     <Content Include="SouleDesigns\Views\Fields.TaxonomyField-Tags.cshtml" />
+    <Content Include="SouleDesigns\Views\Layout-Wide.cshtml" />
     <Content Include="SouleDesigns\Views\Layout.cshtml" />
     <Content Include="SouleDesigns\Views\LogOn.cshtml" />
     <Content Include="SouleDesigns\Views\Menu.cshtml" />
@@ -350,57 +326,18 @@
     <Content Include="SouleDesigns\Views\Parts\Common.Body.Summary.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\ListOfComments.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\Tags.ShowTags.cshtml" />
+    <Content Include="SouleDesigns\Views\Parts\Title-Categories2.cshtml" />
+    <Content Include="SouleDesigns\Views\Parts\Title-PortfolioSofwareTerm.cshtml" />
+    <Content Include="SouleDesigns\Views\Parts\Title-Tags2.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\Title.cshtml" />
     <Content Include="SouleDesigns\Views\Parts\TwitterWidget.cshtml" />
     <Content Include="SouleDesigns\Views\Register.cshtml" />
     <Content Include="SouleDesigns\Views\Widget-Name-HomePage.cshtml" />
+    <Content Include="SouleDesigns\Views\Widget-Name-RelatedItems.cshtml" />
+    <Content Include="SouleDesigns\Views\Widget-Name-RotatorSlides.cshtml" />
     <Content Include="SouleDesigns\Views\Widget-Name-SouleDesignsContact.cshtml" />
     <Content Include="SouleDesigns\Views\Widget.Wrapper.cshtml" />
-    <Content Include="SouleDesigns\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Parts\Title-Tags2.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.eot" />
-    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.ttf" />
-    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Content-182.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-sprite.psd" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Layout-Wide.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Detail.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Widget-Name-RelatedItems.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Widget-Name-RotatorSlides.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Summary.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Parts\Title-PortfolioSofwareTerm.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\Parts\Title-Categories2.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.eot" />
-    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.ttf" />
-    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.woff" />
+    <Content Include="SouleDesigns\Web.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

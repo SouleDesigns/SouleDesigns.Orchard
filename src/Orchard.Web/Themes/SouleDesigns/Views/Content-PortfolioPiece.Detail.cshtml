@@ -70,8 +70,8 @@
                         <li>                            
                             <img src="@Display.ResizeMediaUrl(Width: 1024, Height: 600, Mode: "pad", Alignment: "middlecenter", Path: item.MediaUrl)" />                            
                             <div class="project-slide-caption">
-                                <strong>@item.Title </strong>
                                 <a href="@item.MediaUrl" class="fancy-box" data-fancy-group="gallery">
+                                    <strong>@item.Title </strong>&nbsp;
                                     <span class="glyphicon glyphicon-fullscreen"></span>
                                 </a>
                                 @if(!string.IsNullOrEmpty(item.Caption)) 

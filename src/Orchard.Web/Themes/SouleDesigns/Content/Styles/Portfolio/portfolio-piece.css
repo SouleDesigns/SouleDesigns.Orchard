@@ -93,6 +93,15 @@ iframe
     text-align: center;
 }
 
+.project-slide-caption a
+{
+    color: #b37800!important;
+}
+
+.project-slide-caption a:hover {
+    color: #664500;
+}
+
 .project-slide-caption p
 {
     margin-top: 10px;

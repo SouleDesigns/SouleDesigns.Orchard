@@ -68,9 +68,6 @@
     <Content Include="Scripts\orchard-tinymce.js" />
     <Content Include="Scripts\plugins\autoresize\editor_plugin.js" />
     <Content Include="Scripts\plugins\autoresize\editor_plugin_src.js" />
-    <Content Include="Scripts\plugins\imgwrap\editor_plugin_src.js" />
-    <Content Include="Scripts\plugins\imgwrap\img\img_wrap.png" />
-    <Content Include="Scripts\plugins\imgwrap\editor_plugin.js" />
     <Content Include="Scripts\plugins\medialibrary\editor_plugin.js" />
     <Content Include="Scripts\plugins\medialibrary\editor_plugin_src.js" />
     <Content Include="Scripts\plugins\medialibrary\editor_plugin_src.min.js">

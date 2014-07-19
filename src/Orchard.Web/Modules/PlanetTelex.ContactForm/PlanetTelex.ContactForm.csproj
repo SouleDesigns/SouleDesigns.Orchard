@@ -118,7 +118,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Orchard.JobsQueue\Orchard.JobsQueue.csproj">
       <Project>{085948FF-0E9B-4A9A-B564-F8B8B4BDDDBC}</Project>
-      <Name>Orchard.Messaging</Name>
+      <Name>Orchard.JobsQueue</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

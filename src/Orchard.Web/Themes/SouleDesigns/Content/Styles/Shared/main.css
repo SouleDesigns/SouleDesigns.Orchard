@@ -33,9 +33,11 @@ h1, h2, h3, h4, h1 > .small
     font-weight:  300;
 }
 
+
 h1, h2, h3
 {    
-    color: #9DAD8D;    
+    color: #515742;
+    /*color: #9DAD8D;*/    
     /*color:  #78A35F; minty */
     /*color: #8DB178; minty light*/
     /*color: #9F9F57; algae?*/
