@@ -339,6 +339,12 @@
     <Content Include="SouleDesigns\Views\Widget.Wrapper.cshtml" />
     <Content Include="SouleDesigns\Web.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\ErrorPage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\NotFound.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
