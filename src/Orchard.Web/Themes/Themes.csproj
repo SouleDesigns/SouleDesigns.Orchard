@@ -135,6 +135,7 @@
     <Content Include="SouleDesigns\Content\Styles\Shared\font-awesome.css" />
     <Content Include="SouleDesigns\Content\Styles\Shared\font-awesome.min.css" />
     <Content Include="SouleDesigns\Content\Styles\Shared\main.css" />
+    <Content Include="SouleDesigns\Content\Styles\Shared\recaptcha.css" />
     <Content Include="SouleDesigns\index.html" />
     <Content Include="SouleDesigns\Scripts\blog-archives.js" />
     <Content Include="SouleDesigns\Scripts\blog-post.js" />
@@ -344,6 +345,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SouleDesigns\Views\NotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Views\EditorTemplates\Parts.ReCaptcha.Fields.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
