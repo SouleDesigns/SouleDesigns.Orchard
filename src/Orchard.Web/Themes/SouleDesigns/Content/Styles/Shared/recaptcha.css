@@ -18,7 +18,14 @@
     margin: -15px 0px 0px 5px;
 }
 
+#recaptcha_response_field
+{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
 #recaptcha_widget
 {
     margin-bottom: 20px;
 }
+
