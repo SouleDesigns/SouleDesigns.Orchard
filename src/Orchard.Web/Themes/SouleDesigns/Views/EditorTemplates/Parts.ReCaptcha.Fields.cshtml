@@ -17,8 +17,6 @@
                 $("#recaptcha_widget").insertBefore(
                     $("#recaptcha_widget").parent().find("button[type='submit']").first()
                 );
-                @* Hidden field added before textbox, throwing off bootstrap corners, so move! *@
-                $("#recaptcha_challenge_field_holder").insertAfter("#recaptcha_response_field");            
             });
         </script>
     }
