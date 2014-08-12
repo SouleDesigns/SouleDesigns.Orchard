@@ -1,4 +1,10 @@
 ﻿/* Recaptcha Custom Styles */
+#recaptcha_challenge_image
+{
+    display: block;
+    margin: 3px auto;
+}
+
 #recaptcha_image {
     background-color: #fff;
     border-radius: 4px;
