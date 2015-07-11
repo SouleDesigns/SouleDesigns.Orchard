@@ -1,7 +1,6 @@
 using System;
 using FluentNHibernate.Cfg.Db;
 using NHibernate.Cfg;
-using NHibernate.SqlAzure;
 
 namespace Orchard.Data.Providers {
     public class SqlServerDataServicesProvider : AbstractDataServicesProvider {
@@ -26,9 +25,9 @@ namespace Orchard.Data.Providers {
 
             persistence = persistence.ConnectionString(_connectionString);
 
-            // when using Sql Server Azure, use a specific driver, c.f. https://orchard.codeplex.com/workitem/19315
+            // use MsSql2012Dialect if on Azure or if specified in the connection string
             if (IsAzureSql()) {
-                persistence = persistence.Driver<SqlAzureClientDriver>();
+                persistence = persistence.Dialect<NHibernate.Dialect.MsSql2012Dialect>();
             }
 
             // use MsSql2012Dialect if on Azure or if specified in the connection string
@@ -41,10 +40,6 @@ namespace Orchard.Data.Providers {
 
         protected override void AlterConfiguration(Configuration config) {
             config.SetProperty(NHibernate.Cfg.Environment.PrepareSql, Boolean.TrueString);
-
-            if (IsAzureSql()) {
-                config.SetProperty(NHibernate.Cfg.Environment.TransactionStrategy, typeof(ReliableAdoNetWithDistributedTransactionFactory).AssemblyQualifiedName);
-            }
         }
 
         private bool IsAzureSql() {

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,7 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Themes</RootNamespace>
     <AssemblyName>Themes</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -48,10 +48,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -60,106 +58,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SouleDesigns\Gravatar\Gravatar.cs" />
-    <Compile Include="SouleDesigns\Gravatar\Gremail.cs" />
-    <Compile Include="SouleDesigns\Gravatar\Grofile.cs" />
-    <Compile Include="SouleDesigns\Gravatar\GrofileInfo.cs" />
-    <Compile Include="SouleDesigns\Gravatar\Html\HtmlHelperExtensions.cs" />
-    <Compile Include="SouleDesigns\Gravatar\Html\UrlHelperExtensions.cs" />
-    <Compile Include="SouleDesigns\Helpers\ThemeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SouleDesigns\Content\Cubeportfolio\css\cubeportfolio.css" />
-    <Content Include="SouleDesigns\Content\Cubeportfolio\css\cubeportfolio.min.css" />
-    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-loading-popup.gif" />
-    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-loading.gif" />
-    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-sprite.png" />
-    <Content Include="SouleDesigns\Content\Cubeportfolio\js\jquery.cubeportfolio.js" />
-    <Content Include="SouleDesigns\Content\Cubeportfolio\js\jquery.cubeportfolio.min.js" />
-    <Content Include="SouleDesigns\Content\Fancybox\blank.gif" />
-    <Content Include="SouleDesigns\Content\Fancybox\fancybox_loading%402x.gif" />
-    <Content Include="SouleDesigns\Content\Fancybox\fancybox_loading.gif" />
-    <Content Include="SouleDesigns\Content\Fancybox\fancybox_overlay.png" />
-    <Content Include="SouleDesigns\Content\Fancybox\fancybox_sprite%402x.png" />
-    <Content Include="SouleDesigns\Content\Fancybox\fancybox_sprite.png" />
-    <Content Include="SouleDesigns\Content\Fancybox\helpers\fancybox_buttons.png" />
-    <Content Include="SouleDesigns\Content\Fancybox\helpers\jquery.fancybox-buttons.css" />
-    <Content Include="SouleDesigns\Content\Fancybox\helpers\jquery.fancybox-buttons.js" />
-    <Content Include="SouleDesigns\Content\Fancybox\helpers\jquery.fancybox-media.js" />
-    <Content Include="SouleDesigns\Content\Fancybox\helpers\jquery.fancybox-thumbs.css" />
-    <Content Include="SouleDesigns\Content\Fancybox\helpers\jquery.fancybox-thumbs.js" />
-    <Content Include="SouleDesigns\Content\Fancybox\jquery.fancybox.css" />
-    <Content Include="SouleDesigns\Content\Fancybox\jquery.fancybox.js" />
-    <Content Include="SouleDesigns\Content\Fancybox\jquery.fancybox.pack.js" />
-    <Content Include="SouleDesigns\Content\Flexslider\flexslider.css" />
-    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.svg" />
-    <Content Include="SouleDesigns\Content\Flexslider\Images\bg_play_pause.png" />
-    <Content Include="SouleDesigns\Content\Flexslider\jquery.flexslider-min.js" />
-    <Content Include="SouleDesigns\Content\Flexslider\jquery.flexslider.js" />
-    <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.svg" />
-    <Content Include="SouleDesigns\Content\Fonts\Glyphicons\glyphicons-halflings-regular.svg" />
-    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-demo.html" />
-    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.svg" />
-    <Content Include="SouleDesigns\Content\Images\Contact\souleovision.png" />
-    <Content Include="SouleDesigns\Content\Images\Home\home-icons-cg.png" />
-    <Content Include="SouleDesigns\Content\Images\Home\home-icons-cg.svg" />
-    <Content Include="SouleDesigns\Content\Images\Home\home-icons-design.png" />
-    <Content Include="SouleDesigns\Content\Images\Home\home-icons-design.svg" />
-    <Content Include="SouleDesigns\Content\Images\Home\home-icons-dev.png" />
-    <Content Include="SouleDesigns\Content\Images\Home\home-icons-dev.svg" />
-    <Content Include="SouleDesigns\Content\Images\Portfolio\portfolio-sprite.fw.png" />
-    <Content Include="SouleDesigns\Content\Images\Portfolio\portfolio-sprite.png" />
-    <Content Include="SouleDesigns\Content\Images\Shared\favicon.ico" />
-    <Content Include="SouleDesigns\Content\Images\Shared\footer-bg.png" />
-    <Content Include="SouleDesigns\Content\Images\Shared\navbar-background.jpg" />
-    <Content Include="SouleDesigns\Content\Images\Shared\navbar-tile.jpg" />
-    <Content Include="SouleDesigns\Content\Images\Shared\orchard-logo.png" />
-    <Content Include="SouleDesigns\Content\Images\Shared\orchard-logo.svg" />
-    <Content Include="SouleDesigns\Content\Images\Shared\soule-designs-footer.png" />
-    <Content Include="SouleDesigns\Content\Images\Shared\soule-designs-grn.svg" />
-    <Content Include="SouleDesigns\Content\Images\Shared\soule-designs-sprite.png" />
-    <Content Include="SouleDesigns\Content\Images\Shared\soule-designs.svg" />
-    <Content Include="SouleDesigns\Content\Images\Shared\textured-paper.png" />
-    <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap-theme.css" />
-    <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap-theme.min.css" />
-    <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap.css" />
-    <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap.min.css" />
-    <Content Include="SouleDesigns\Content\Styles\Home\index.css" />
-    <Content Include="SouleDesigns\Content\Styles\Portfolio\portfolio-piece.css" />
-    <Content Include="SouleDesigns\Content\Styles\Shared\alt-main.css" />
-    <Content Include="SouleDesigns\Content\Styles\Shared\font-awesome.css" />
-    <Content Include="SouleDesigns\Content\Styles\Shared\font-awesome.min.css" />
-    <Content Include="SouleDesigns\Content\Styles\Shared\main.css" />
-    <Content Include="SouleDesigns\Content\Styles\Shared\recaptcha.css" />
-    <Content Include="SouleDesigns\index.html" />
-    <Content Include="SouleDesigns\Scripts\blog-archives.js" />
-    <Content Include="SouleDesigns\Scripts\blog-post.js" />
-    <Content Include="SouleDesigns\Scripts\bootstrap.js" />
-    <Content Include="SouleDesigns\Scripts\bootstrap.min.js" />
-    <Content Include="SouleDesigns\Scripts\holder.js" />
-    <Content Include="SouleDesigns\Scripts\home.js" />
-    <Content Include="SouleDesigns\Scripts\html5shiv.js" />
-    <Content Include="SouleDesigns\Scripts\jquery.backstretch.min.js" />
-    <Content Include="SouleDesigns\Scripts\jquery.mousewheel-3.0.6.pack.js" />
-    <Content Include="SouleDesigns\Scripts\jquery.validate.min.js" />
-    <Content Include="SouleDesigns\Scripts\portfolio-piece.js" />
-    <Content Include="SouleDesigns\Scripts\portfolio.js" />
-    <Content Include="SouleDesigns\Scripts\respond.min.js" />
-    <Content Include="SouleDesigns\Scripts\shared.js" />
-    <Content Include="SouleDesigns\SouleDesigns.csproj" />
-    <Content Include="SouleDesigns\Styles\prettyPhoto.css" />
-    <Content Include="SouleDesigns\Theme.png" />
-    <Content Include="SouleDesigns\Theme.txt" />
     <Content Include="TheAdmin\Scripts\admin.js" />
     <Content Include="TheAdmin\Styles\ie.css" />
     <Content Include="TheAdmin\Styles\ie7.css" />
     <Content Include="TheAdmin\Styles\ie8.css" />
     <Content Include="TheAdmin\Styles\images\adminNavBackground.gif" />
+    <Content Include="TheAdmin\Styles\images\error.gif" />
     <Content Include="TheAdmin\Styles\images\icon-advisory.png" />
     <Content Include="TheAdmin\Styles\images\icon-contribute.png" />
     <Content Include="TheAdmin\Styles\images\icon-docs.png" />
@@ -174,6 +84,7 @@
     <Content Include="TheAdmin\Styles\images\menuOpen.gif" />
     <Content Include="TheAdmin\Styles\images\menuOpenHover.gif" />
     <Content Include="TheAdmin\Styles\images\vinesBackgroundBottom.gif" />
+    <Content Include="TheAdmin\Styles\images\menu-filter.png" />
     <Content Include="TheThemeMachine\Styles\Site.css" />
     <Content Include="TheThemeMachine\Theme.png" />
     <Content Include="TheThemeMachine\Theme.txt" />
@@ -198,7 +109,6 @@
     <Content Include="TheAdmin\Styles\images\tableHeaderBackgroundRed.gif" />
     <Content Include="TheAdmin\Styles\site.css" />
     <Content Include="TheAdmin\Theme.txt" />
-    <Content Include="SafeMode\Views\Document.cshtml" />
     <Content Include="TheAdmin\Views\Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -260,94 +170,7 @@
     <Content Include="TheAdmin\Views\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SouleDesigns\Content\Cubeportfolio\img\cbp-sprite.psd" />
-    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.eot" />
-    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.ttf" />
-    <Content Include="SouleDesigns\Content\Flexslider\Fonts\flexslider-icon.woff" />
-    <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.eot" />
-    <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.ttf" />
-    <Content Include="SouleDesigns\Content\Fonts\FontAwesome\fontawesome-webfont.woff" />
-    <Content Include="SouleDesigns\Content\Fonts\FontAwesome\FontAwesome.otf" />
-    <Content Include="SouleDesigns\Content\Fonts\Glyphicons\glyphicons-halflings-regular.eot" />
-    <Content Include="SouleDesigns\Content\Fonts\Glyphicons\glyphicons-halflings-regular.ttf" />
-    <Content Include="SouleDesigns\Content\Fonts\Glyphicons\glyphicons-halflings-regular.woff" />
-    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.eot" />
-    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.ttf" />
-    <Content Include="SouleDesigns\Content\Fonts\Japan\japan-webfont.woff" />
-    <Content Include="SouleDesigns\Content\Web.config" />
-    <Content Include="SouleDesigns\Placement.info" />
-    <Content Include="SouleDesigns\Scripts\Web.config" />
-    <Content Include="SouleDesigns\Styles\Web.config" />
-    <Content Include="SouleDesigns\Views\CommentAuthor.cshtml" />
-    <Content Include="SouleDesigns\Views\CommentGravatar.cshtml" />
-    <Content Include="SouleDesigns\Views\CommentMetadata.cshtml" />
-    <Content Include="SouleDesigns\Views\CommentReplyButton.cshtml" />
-    <Content Include="SouleDesigns\Views\CommentText.cshtml" />
-    <Content Include="SouleDesigns\Views\Content-182.cshtml" />
-    <Content Include="SouleDesigns\Views\Content-BlogPost.cshtml" />
-    <Content Include="SouleDesigns\Views\Content-BlogPost.Summary.cshtml" />
-    <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Detail.cshtml" />
-    <Content Include="SouleDesigns\Views\Content-PortfolioPiece.Summary.cshtml" />
-    <Content Include="SouleDesigns\Views\DisplayTemplates\Parts\ContactForm.cshtml" />
-    <Content Include="SouleDesigns\Views\Document.cshtml" />
-    <Content Include="SouleDesigns\Views\EditorTemplates\Parts.Comment.cshtml" />
-    <Content Include="SouleDesigns\Views\Fields.TaxonomyField-Tags.cshtml" />
-    <Content Include="SouleDesigns\Views\Layout-Wide.cshtml" />
-    <Content Include="SouleDesigns\Views\Layout.cshtml" />
-    <Content Include="SouleDesigns\Views\LogOn.cshtml" />
-    <Content Include="SouleDesigns\Views\Menu.cshtml" />
-    <Content Include="SouleDesigns\Views\MenuItem.cshtml" />
-    <Content Include="SouleDesigns\Views\MenuItemLink-terms-Tags2.cshtml" />
-    <Content Include="SouleDesigns\Views\MenuItemLink.cshtml" />
-    <Content Include="SouleDesigns\Views\MenuItemLinkdd.cshtml" />
-    <Content Include="SouleDesigns\Views\MenuTopItemLinkdd.cshtml" />
-    <Content Include="SouleDesigns\Views\Modes.ShareBar.MediumIcons.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Search\Search\Index.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\AccessDenied.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\ChallengeEmailFail.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\ChallengeEmailSent.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\ChallengeEmailSuccess.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\ChangePassword.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\ChangePasswordSuccess.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\LostPassword.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\RegistrationPending.cshtml" />
-    <Content Include="SouleDesigns\Views\Orchard.Users\Account\RequestLostPassword.cshtml" />
-    <Content Include="SouleDesigns\Views\Pager.cshtml" />
-    <Content Include="SouleDesigns\Views\Pager.CurrentPage.cshtml" />
-    <Content Include="SouleDesigns\Views\Pager.First.cshtml" />
-    <Content Include="SouleDesigns\Views\Pager.Gap.cshtml" />
-    <Content Include="SouleDesigns\Views\Pager.Last.cshtml" />
-    <Content Include="SouleDesigns\Views\Pager.Next.cshtml" />
-    <Content Include="SouleDesigns\Views\Pager.Previous.cshtml" />
-    <Content Include="SouleDesigns\Views\Pager_Link.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Blogs.BlogArchives.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Blogs.RecentBlogPosts.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Comment.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\CommentForm.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Common.Body.Summary.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\ListOfComments.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Tags.ShowTags.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Title-Categories2.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Title-PortfolioSofwareTerm.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Title-Tags2.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\Title.cshtml" />
-    <Content Include="SouleDesigns\Views\Parts\TwitterWidget.cshtml" />
-    <Content Include="SouleDesigns\Views\Register.cshtml" />
-    <Content Include="SouleDesigns\Views\Widget-Name-HomePage.cshtml" />
-    <Content Include="SouleDesigns\Views\Widget-Name-RelatedItems.cshtml" />
-    <Content Include="SouleDesigns\Views\Widget-Name-RotatorSlides.cshtml" />
-    <Content Include="SouleDesigns\Views\Widget-Name-SouleDesignsContact.cshtml" />
-    <Content Include="SouleDesigns\Views\Widget.Wrapper.cshtml" />
-    <Content Include="SouleDesigns\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\ErrorPage.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\NotFound.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SouleDesigns\Views\EditorTemplates\Parts.ReCaptcha.Fields.cshtml" />
+    <Content Include="TheAdmin\Views\AdminCultureSelector.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
