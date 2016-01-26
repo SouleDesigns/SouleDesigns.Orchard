@@ -1,0 +1,172 @@
+﻿@using Orchard.Utility.Extensions;
+@using Orchard.DisplayManagement.Shapes;
+@using Orchard.ContentManagement;
+@using System.Collections.Generic;
+@using Orchard.MediaLibrary.Fields;
+@using Orchard.MediaLibrary.Models;
+@using Orchard.Taxonomies.Models;
+
+@{
+
+    
+    // Get model properties in easy to digest format
+    dynamic contentItem = Model.ContentItem;
+    var title = contentItem.PortfolioPiece.TitlePart.Title;
+    var client = contentItem.PortfolioPiece.Client.Value;
+    var createdDate = contentItem.PortfolioPiece.CommonPart.CreatedUtc.ToString("MMMM yyyy");
+    var subtitle = contentItem.PortfolioPiece.Blurb.Value;
+    var summary = contentItem.PortfolioPiece.BodyPart.Text;
+    var route = contentItem.PortfolioPiece.AutoroutePart.Path;
+    List<PortfolioPieceMedia> portfolioMedia = ThemeHelper.GetPortfolioPieceMedia(contentItem);
+    List<MediaPart> mediaParts = contentItem.PortfolioPiece.PieceMedia.MediaParts;
+    List<TermPart> categories = contentItem.PortfolioPiece.PortfolioCategories.Terms;
+    List<TermPart> software = contentItem.PortfolioPiece.Software.Terms;
+    
+    Session["PortfolioCategories"] = categories.Select(c => c.Name).ToList();
+    Session["PortfolioRoute"] = route;
+
+    if (!string.IsNullOrEmpty(title))
+    {
+        Layout.Title = title;
+    }
+
+    Model.Classes.Add("content-item");
+    var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+    Model.Classes.Add(contentTypeClassName);
+        
+    var tag = Tag(Model, "article");           
+}
+@tag.StartElement
+
+<div class="container">
+
+    <h2 class="page-title"><a href="@Url.ItemDisplayUrl((IContent)contentItem)">@title</a></h2>    
+    <p class="page-subtitle">@subtitle</p>       
+
+    <div id="slider" class="flexslider">
+        <ul class="slides">
+            @{
+                foreach (PortfolioPieceMedia item in portfolioMedia)
+                {
+                    switch (item.MediaType.ToUpper())
+                    {
+                        case "VIMEO":
+                            <li>
+                                <script type="text/javascript">
+                                    // *Attempts* to prevent crazy page load flash errors
+                                    $(document).ready(function () { $("#player_@portfolioMedia.IndexOf(item).ToString()").attr('src', '@item.MediaUrl'); });
+                                </script>
+                                <iframe id="player_@portfolioMedia.IndexOf(item).ToString()" src="" width="1024" height="600" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                                <div class="project-slide-caption">
+                                    <strong>@item.Title</strong>
+                                    @if (!string.IsNullOrEmpty(item.Caption))
+                                    {
+                                        <p>@item.Caption</p>
+                                    }
+                                </div>
+                            </li>
+                            break;
+                        default:
+                        <li>                            
+                            <img src="@Display.ResizeMediaUrl(Width: 1024, Height: 600, Mode: "pad", Alignment: "middlecenter", Path: item.MediaUrl, PadColor: "#333333")" />                            
+                            <div class="project-slide-caption">
+                                <a href="@item.MediaUrl" class="fancy-box" data-fancy-group="gallery">
+                                    <strong>@item.Title </strong>&nbsp;
+                                    <span class="glyphicon glyphicon-fullscreen"></span>
+                                </a>
+                                @if(!string.IsNullOrEmpty(item.Caption)) 
+                                {
+                                    <p>@item.Caption</p>    
+                                }
+                            </div>                            
+                        </li>
+                            break;
+                    }
+                }
+}
+        </ul>
+    </div>
+
+    <div id="carousel" class="flexslider">
+        <ul class="slides">
+            @{
+                foreach (PortfolioPieceMedia item in portfolioMedia)
+                {
+                    switch (item.MediaType.ToUpper())
+                    {
+                        case "VIMEO":
+                            <li>
+                                <img src="@Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter",
+                                Path: ThemeHelper.GetVimeoPreviewImage(item.MediaUrl))" />
+                            </li>
+                            break;
+                        default:
+                        <li>
+                            <img src="@Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter",
+                                Path: item.MediaUrl)" />
+                        </li>
+                            break;
+                    }
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 topspace25">
+            <div class="project-title"><span>Project Description</span></div>
+            <div>
+                @Html.Raw(@summary)
+            </div>
+        </div>
+        <div class="col-md-4 topspace25">
+            <div class="project-title"><span>Project Details</span></div>            
+            @*Old school table action, yo*@
+            <table class="project-details-table">
+                @{ if(!string.IsNullOrEmpty(client)) {
+                <tr>
+                    <td>
+                        <strong>Client</strong>
+                    </td>
+                    <td>
+                        <i class="fa fa-user project-icon"></i>@client
+                    </td>
+                </tr>  
+                } 
+                }                
+                <tr>
+                    <td>
+                        <strong>Date</strong>
+                    </td>
+                    <td>
+                        <i class="fa fa-calendar project-icon"></i>@createdDate
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Categories</strong>
+                    </td>
+                    <td>
+                        @foreach (var term in categories.OrderBy(c => c.Name).ToList())
+                        {
+                            <a href="@Url.ItemDisplayUrl((IContent)term)"><span class="project-category project-category-@term.Name.ToLower().Replace(" ", "-")"></span>@term.Name</a><br />
+                        }   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Software</strong>
+                    </td>
+                    <td>
+                        @foreach(var term in software.OrderBy(c => c.Name).ToList())
+                        {
+                            <a href="@Url.ItemDisplayUrl((IContent)term)"><span class="software-icon software-@term.Name.ToLower().Replace(" ", "-")"></span>@term.Name</a><br />
+                        }                        
+                    </td>
+                </tr>                
+            </table>            
+        </div>
+    </div>
+</div>
+
+@tag.EndElement

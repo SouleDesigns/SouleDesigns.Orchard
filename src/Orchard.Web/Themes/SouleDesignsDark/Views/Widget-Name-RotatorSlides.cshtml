@@ -1,0 +1,77 @@
+﻿@using Orchard.Utility.Extensions;
+@using Orchard.DisplayManagement.Shapes;
+@using Orchard.ContentManagement;
+@using System.Collections.Generic;
+@using Orchard.MediaLibrary.Models;
+@{
+
+    // Get home rotator slides from the projection
+    var rotatorSlides = ((List<dynamic>)Model.Content.Items[1].Items)
+        .Select(item => (ContentItem)item.ContentItem)
+        .ToList();
+
+}
+
+<div class="carousel fade slide" id="home-carousel" data-ride="carousel" data-interval="false">    
+@{
+    if(rotatorSlides.Count > 1) 
+    {
+    <ol class="carousel-indicators">
+        @for (var index = 0; index < rotatorSlides.Count; index++)
+        {
+            var ratotorSlide = rotatorSlides[index];
+
+            <li class="@(index == 0 ? "active" : "")" data-target="#home-carousel" data-slide-to="@index"></li>
+        }        
+    </ol>        
+    }
+
+    
+    <div class="carousel-inner">
+    @for (var index = 0; index < rotatorSlides.Count; index++)
+    {
+        dynamic ratotorSlide = rotatorSlides[index];
+        var body = ratotorSlide.HomePageRotator.BodyPart.Text;
+        var navigateUrl = ratotorSlide.HomePageRotator.NavigateUrl;
+        
+        <div class="item @(index == 0 ? "active" : "")" data-slide="@index">
+            <div class="carousel-caption">
+                <p>
+                    @Html.Raw(body)
+                </p>
+               @{
+                if (navigateUrl.Value != null)
+                {
+                <p>
+                    <a href="@Url.Content(navigateUrl.Value)" onclick="window.location = '@Url.Content(navigateUrl.Value)';" class="btn btn-primary btn-lg">@(navigateUrl.Text == null ? navigateUrl.Target : navigateUrl.Text)</a>
+                </p>
+                }
+    }
+            </div>
+        </div>
+    }       
+    </div>
+    if (rotatorSlides.Count > 1)
+    {
+        <a class="left carousel-control" href="#home-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#home-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    }
+}    
+</div>
+<script type="text/javascript">
+    // Called by home script, assures called after backstretch defined
+    function SetupHomeSlides() {
+    @{
+    for (var index = 0; index < rotatorSlides.Count; index++)
+    {
+        dynamic ratotorSlide = rotatorSlides[index];
+        MediaPart rotatorImage = ratotorSlide.HomePageRotator.RotatorImage.MediaParts[0];                
+            
+        @Html.Raw(string.Format(
+        "$('[data-slide={0}]').backstretch('{1}', {{ centeredY: false}});", 
+        index,
+        rotatorImage.MediaUrl))
+    }        
+    }
+    }
+</script>

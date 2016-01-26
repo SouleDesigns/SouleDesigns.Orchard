@@ -1,0 +1,11 @@
+@{
+    Layout.Title = Model.Title;
+}
+
+<div class="row">
+    <div class="col-xs-9">
+        <h1><span class="small">Posts tagged with</span> @Model.Title</h1>
+    </div>
+    <div class="col-xs-3 list-all-button"><a href=" @Url.Content("~/blog") "><i class=" fa fa-list"></i> View All</a></div>        
+</div>
+<hr />

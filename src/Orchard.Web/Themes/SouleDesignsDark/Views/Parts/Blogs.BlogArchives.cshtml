@@ -1,0 +1,41 @@
+﻿@using Orchard.Blogs.Extensions;
+@using Orchard.Blogs.Models;
+@{    
+    Script.Include("blog-archives.js");
+
+    IEnumerable<KeyValuePair<ArchiveData, int>> archives = Model.Archives;
+    var dateTimeLocalization = WorkContext.Resolve<Orchard.Localization.Services.IDateTimeFormatProvider>();
+    var monthNames = dateTimeLocalization.MonthNames.ToArray();
+}
+<div class="blog-archives">
+
+    <ul>
+        @{
+            int lastYear = archives.First().Key.Year;
+            int firstYear = archives.Last().Key.Year;
+        }
+        @for (int year = lastYear; year >= firstYear; year--)
+        {
+            var yearMonths = archives.Where(m => m.Key.Year == year);
+            var yearTotal = yearMonths.Sum(ym => ym.Value);
+
+            // NOTE:  Can add conditional year collapse/expand here as desired
+            //        for now first 2 years expanded
+            var expandYear = year > DateTime.Now.Year - 2;
+            var yearIconCss = expandYear ? "fa-minus-square-o" : "fa-plus-square-o";
+            var yearExpandedCss = expandYear ? "expanded" : "";                                  
+            <li>                                                    
+                <div class="expando-wrap"><span class="arrow expando @yearExpandedCss"><i class="fa @yearIconCss"></i>&nbsp;</span><a href="@Url.BlogArchiveYear((BlogPart)Model.Blog, year)">@year</a> <span class="small">(@yearTotal)</span></div>
+                <ul style="display: @(expandYear ? "block" : "none")">
+                    @foreach (var yearMonth in yearMonths)
+                    {
+                        <li>
+                            <div class="expando-wrap"><span class="arrow lazy"><i class="fa fa-plus-square-o"></i>&nbsp;</span><a href="@Url.BlogArchiveMonth((BlogPart)Model.Blog, yearMonth.Key.Year, yearMonth.Key.Month)">@monthNames[yearMonth.Key.ToDateTime().Month - 1]</a> <span class="small">(@yearMonth.Value)</span></div>
+                        </li>
+                    }
+                </ul>                
+            </li>                
+        }
+    </ul>
+
+</div>

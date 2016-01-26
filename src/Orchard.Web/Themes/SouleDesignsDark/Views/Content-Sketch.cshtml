@@ -1,0 +1,37 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Utility.Extensions;
+@{
+    var sketch = Model.ContentItem;
+    var image = sketch.Sketch.SketchImage.MediaParts[0];
+
+    //IEnumerable<Orchard.Taxonomies.Models.TermContentItemPart> tags = sketch.TermsPart.TermParts;
+
+}   
+<div class="sketch">    
+    <div class="post-header">
+        <h3 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)sketch)">@sketch.TitlePart.Title</a></h3>
+        <div class="post-meta">
+            <div class="post-meta-date pull-left" style="padding-right: 15px;">
+                <i class="fa fa-calendar"></i>
+                @sketch.CommonPart.CreatedUtc.ToString("MMMM d, yyyy")
+            </div>                  
+            
+            @*<div class="taxonomy-field tags pull-left">
+                <i class="fa fa-tags"></i>
+                @(new HtmlString(string.Join(", ", tags.Select(t => Html.ItemDisplayLink(t.TermPart.Name, t.TermPart.ContentItem).ToString()).ToArray())))
+            </div>*@       
+            
+               
+            <div class="clearfix"></div>
+        </div>
+        @if (!string.IsNullOrEmpty(sketch.BodyPart.Text))
+        {
+        <div>
+            @Html.Raw(sketch.BodyPart.Text)
+        </div>
+        }
+    </div> 
+    <div class="sketch-image topspace15">        
+        <img src="@image.MediaUrl" class="img-responsive" />        
+    </div>              
+</div>         

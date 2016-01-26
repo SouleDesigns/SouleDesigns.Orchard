@@ -1,0 +1,8 @@
+Name: SouleDesignsDark
+Author: Owen Soule
+Website: http://www.souledesigns.com
+Description: The DARK stuff that dreams are made of mixed with a little awesomeness and a splash of good times.
+Version: 1.0.1
+Zones: Header, Navigation, Featured, BeforeMain, AsideFirst, Messages, BeforeContent, Content, AfterContent, AsideSecond, AfterMain, TripelFirst, TripelSecond, TripelThird, FooterQuadFirst, FooterQuadSecond, FooterQuadThird, FooterQuadFourth, Footer
+# todo: provide tags
+# Tags: Classic, Serif

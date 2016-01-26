@@ -1,0 +1,12 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Utility.Extensions;
+@{
+    var sketch = Model.ContentItem;
+    var image = sketch.Sketch.SketchImage.MediaParts[0];
+
+}   
+<div class="sketch">    
+    <a href="@Url.ItemDisplayUrl((IContent)sketch)">        
+        <img src="@image.MediaUrl" class="img-responsive" />
+    </a>
+</div>         

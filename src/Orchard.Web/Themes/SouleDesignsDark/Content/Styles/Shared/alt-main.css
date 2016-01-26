@@ -1,0 +1,41 @@
+﻿h1, h2, h3 
+{
+    /*color: initial;*/
+}
+
+a 
+{
+    color: #660000;
+}
+
+#navbar-wrapper .navbar
+{	
+    background-color: #ddd;
+}
+
+#navbar-wrapper .navbar-brand
+{
+    background:  transparent url(../../Images/Shared/soule-designs-footer.png) no-repeat 0 10px;
+    background-size: 100%;
+	/* Svg overrides png in supported browsers */
+	background-image: url(../../Images/Shared/soule-designs-grn.svg), none;
+}
+
+#navbar-wrapper .navbar-default .nav > li > a 
+{
+    /*color: #b37800;*/
+}
+
+#sd-nav-fill 
+{
+    border-top: 1px solid #fff;
+    background: #f6f6f6 url(../../Images/Shared/textured-paper.png) repeat top right;	
+	-webkit-box-shadow: 0px 2px 2px 0px rgba(81,87,65,0.2);
+	-moz-box-shadow: 0px 2px 2px 0px rgba(81,87,65,0.2);
+	box-shadow: 0px 2px 2px 0px rgba(81,87,65,0.2);
+}
+
+#sd-nav-menu
+{	
+    background: #fcfcfc url(../../Images/Shared/textured-paper.png) repeat top right;	
+}

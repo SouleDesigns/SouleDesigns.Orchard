@@ -1,0 +1,27 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Widgets.Models;
+@{
+    var widgetPart = ((IContent)Model.ContentItem).As<WidgetPart>();
+    var tag = Tag(Model, "article");
+}
+@tag.StartElement
+@if ((widgetPart.RenderTitle && HasText(widgetPart.Title)) || Model.Header != null) {
+    <header>
+        @if ((widgetPart.RenderTitle && HasText(widgetPart.Title))) {
+            if (widgetPart.Zone.Contains("Footer") || widgetPart.Zone.Contains("Aside"))
+            {
+                <h3>@widgetPart.Title</h3>
+            } else {                            
+                <h2>@widgetPart.Title</h2>
+            }
+        }
+        @Display(Model.Header)
+    </header>
+}
+@Display(Model.Child)
+@if (Model.Footer != null) {
+    <footer>
+        @Display(Model.Footer)
+    </footer>
+}
+@tag.EndElement

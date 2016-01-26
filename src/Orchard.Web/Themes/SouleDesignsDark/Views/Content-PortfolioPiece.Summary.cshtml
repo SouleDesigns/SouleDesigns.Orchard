@@ -1,0 +1,22 @@
+﻿@using Orchard.Utility.Extensions;
+@using Orchard.ContentManagement;
+@{
+    var portfolioPiece = Model.ContentItem;
+    var mediaParts = portfolioPiece.PortfolioPiece.PieceMedia.MediaParts;
+    var mediaPart = mediaParts[0];
+}
+<div class="portfolio-piece summary">
+    <div class="row">
+        <div class="piece-image col-md-2">
+            <a href="@Url.ItemDisplayUrl((IContent)portfolioPiece)"><img src="@Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: mediaPart.MediaUrl)" /></a>
+        </div>
+        <div class="col-md-10">
+            <div class="piece-header">
+                <h3 class="piece-title"><a href="@Url.ItemDisplayUrl((IContent)portfolioPiece)">@portfolioPiece.TitlePart.Title</a></h3>                                
+            </div>
+            <div class="post-content">
+                @Display(Model.Content)
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@using System.Linq;
+@using System.Collections.Generic;
+@using Orchard.Utility.Extensions;
+@using Orchard.ContentManagement;
+@using Orchard.MediaLibrary.Fields;
+@using Orchard.MediaLibrary.Models;
+@using Orchard.Taxonomies.Models;
+
+@{    
+    Layout.Title = "Portfolio";    
+
+    // Get portfolio items from the projection
+    var portfolioItems = ((List<dynamic>)Model.Content.Items)
+        .Where(shape => shape.Id == "Portfolio")
+        .SelectMany(shape => (List<dynamic>)shape.Items)
+        .Select(item => (ContentItem)item.ContentItem)
+        .ToList();
+
+            
+    //  Build all categories
+    List<TermPart> allCategories = new List<TermPart>();
+    foreach (dynamic portfolioItem in portfolioItems)
+    {
+        // Get terms for this item        
+        List<TermPart> categories = portfolioItem.PortfolioPiece.PortfolioCategories.Terms;
+        allCategories.AddRange(categories);
+    }
+    allCategories = allCategories.Distinct().OrderBy(s => s.Name).ToList();
+    
+}
+
+@* Category Buttons *@
+<div class="btn-group-wrap">
+    <div id="filters-container" class="cbp-l-filters-button btn-group">
+        <div data-filter=" *" class="cbp-filter-item-active cbp-filter-item active btn btn-default">All<div class="cbp-filter-counter"></div></div>
+        @foreach (var category in allCategories)
+        {
+            <div data-filter=".@category.Slug.Replace("/", "-")" class="cbp-filter-item btn btn-default">@category.Name<div class="cbp-filter-counter"></div></div>
+        }
+    </div>
+</div>
+
+@* Portfolio Grid *@
+<div id="grid-container" class="cbp-l-grid-fullScreen @*cbp-l-grid-projects*@">
+    <ul>
+        @{
+            // Iterate across the items
+            foreach (dynamic portfolioItem in portfolioItems)
+            {
+                // Find parts for display
+                var title = portfolioItem.PortfolioPiece.TitlePart.Title;
+                var subtitle = portfolioItem.PortfolioPiece.Blurb.Value;
+                var route = portfolioItem.PortfolioPiece.AutoroutePart.Path;
+                List<MediaPart> media = portfolioItem.PortfolioPiece.PieceMedia.MediaParts;
+                List<TermPart> terms = portfolioItem.PortfolioPiece.PortfolioCategories.Terms;
+                List<string> categories = terms.Select(t => t.Slug).ToList();
+
+                <li class="cbp-item @(string.Join(" ", categories.Select(c => c.Replace("/", "-")).ToList())) cbp-l-grid-masonry-height1">
+                    <div class="cbp-caption">
+                        <div class="cbp-caption-defaultWrap">
+                            <img src="@Display.ResizeMediaUrl(Width: 400, Height: 300, Mode: "crop", Alignment: "middlecenter", Path: media.First().MediaUrl)" alt="" width="100%">
+                        </div>
+                        <div class="cbp-caption-activeWrap">
+                            <div class="cbp-l-caption-alignCenter">
+                                <div class="cbp-l-caption-body">
+                                    <h3>@title</h3>
+                                    <p>@subtitle</p>
+                                    <a href="@Url.Content("~/" + route)" class="btn btn-primary">More info</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        }        
+    </ul>
+</div>

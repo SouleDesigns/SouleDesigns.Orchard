@@ -1,0 +1,83 @@
+﻿@model Orchard.Comments.Models.CommentPart
+@{    
+    Script.Include("jquery.validate.min.js");                 
+} 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#commentform').validate({            
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    });
+</script>
+    
+
+@if (WorkContext.CurrentUser == null) {
+    <div class="row">
+        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <label>Name <span>*</span></label>
+            @Html.TextBoxFor(m => m.Author, new
+           {
+               @class = "form-control",
+               data_rule_required = "true",
+               data_rule_maxlength = "200",
+               title = "Name is a required field.",
+               placeholder = "Name (required)"
+           })
+        </div>
+        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <label>Email <span>*</span></label>
+            @Html.TextBoxFor(m => m.Email, new
+           {
+               @class = "form-control",
+               data_rule_required = "true",
+               data_rule_email = "true",
+               title = "Email is a required field.",
+               placeholder = "Email (required)"
+           })
+        </div>
+        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <label>Website </label>
+            @Html.TextBoxFor(m => m.SiteName, new
+           {
+               @class = "form-control",
+               data_rule_maxlength = "200",
+               placeholder = "Website"
+           })
+        </div>
+    </div>
+}
+else {
+    @Html.Hidden("Name", WorkContext.CurrentUser.UserName ?? "")
+    @Html.Hidden("Email", WorkContext.CurrentUser.Email ?? "")
+}
+<div class="row">
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <label>Comments <span>*</span></label>
+        @Html.TextAreaFor(m => m.CommentText, new
+        {
+            rows = 3,
+            @class = "form-control",
+            data_rule_required = "true",
+            title = "It wouldn't be much of a comment without this!",
+            placeholder = "Comments"
+        })
+        @Html.HiddenFor(m => m.CommentedOn)
+        @Html.HiddenFor(m => m.RepliedOn)
+    </div>
+</div>
+<button type="submit" class="btn btn-sm btn-primary">Post Comment</button>

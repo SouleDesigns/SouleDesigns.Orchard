@@ -1,0 +1,66 @@
+﻿@using Orchard.ContentManagement;
+@using System.Text.RegularExpressions;
+
+@{     
+    var blogPost = Model.ContentItem;
+    string bodyHtml = blogPost.BodyPart.Text;
+
+    // Match first image src attribute in blog post html
+    var imageMatch = Regex.Match(bodyHtml, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase);
+    var imageUrl = string.Empty;
+    
+    // Check if an image src found
+    if(imageMatch.Groups != null && imageMatch.Groups.Count > 0 && !string.IsNullOrEmpty(imageMatch.Groups[1].Value)) 
+    {
+        // Get image from group and make thumbnail
+        var imageMatchValue = imageMatch.Groups[1].Value;
+        imageUrl = Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: imageMatchValue).ToString();
+    } 
+    else 
+    {    
+        // Use holder.js if no image found for "No Preview" placeholder    
+        imageUrl = Url.Content("~/Themes/SouleDesignsDark/Scripts/") + "holder.js/150x150/text:No Preview";
+    }   
+}
+
+
+<div id="blogpost-@blogPost.Id" class="blogpost summary">    
+
+    <div class="row">
+        <div class="post-image col-md-2">
+            <a href="@Url.ItemDisplayUrl((IContent)blogPost)"><img class="img-responsive" src="@imageUrl" /></a>
+        </div>
+        <div class="col-md-10">
+            <div class="post-header">
+                <h3 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
+                <div class="post-meta">
+                    <div class="post-meta-date pull-left">
+                        <i class="fa fa-calendar"></i>
+                        @blogPost.CommonPart.CreatedUtc.ToString("MMMM d, yyyy")
+                    </div>
+                                
+                    @*  No need for this now since I'm the only author
+                    <div class="post-meta-author pull-left">
+                        <i class="fa fa-user"></i>
+                        <a href="/Search?q=@blogPost.CommonPart.Owner.UserName">@blogPost.CommonPart.Owner.UserName</a>
+                    </div>  *@               
+
+                    <div class="post-comments pull-left">
+                        <i class="fa fa-comments"></i>
+                        @Display(Model.CommentsCount)
+                    </div>
+
+                    <div class="taxonomy-field tags pull-left">
+                        <i class="fa fa-tags"></i>                        
+                        @Display(Model.Terms)
+                    </div>                                       
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="post-content">
+                @Display(Model.Summary)
+            </div>
+        </div>    
+    </div>
+</div>

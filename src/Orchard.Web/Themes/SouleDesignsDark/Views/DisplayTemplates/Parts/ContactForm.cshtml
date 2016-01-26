@@ -1,0 +1,88 @@
+﻿@using Orchard.Utility.Extensions
+@model PlanetTelex.ContactForm.ViewModels.ContactFormViewModel
+@{
+    Script.Require("jQuery");    
+    Script.Include("jquery.validate.min.js");                 
+    const string displayNone = "style=\"display:none\"";
+    var displaySubject = Model.ShowSubjectField ? string.Empty : displayNone;
+    var displayName = Model.ShowNameField ? string.Empty : displayNone;
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#contactform').validate({
+            rules: {
+                Name: {                    
+                    required: true
+                },
+                ConfirmEmail: {
+                    required: true,
+                    email: true
+                },
+                Message: {                    
+                    required: true
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    });
+</script>
+ 
+<div class="row featurette">
+    <div class="col-md-5">
+        <img class="featurette-image img-responsive" style="margin-top: 20px;" src="@Url.Content("~/Themes/SouleDesignsDark/Content/Images/Contact/souleovision.png")" alt="Soule Designs" />
+    </div>
+    <div class="col-md-7">            
+        <h2 class="featurette-heading">Turn on, tune in, drop me a line</h2>
+        <span class="lead" >I'm out there in the cyberzone, poised & ready to turn up the awesome just for you.</span>
+
+
+@{using (Html.BeginForm("sendcontactemail", "contactform", new { area = "PlanetTelex.ContactForm" }, FormMethod.Post, new { @class = "contact-form", id="contactform" }))
+    {
+           
+        <div class="row">
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="Name">@T("Name")</label>
+                <input id="Name" class="text form-control" name="Name" type="text" title="Don't be shy, go ahead and fill in your name" placeholder="Your Name" />
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                 <label for="ConfirmEmail">@T("Email")</label>
+                <input id="ConfirmEmail" class="text form-control" name="ConfirmEmail" type="text" title="How can I write back without your email?" placeholder="Email Address" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+               <label for="Message">@T("Message")</label>
+                <textarea id="Message" class="text form-control" name="Message" title="Sorry, blank messages don't count as comments or inquiries :-(" placeholder="Comments or Inquiry" cols="50" rows="5"></textarea>
+            </div>
+        </div>
+    
+        <div @Html.Raw(displaySubject)>
+            <label for="Subject">@T("Subject")</label>
+            <input id="Subject" class="text form-control" name="Subject" type="text" placeholder="Subject" />                             
+        </div>
+                       
+        <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="@Context.Request.ToUrlString()" />
+        <input id="Id" name="Id" type="hidden" value="@Model.ContentRecordId" />
+        @Html.AntiForgeryTokenOrchard()
+        <input type="submit" class="btn btn-primary" value="@T("Send")" />
+    }
+}    
+    </div>
+
+</div>
+      

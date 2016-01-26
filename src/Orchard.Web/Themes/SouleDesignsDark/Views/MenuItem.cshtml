@@ -1,0 +1,53 @@
+﻿@{
+    // odd formatting in this file is to cause more attractive results in the output.
+    var items = Enumerable.Cast<dynamic>((System.Collections.IEnumerable)Model);
+}
+@{
+    string requestUrl = Request.Path.ToUpperInvariant();
+    string modelUrl = Model.Href.ToUpperInvariant();
+
+    if (!HasText(Model.Text)) {
+        @DisplayChildren(Model)
+    }
+    else {
+        if ((bool)Model.Selected || (!string.IsNullOrEmpty(modelUrl) && requestUrl.StartsWith(modelUrl + "/"))) {
+            Model.Classes.Add("active");
+        }
+
+        if (items.Any()) {
+            Model.Classes.Add("dropdown");
+        }
+
+        @* morphing the shape to keep Model untouched*@
+        Model.Metadata.Alternates.Clear();
+        if (Model.Parent.MenuName == null) {
+            if (items.Any()) {
+                Model.Metadata.Type = "MenuItemLinkdd";
+            }
+            else {
+                Model.Metadata.Type = "MenuItemLink";
+            }
+        }
+        else {
+            if (items.Any()) {
+                Model.Metadata.Type = "MenuTopItemLinkdd";
+            }
+            else {
+                Model.Metadata.Type = "MenuItemLink";
+            }
+        }
+        @* render the menu item only if it has some content *@
+        var renderedMenuItemLink = Display(Model);
+        if (HasText(renderedMenuItemLink)) {
+            var tag = Tag(Model, "li");
+            @tag.StartElement
+            @renderedMenuItemLink
+            if (items.Any()) {
+                <ul class="dropdown-menu">
+                    @DisplayChildren(Model)
+                </ul>
+            }    
+            @tag.EndElement
+        }
+    }
+}

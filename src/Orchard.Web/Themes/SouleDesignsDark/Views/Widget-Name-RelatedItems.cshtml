@@ -1,0 +1,86 @@
+﻿@using Orchard.Utility.Extensions;
+@using Orchard.DisplayManagement.Shapes;
+@using Orchard.ContentManagement;
+@using System.Collections.Generic;
+@using Orchard.MediaLibrary.Fields;
+@using Orchard.MediaLibrary.Models;
+@using Orchard.Taxonomies.Models;
+@{    
+    // Data from parent page - clunky but it works - didn't want to 
+    // waste tons of time writing custom Orchard crap
+    var categoryObj = Session["PortfolioCategories"];
+    var categories = new List<string>();
+    if (categoryObj != null)
+    {
+        categories = (List<string>)categoryObj;
+    }
+    
+    var parentRouteObj = Session["PortfolioRoute"];
+    var parentRoute = string.Empty;
+    if (parentRouteObj != null) 
+    {
+        parentRoute = parentRouteObj.ToString();
+    }
+            
+    // Get portfolio items from the projection
+    var portfolioItems = ((List<dynamic>)Model.Content.Items[1].Items)        
+        .Select(item => (ContentItem)item.ContentItem)
+        .ToList();       
+        
+    List<ContentItem> relatedItems = new List<ContentItem>();
+    int numberRelatedItems = 3;
+                
+    // Iterate across the items
+    foreach (dynamic portfolioItem in portfolioItems)
+    {
+        List<TermPart> currentCategories = portfolioItem.PortfolioPiece.PortfolioCategories.Terms;                        
+        var route = portfolioItem.PortfolioPiece.AutoroutePart.Path;
+                        
+        // Limit to those portfolio items in the parent catgories AND 
+        // not the parent itself!
+        if (currentCategories.Exists(c => categories.Contains(c.Name)) && 
+            parentRoute != route &&
+            relatedItems.Count < numberRelatedItems)
+        {
+            relatedItems.Add(portfolioItem);
+        }
+    }
+        
+}
+
+@{if (@relatedItems.Count > 0)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 topspace25">
+                <div class="project-title"><span>Similar Projects</span></div>
+                <ul style="list-style: none; margin: 0; padding: 0">
+                    @{
+    // Iterate across the items
+    foreach (dynamic portfolioItem in relatedItems)
+    {
+
+        // Find additional parts for display
+        var route = portfolioItem.PortfolioPiece.AutoroutePart.Path;
+        var title = portfolioItem.PortfolioPiece.TitlePart.Title;
+        List<MediaPart> media = portfolioItem.PortfolioPiece.PieceMedia.MediaParts;
+
+        <li style="width: 210px; margin: 0 20px 10px 0; float: left; text-align: center">
+            <a href="@Url.Content("~/" + route)" class="">
+                <img src="@Display.ResizeMediaUrl(Width: 200, Height: 200, Mode: "crop", Alignment: "middlecenter", Path: media.First().MediaUrl)" alt="" width="100%">
+                <div>@title</div>
+            </a>
+        </li>
+    }
+                    }
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+}
+}
+
+<br />
+<br /> 
+<br />

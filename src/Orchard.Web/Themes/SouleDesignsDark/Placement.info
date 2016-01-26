@@ -1,0 +1,90 @@
+<Placement>
+   
+  <Match ContentType="Page">
+    <Place          
+          Parts_Common_Metadata="-"
+           Parts_Share_ShareBar="Content:after"/>
+    <Match DisplayType="Summary">
+      <Place Parts_Share_ShareBar="-"/>
+    </Match>
+  </Match>
+
+  <Match ContentType="Blog">
+    <Place 
+           Parts_Description="-"
+           Parts_Common_Metadata="-"/>
+  </Match>
+
+  <Match ContentType="BlogPost">
+    <Match DisplayType="Summary">
+      <Place Parts_Common_Body_Summary="Summary:0"
+             Fields_TaxonomyField="Terms:0"
+             Parts_Tags_ShowTags="Tags:0"
+             Parts_Comments_Count="CommentsCount:0"
+             Parts_Common_Metadata_Summary="-" />
+    </Match>
+    <Match DisplayType="Detail">
+      <Place Parts_Common_Body="Summary:0"
+             Fields_TaxonomyField="Terms:0"
+             Parts_Tags_ShowTags="Tags:0"
+             Parts_Comments_Count="CommentsCount:0"
+             Parts_Share_ShareBar="Footer:1"
+             Parts_ListOfComments="Footer:2"
+             Parts_CommentForm="Footer:3"
+             Parts_Common_Metadata="-" />
+    </Match>
+  </Match>
+
+  <!--<Match ContentType="ZenGallery">
+    <Place Parts_Common_Metadata="-"/>
+  </Match>-->
+
+  <!-- Tags taxonomy content type -->
+  <Match ContentType="Tags2">
+    <Match DisplayType="Detail">
+      <Place Parts_Common_Metadata="-" />    
+    </Match>
+  </Match>
+
+  <!-- Portfolio Piece -->
+  <Match ContentType="PortfolioPiece">
+    <Match DisplayType="Summary">
+      <Place
+          Fields_TaxonomyField-PortfolioCategories="Content:before"
+          Fields_TaxonomyField-Software="Content:before"
+          Fields_Common_Text-Blurb="-"
+          Fields_Common_Text-VimeoUrl1="-"
+          Fields_Numeric-VimeoUrl1Index="-"
+          Fields_Common_Text-VimeoUrl2="-"
+          Fields_Numeric-VimeoUrl2Index="-"
+          Parts_Common_Metadata_Summary="-" />
+    </Match>
+  </Match>
+
+  <!-- Portfolio Categories -->
+  <Match ContentType="Categories2">
+    <Match DisplayType="Detail">
+      <Place
+          Parts_Title_Summary="-"
+          Parts_Description="-"
+          Parts_Common_Metadata="-" />
+    </Match>
+  </Match>
+
+  <!-- Portfolio Software -->
+  <Match ContentType="PortfolioSofwareTerm">
+    <Match DisplayType="Detail">
+      <Place                    
+          Parts_Title_Summary="-"
+          Parts_Description="-"
+          Parts_Common_Metadata="-" />
+    </Match>      
+  </Match>  
+
+  <!-- Home Page -->
+  <Match Path="/">
+    <Place Parts_Title="-"/>
+    <Place Parts_Share_ShareBar="-"/>
+  </Match>
+
+</Placement>

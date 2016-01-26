@@ -1,0 +1,34 @@
+﻿@using System.Collections.Generic;
+@using Orchard.ContentManagement;
+@{
+    Layout.Title = "Sketchbook";
+
+    // Get sketches items from the projection
+    var sketches = ((List<dynamic>)Model.Content.Items)
+        .Where(shape => shape.Id == "Sketchbook")
+        .SelectMany(shape => (List<dynamic>)shape.Items)
+        .Select(item => (ContentItem)item.ContentItem)
+        .ToList();
+    
+}
+<div class="page-title">
+    <h1>Sketchbook</h1>
+    <p>A random assortment of sketches, enjoy!</p>
+</div>
+<div class="sketches container-fluid">
+    <div class="row">        
+    @{
+        // Iterate across the sketchyness
+        foreach(dynamic sketch in sketches)
+        {
+            var image = sketch.Sketch.SketchImage.MediaParts[0];
+
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 thumb">                
+                <a class="fancy-box thumbnail" data-fancybox-group="gallery" title="@sketch.TitlePart.Title" href="@image.MediaUrl">
+                    <img src="@Display.ResizeMediaUrl(Width: 400, Height: 300, Mode: "pad", Alignment: "middlecenter", Path: image.MediaUrl, PadColor: "#333333")" class="img-responsive" alt="" />
+                </a>
+            </div>
+        }
+    }
+    </div>
+</div>

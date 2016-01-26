@@ -1,0 +1,19 @@
+﻿<div class="sharebar">    
+    <hr />
+    <div class="addthis_toolbox"
+        addthis:url="@(Model.ViewModel.Link as string)"      
+        addthis:title="@(Model.ViewModel.Title as string)">
+        <div class="custom_images">
+            <h3><i class="fa fa-share"></i> Share</h3>            
+            <a title="Share to Twitter" class="addthis_button_twitter"><i class="fa fa-twitter"></i></a>
+            <a title="Share to Facebook" class="addthis_button_facebook"><i class="fa fa-facebook"></i></a>
+            <a title="Share to Google+" class="addthis_button_google_plusone_share"><i class="fa fa-google-plus"></i></a>            
+            @*<a title="Pin to Pinterest" class="addthis_button_pinterest_pinit"><i class="fa fa-pinterest"></i></a>            *@
+            <a title="Share via Email" class="addthis_button_email"><i class="fa fa-envelope"></i></a>            
+            <a title="More..." class="addthis_button_more"><i class="fa fa-plus"></i></a>                            
+        </div>
+    </div>        
+    <script type="text/javascript">        var addthis_config = { "data_track_clickback": true };</script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=@(Model.ViewModel.Account as string)"></script>
+    <hr />
+</div>

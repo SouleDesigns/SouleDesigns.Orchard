@@ -1,0 +1,223 @@
+﻿
+
+#carousel
+{
+    height: 160px;
+    overflow: hidden;
+}
+
+
+#carousel li {
+    margin-right: 5px;
+}
+
+#carousel img {
+    display: block;
+    opacity: .4;
+    cursor: pointer;
+    max-height: 150px;
+    max-width: 150px;
+}
+
+
+#carousel img:hover {
+    opacity: 1;
+}
+
+#carousel .flex-active-slide img {
+    opacity: 1;
+    cursor: default;
+}
+
+.flexslider
+{
+    margin-bottom: 10px!important;    
+}
+
+.flexslider a
+{
+    color: #eaf4ab!important;
+    text-decoration: none!important;
+}
+
+
+.flexslider .slides li
+{
+    position: relative;
+}
+
+
+
+iframe
+{
+    display: block;
+    margin: auto;
+}
+
+.page-title
+{    
+    color: #555; 
+    text-align: center;
+}
+
+.page-subtitle 
+{
+    color: #999;    
+    margin: -5px auto 30px; 
+    text-align: center;   
+}
+
+.project-details-table
+{
+    width: 100%;
+}
+
+.project-details-table td
+{
+    vertical-align: top;
+    padding: 15px 20px 10px 0px;
+    border-bottom: 1px dashed #333;
+}
+
+.project-details-table td span 
+{
+    line-height: 24px;    
+    vertical-align: text-bottom;   
+}
+
+.project-details-table tr:last-child td
+{
+    border-bottom: none;
+}
+
+.project-slide-caption
+{
+    padding: 10px 10px 0px;
+    text-align: center;
+}
+
+.project-slide-caption p
+{
+    margin-top: 10px;
+    text-align: left;
+    color: #999;
+}
+
+.project-title 
+{    
+    border-bottom: 1px solid #333;
+    margin-bottom: 22px;
+    color: #ccc;
+}
+
+.project-title span
+{
+    border-bottom: 1px solid rgb(116, 116, 116);
+    display: inline-block;
+    margin: 0 0 -1px 0;
+    font: 300 26px/38px "Oswald", sans-serif;
+    padding: 0 5px 0 0;
+}
+
+.project-slide-expand
+{
+    position: absolute;
+    margin: 0 auto;
+    bottom: 24px;
+}
+
+.project-slide-expand a
+{
+    display: block;
+    width: 34px;
+    font-size: 34px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.project-slide-expand a:hover
+{
+    color: #ccc;    
+}
+
+.project-icon
+{
+    font-size: 24px; 
+    margin-right: 8px;
+    color: #777;
+}
+
+.project-category, .software-icon
+{
+	height: 24px;
+	width: 24px;
+	display: inline-block;
+    background-color: transparent;
+	margin-right: 5px;
+}
+
+.project-category-cg-art,.project-category-sculpture,.project-category-3d-sculpture
+{
+    background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat 0px -350px;
+}
+
+.project-category-design
+{
+    background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -24px -350px;
+}
+
+.project-category-development
+{
+    background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -48px -350px;
+}
+
+.project-category-illustration
+{
+    background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -74px -350px;
+}
+
+.project-category-video
+{
+    background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -98px -350px;
+}
+
+#slider .slides img
+{
+    max-width: 1132px;
+}
+
+.software-adobe-after-effects{ 
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat 0px 0px;
+}
+
+.software-adobe-illustrator {
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -24px 0px;
+}
+
+.software-adobe-photoshop {
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -48px 0px;			
+} 
+
+.software-adobe-indesign {
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -96px 0px;
+}
+
+.software-autodesk-maya {
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -120px 0px;			
+}
+
+.software-pixologic-zbrush {
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -144px 0px;						
+} 
+
+.software-microsoft-visual-studio {
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -168px 0px;			
+}
+
+.software-jquery {
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -192px 0px;			
+}
+
+.software-manga-studio, .software-clip-studio, .software-clip-studio-paint {
+	background: transparent url('../../Images/Portfolio/portfolio-sprite.png?v=1.0.2') no-repeat -216px 0px;			
+}
