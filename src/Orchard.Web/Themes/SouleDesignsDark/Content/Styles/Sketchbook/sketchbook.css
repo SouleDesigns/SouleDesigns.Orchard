@@ -5,8 +5,13 @@ Sketchbook
 
 
 .page-title {
-    margin: 0 0 40px;
+    margin: 0 0 15px;
     text-align: center;
+}
+
+.page-title div {
+    max-width: 350px; 
+    margin: 0 auto;
 }
 
 .page-title > h1 {

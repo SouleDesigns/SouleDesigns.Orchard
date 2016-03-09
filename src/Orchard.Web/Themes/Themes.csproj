@@ -135,6 +135,7 @@
     <Content Include="SouleDesignsDark\Content\Images\Shared\soule-designs-sprite.png" />
     <Content Include="SouleDesignsDark\Content\Images\Shared\soule-designs.svg" />
     <Content Include="SouleDesignsDark\Content\Images\Shared\textured-paper.png" />
+    <Content Include="SouleDesignsDark\Content\Images\Sketchbook\sketchbook.jpg" />
     <Content Include="SouleDesignsDark\Content\Styles\Bootstrap\bootstrap-theme.min.css" />
     <Content Include="SouleDesignsDark\Content\Styles\Bootstrap\bootstrap.min.css" />
     <Content Include="SouleDesignsDark\Content\Styles\Home\index.css" />
@@ -547,7 +548,7 @@
     <Content Include="SouleDesignsDark\Views\Content-Sketch.Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SouleDesignsDark\Views\Content-1259.cshtml" />
+    <Content Include="SouleDesignsDark\Views\List-1259.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
