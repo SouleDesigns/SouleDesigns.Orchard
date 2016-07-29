@@ -12,7 +12,6 @@ using Orchard.Services;
 using Orchard.Utility.Extensions;
 
 namespace Orchard.Core.Feeds.StandardBuilders {
-    [UsedImplicitly]
     public class CorePartsFeedItemBuilder : IFeedItemBuilder {
         private readonly IContentManager _contentManager;
         private readonly RouteCollection _routes;
