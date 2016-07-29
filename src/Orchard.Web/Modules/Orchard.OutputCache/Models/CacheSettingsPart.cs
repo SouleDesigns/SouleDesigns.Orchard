@@ -81,10 +81,5 @@ namespace Orchard.OutputCache.Models {
             get { return this.Retrieve(x => x.DebugMode); }
             set { this.Store(x => x.DebugMode, value); }
         }
-
-        public bool IgnoreNoCache {
-            get { return this.Retrieve(x => x.IgnoreNoCache); }
-            set { this.Store(x => x.IgnoreNoCache, value); }
-        }
     }
 }

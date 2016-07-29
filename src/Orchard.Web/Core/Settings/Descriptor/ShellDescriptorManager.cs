@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using Orchard.Core.Settings.Descriptor.Records;
@@ -14,7 +13,6 @@ namespace Orchard.Core.Settings.Descriptor {
         private readonly IRepository<ShellDescriptorRecord> _shellDescriptorRepository;
         private readonly IShellDescriptorManagerEventHandler _events;
         private readonly ShellSettings _shellSettings;
-        private ShellDescriptorRecord _shellDescriptorRecord;
 
         public ShellDescriptorManager(
             IRepository<ShellDescriptorRecord> shellDescriptorRepository,
@@ -53,11 +51,7 @@ namespace Orchard.Core.Settings.Descriptor {
         }
 
         private ShellDescriptorRecord GetDescriptorRecord() {
-            if (_shellDescriptorRecord == null) {
-                return _shellDescriptorRecord = _shellDescriptorRepository.Table.ToList().SingleOrDefault();
-            }
-
-            return _shellDescriptorRecord;
+            return _shellDescriptorRepository.Get(x => x != null);
         }
 
         public void UpdateShellDescriptor(int priorSerialNumber, IEnumerable<ShellFeature> enabledFeatures, IEnumerable<ShellParameter> parameters) {
@@ -75,8 +69,6 @@ namespace Orchard.Core.Settings.Descriptor {
             else {
                 shellDescriptorRecord.SerialNumber++;
             }
-            
-            _shellDescriptorRecord = shellDescriptorRecord;
 
             shellDescriptorRecord.Features.Clear();
             foreach (var feature in enabledFeatures) {

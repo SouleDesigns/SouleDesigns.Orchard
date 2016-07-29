@@ -1,0 +1,17 @@
+﻿Name: Infinite Ajax Scrolling
+Path: JsInfiniteAjaxScroll
+AntiForgery: enabled
+Author: Team Grapto (tweet: @teamgrapto)
+Website: https://github.com/grapto/JsInfiniteAjaxScroll
+Version: 0.1.6
+OrchardVersion: 1.8
+Description: The JsInfiniteAjaxScroll module contains the jQuery Infinite Ajax Scrolling plugin and related script libraries.
+FeatureDescription: A jQuery plugin that turns your regular paginated page into an infinite scrolling page using AJAX.
+Category: Utility
+Dependencies: Orchard.jQuery
+Features:
+	JsInfiniteAjaxScroll.Blogs:
+		Name: Infinite Ajax Scrolling for Blog Posts
+		Description: Auto enable Infinite Ajax Scrolling support for your Blog Posts.
+		Dependencies: JsInfiniteAjaxScroll, Orchard.Blogs
+		Category: Utility

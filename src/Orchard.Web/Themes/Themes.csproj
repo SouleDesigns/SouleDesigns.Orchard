@@ -143,6 +143,7 @@
     <Content Include="SouleDesignsDark\Content\Styles\Shared\alt-main.css" />
     <Content Include="SouleDesignsDark\Content\Styles\Shared\font-awesome.css" />
     <Content Include="SouleDesignsDark\Content\Styles\Shared\font-awesome.min.css" />
+    <Content Include="SouleDesignsDark\Content\Styles\Shared\jquery.ias.css" />
     <Content Include="SouleDesignsDark\Content\Styles\Shared\main.css" />
     <Content Include="SouleDesignsDark\Content\Styles\Shared\recaptcha.css" />
     <Content Include="SouleDesignsDark\Content\Styles\Sketchbook\sketchbook.css" />
@@ -165,6 +166,7 @@
     <Content Include="SouleDesignsDark\Scripts\home.js" />
     <Content Include="SouleDesignsDark\Scripts\html5shiv.js" />
     <Content Include="SouleDesignsDark\Scripts\jquery.backstretch.min.js" />
+    <Content Include="SouleDesignsDark\Scripts\jquery.ias.js" />
     <Content Include="SouleDesignsDark\Scripts\jquery.mousewheel-3.0.6.pack.js" />
     <Content Include="SouleDesignsDark\Scripts\jquery.validate.min.js" />
     <Content Include="SouleDesignsDark\Scripts\portfolio-piece.js" />
@@ -433,14 +435,6 @@
     <Content Include="SouleDesignsDark\Views\Orchard.Users\Account\LostPassword.cshtml" />
     <Content Include="SouleDesignsDark\Views\Orchard.Users\Account\RegistrationPending.cshtml" />
     <Content Include="SouleDesignsDark\Views\Orchard.Users\Account\RequestLostPassword.cshtml" />
-    <Content Include="SouleDesignsDark\Views\Pager.cshtml" />
-    <Content Include="SouleDesignsDark\Views\Pager.CurrentPage.cshtml" />
-    <Content Include="SouleDesignsDark\Views\Pager.First.cshtml" />
-    <Content Include="SouleDesignsDark\Views\Pager.Gap.cshtml" />
-    <Content Include="SouleDesignsDark\Views\Pager.Last.cshtml" />
-    <Content Include="SouleDesignsDark\Views\Pager.Next.cshtml" />
-    <Content Include="SouleDesignsDark\Views\Pager.Previous.cshtml" />
-    <Content Include="SouleDesignsDark\Views\Pager_Link.cshtml" />
     <Content Include="SouleDesignsDark\Views\Parts\Blogs.BlogArchives.cshtml" />
     <Content Include="SouleDesignsDark\Views\Parts\Blogs.RecentBlogPosts.cshtml" />
     <Content Include="SouleDesignsDark\Views\Parts\Comment.cshtml" />
@@ -549,6 +543,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SouleDesignsDark\Views\List-1259.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesignsDark\Views\Pager.cshtml" />
+    <Content Include="SouleDesignsDark\Views\Pager.CurrentPage.cshtml" />
+    <Content Include="SouleDesignsDark\Views\Pager.First.cshtml" />
+    <Content Include="SouleDesignsDark\Views\Pager.Gap.cshtml" />
+    <Content Include="SouleDesignsDark\Views\Pager.Last.cshtml" />
+    <Content Include="SouleDesignsDark\Views\Pager.Next.cshtml" />
+    <Content Include="SouleDesignsDark\Views\Pager.Previous.cshtml" />
+    <Content Include="SouleDesignsDark\Views\Pager_Link.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

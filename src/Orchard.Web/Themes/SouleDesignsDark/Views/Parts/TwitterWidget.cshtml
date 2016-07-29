@@ -40,7 +40,7 @@
                     string searchUrl = "http://twitter.com/#!/search?q=%23" + hashTag;
                 <a href="@searchUrl" title="Search for mentions of @substring on twitter"  target="_blank" rel="external">@substring</a>
                 }
-                else if (substring.StartsWith("http://")) {
+                else if (substring.StartsWith("http://") || substring.StartsWith("https://")) {
                 <a href="@substring" title="Open link" rel="external"  target="_blank">@substring</a>
                 }
                 else {

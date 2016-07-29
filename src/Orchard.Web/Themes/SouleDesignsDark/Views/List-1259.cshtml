@@ -6,7 +6,32 @@
         .Select(item => (ContentItem)item.ContentItem)
         .ToList();
 
+   
+    // Infinite scrolling initalization
+    using (Script.Foot())
+    {
+    <script type="text/javascript">
+    //<![CDATA[
+    $(function () {
+        jQuery.ias({
+            container: '.sketches .row',
+            item: 'div.thumb',
+            pagination: '#pagination ul',
+            next: '#pagination ul li a.next',
+            loader: '<img src="@(Url.Content("~/Themes/SouleDesignsDark/Content/cubeportfolio/img/cbp-loading.gif"))"/>',
+            history: false,
+            loadMore: true,
+            onPageChange: function () { },
+            beforePageChange: function () { },
+            onLoadItems: function () { },
+            onRenderComplete: function () { }
+        });
+    })
+    //]]>
+    </script>
+    }
 }
+
 <div class="page-title">
     <div>        
         <img src="@Url.Content("~/Themes/SouleDesignsDark/Content/Images/Sketchbook/sketchbook.jpg")" alt="Sketchbook" class="img-responsive" />
