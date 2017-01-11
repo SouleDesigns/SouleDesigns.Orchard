@@ -1,0 +1,122 @@
+@import url(http://fonts.googleapis.com/css?family=VT323);
+
+body
+{
+	background: none!important;	
+	background-image: url(16-bit-background.png)!important;
+	background-color: #000!important;
+	font-family: "VT323", sans-serif;
+	color: #fff;
+}
+.clear
+{
+	clear: both;
+}
+
+#navbar-wrapper, #footer-wrapper
+{
+	display: none!important;
+}
+
+#countdown
+{
+	margin: auto;
+	width: 587px;
+}
+
+.flip-counter
+{
+	float: left;
+}
+
+.flip-counter ul.cd
+{
+	float:left;
+	list-style-type:none;
+	margin:0;
+	padding:0
+}
+
+.flip-counter li
+{
+	background:url(digits.png) 0 0 no-repeat;
+}
+
+.flip-counter li.t
+{
+	background-position:0 0;
+	width:53px;
+	height:39px
+}
+
+.flip-counter li.b
+{
+	background-position:0 0;
+	width:53px;
+	height:64px
+}
+
+.flip-counter li.s
+{
+	background-position:-53px -1030px;
+	width:14px;
+	height:103px
+}
+
+
+#play-button
+{
+	color: rgba(255, 255, 255, 0.5);
+	font-family: "VT323", sans-serif;
+	font-size: 12px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+#play-button:hover
+{
+	color: #FFF;
+	font-family: "VT323", sans-serif;
+	font-size: 12px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+
+#think-beachfront
+{
+	background: transparent url(obx-2015.png?v=3) no-repeat top center;
+	margin: 0px auto;
+	padding: 400px 0px 0px;
+	width: 587px;
+}
+
+
+.time-colon
+{
+	color: #FFF;
+	font-family:  Tahoma, Arial, Tahoma, Geneva, sans-serif;
+	font-size: 60px;
+	text-align: center;
+	width: 40px;
+}
+
+.time-label
+{
+	color: #FFF;
+	font-family: "VT323", sans-serif;
+	font-size: 20px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.time-space
+{
+	width: 30px;
+}
+
+.time-wrapper
+{
+	float: left;
+}

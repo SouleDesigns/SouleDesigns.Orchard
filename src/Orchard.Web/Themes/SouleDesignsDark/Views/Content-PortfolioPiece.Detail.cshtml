@@ -40,8 +40,8 @@
 
 <div class="container">
 
-    <h2 class="page-title"><a href="@Url.ItemDisplayUrl((IContent)contentItem)">@title</a></h2>    
-    <p class="page-subtitle">@subtitle</p>       
+    <h2 class="page-title"><a href="@Url.ItemDisplayUrl((IContent)contentItem)">@title</a></h2>
+    <p class="page-subtitle">@subtitle</p>
 
     <div id="slider" class="flexslider">
         <ul class="slides">
@@ -56,7 +56,7 @@
                                     // *Attempts* to prevent crazy page load flash errors
                                     $(document).ready(function () { $("#player_@portfolioMedia.IndexOf(item).ToString()").attr('src', '@item.MediaUrl'); });
                                 </script>
-                                <iframe id="player_@portfolioMedia.IndexOf(item).ToString()" src="" width="1024" height="600" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                                <iframe id="player_@portfolioMedia.IndexOf(item).ToString()" src="" width="1024" height="600" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
                                 <div class="project-slide-caption">
                                     <strong>@item.Title</strong>
                                     @if (!string.IsNullOrEmpty(item.Caption))
@@ -67,19 +67,18 @@
                             </li>
                             break;
                         default:
-                        <li>                            
-                            <img src="@Display.ResizeMediaUrl(Width: 1024, Height: 600, Mode: "pad", Alignment: "middlecenter", Path: item.MediaUrl, PadColor: "#333333")" />                            
-                            <div class="project-slide-caption">
-                                <a href="@item.MediaUrl" class="fancy-box" data-fancy-group="gallery">
-                                    <strong>@item.Title </strong>&nbsp;
-                                    <span class="glyphicon glyphicon-fullscreen"></span>
+                            <li>
+                                <a href="@item.MediaUrl" class="fancy-box" data-fancybox-group="gallery">
+                                    <img src="@Display.ResizeMediaUrl(Width: 1024, Height: 600, Mode: "pad", Alignment: "middlecenter", Path: item.MediaUrl, PadColor: "#333333")" />
                                 </a>
-                                @if(!string.IsNullOrEmpty(item.Caption)) 
-                                {
-                                    <p>@item.Caption</p>    
-                                }
-                            </div>                            
-                        </li>
+                                <div class="project-slide-caption">
+                                    <strong>@item.Title </strong>
+                                    @if (!string.IsNullOrEmpty(item.Caption))
+                                    {
+                                        <p>@item.Caption</p>
+                                    }
+                                </div>
+                            </li>
                             break;
                     }
                 }
@@ -87,7 +86,7 @@
         </ul>
     </div>
 
-    <div id="carousel" class="flexslider">
+    @*<div id="carousel" class="flexslider">
         <ul class="slides">
             @{
                 foreach (PortfolioPieceMedia item in portfolioMedia)
@@ -110,7 +109,7 @@
                 }
             }
         </ul>
-    </div>
+    </div>*@
 
     <div class="row">
         <div class="col-md-8 topspace25">

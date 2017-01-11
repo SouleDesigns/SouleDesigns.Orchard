@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<title>Charlie is coming...</title>
+	<link rel="stylesheet" href="index.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="timer.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</head>
+
+<body>
+	<img src="fence-bg.jpg" class="bg">
+    <div id="timer-wrapper">
+        <table id="timerDisplay" class="timerFontColor" summary="Charlie is coming...">  
+            <tr>
+                <td class="timerTdd"><span id="days">-</span></td>
+                <td class="timerTdx"><span>:</span></td>
+                <td class="timerTd"><span id="hours">-</span></td>
+                <td class="timerTdx"><span>:</span></td>
+                <td class="timerTd"><span id="minutes">-</span></td>
+                <td class="timerTdx"><span>:</span></td>
+                <td class="timerTd"><span id="seconds">-</span></td>
+                <td style='display: none' class="timerTdx"><span>:</span></td>
+                <td style='display: none' class="alignleft"><span id="sech">-</span></td>
+            </tr>
+            <tr>
+                <td class="timerTdd tda"><span id="tdays">-</span></td>
+                <td></td>
+                <td class="timerTd tda"><span id="thours">-</span></td>
+                <td></td>
+                <td class="timerTd tda"><span id="tminutes">-</span></td>
+                <td ></td>
+                <td class="timerTd tda"><span id="tseconds">-</span></td>
+                <td style='display: none'></td>
+                <td style='display: none' class="alignleft tda"><span id="tsech">-</span></td>
+            </tr>
+        </table>
+        	
+        <div id="audio-wrapper">
+            <audio loop autoplay>
+                <source src="the-final-countdown.mp3?v=3" type="audio/mpeg">
+                <embed src="the-final-countdown.mp3?v=3" />
+            </audio>
+            <a href="javascript:void(0)" id="play-button"><i class="fa fa-play"></i><span>play</span></a>
+        </div>
+        
+    </div>
+    
+	
+	
+
+</body>
+
+</html>

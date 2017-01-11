@@ -1,0 +1,67 @@
+@model List<ContentItem>
+@using System.Collections.Generic;
+@using Orchard.ContentManagement;
+@{
+    if (ViewBag.Subtitle != null)
+    {
+        Layout.Title = string.Format("Sketchbook {0}", ViewBag.Subtitle);
+    }
+    else
+    {
+        Layout.Title = "Sketchbook";
+    }
+
+    var sketches = Model;
+
+
+    // Infinite scrolling initalization
+    using (Script.Foot())
+    {
+    <script type="text/javascript">
+    //<![CDATA[
+    $(function () {
+        jQuery.ias({
+            container: '.sketches .row',
+            item: 'div.thumb',
+            pagination: '#pagination ul',
+            next: '#pagination ul li a.next',
+            loader: '<img src="@(Url.Content("~/Themes/SouleDesignsDark/Content/cubeportfolio/img/cbp-loading.gif"))"/>',
+            history: false,
+            loadMore: @(ViewBag.LoadMore == null? "true" : ViewBag.LoadMore.ToString().ToLower()),
+            onPageChange: function () { },
+            beforePageChange: function () { },
+            onLoadItems: function () { },
+            onRenderComplete: function () { }
+        });
+    })
+    //]]>
+    </script>
+    }
+}
+
+<div class="page-title">
+    <div class="sketchbook-img">        
+        @if (ViewBag.Subtitle != null)
+        {
+        <div><h3>@ViewBag.Subtitle</h3></div>
+        }
+        <img src="@Url.Content("~/Themes/SouleDesignsDark/Content/Images/Sketchbook/sketchbook.jpg")" alt="Sketchbook" class="img-responsive" />
+    </div>
+</div>
+<div class="sketches container-fluid">
+    <div class="row">
+        @{
+            // Iterate across the sketchyness
+            foreach (dynamic sketch in sketches)
+            {
+                var image = sketch.Sketch.SketchImage.MediaParts[0];
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 thumb">
+                    <a class="fancy-box thumbnail" data-fancybox-group="gallery" title="@sketch.TitlePart.Title" href="@image.MediaUrl">
+                        <img src="@Display.ResizeMediaUrl(Width: 400, Height: 300, Mode: "pad", Alignment: "middlecenter", Path: image.MediaUrl, PadColor: "#333333")" class="img-responsive" alt="" />
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -4,11 +4,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Security.Cryptography;
 using System.Text;
 using System.Web.Script.Serialization;
-using System.Xml.Linq;
-using JetBrains.Annotations;
 using LatestTwitter.Contracts.Services;
 using LatestTwitter.Models;
 using Orchard.Caching;
@@ -16,7 +13,6 @@ using Orchard.Services;
 
 namespace LatestTwitter.Services
 {
-    [UsedImplicitly]
     public class CachedTweetRetrievalService
         : ITweetRetrievalService
     {

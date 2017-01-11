@@ -39,15 +39,15 @@ $(window).load(function () {
     }).resize();
 
     // The slider being synced must be initialized first
-    $('#carousel').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        itemWidth: 150,
-        itemMargin: 5,
-        asNavFor: '#slider'
-    });
+    //$('#carousel').flexslider({
+    //    animation: "slide",
+    //    controlNav: false,
+    //    animationLoop: false,
+    //    slideshow: false,
+    //    itemWidth: 150,
+    //    itemMargin: 5,
+    //    asNavFor: '#slider'
+    //});
 
     $('#slider')
         .flexslider({
@@ -56,10 +56,11 @@ $(window).load(function () {
             animationLoop: false,
             slideshow: false,
             smoothHeight: true,
-            video: true,
-            sync: "#carousel"
+            video: true//,
+            //sync: "#carousel"
         });
 
+    
     // Fancy it up
     $('.fancy-box').fancybox({
         

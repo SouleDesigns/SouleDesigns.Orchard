@@ -2,8 +2,13 @@
 @using Orchard.ContentManagement;
 @{
     var portfolioPiece = Model.ContentItem;
-    var mediaParts = portfolioPiece.PortfolioPiece.PieceMedia.MediaParts;
-    var mediaPart = mediaParts[0];
+    List<MediaPart> mediaParts = portfolioPiece.PortfolioPiece.PieceMedia.MediaParts;
+    MediaPart thumb = ((List<MediaPart>)portfolioPiece.PortfolioPiece.ThumbnailImage.MediaParts).FirstOrDefault();
+    if (thumb != null)
+    {
+        mediaParts.Insert(0, thumb);
+    }
+    var mediaPart = mediaParts.First();    
 }
 <div class="portfolio-piece summary">
     <div class="row">

@@ -862,6 +862,8 @@ Blog & Content
     margin: 0!important;
 }
 
+
+
 /*------------------------------------------------------
 Contact Form
 ------------------------------------------------------*/
@@ -923,6 +925,18 @@ Fancybox
     background-color: #111;
     color: #a3a3a3;
 }
+
+
+
+#disqus_thread {
+
+}
+
+#disqus_thread iframe .community-name, #disqus_thread .community-name-placeholder
+{
+    display: none;
+}
+
 
  /*------------------------------------------------------
 Orchard Overall Overrides (OOO)

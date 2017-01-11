@@ -1,13 +1,15 @@
 ﻿@using Orchard.Utility.Extensions
 @model PlanetTelex.ContactForm.ViewModels.ContactFormViewModel
 @{
-    Script.Require("jQuery");    
-    Script.Include("jquery.validate.min.js");                 
+    Script.Require("jQuery").AtFoot();    
+    Script.Include("jquery.validate.min.js").AtFoot();                 
     const string displayNone = "style=\"display:none\"";
     var displaySubject = Model.ShowSubjectField ? string.Empty : displayNone;
     var displayName = Model.ShowNameField ? string.Empty : displayNone;
 }
 
+@using (Script.Foot())
+{
 <script type="text/javascript">
     $(document).ready(function () {
         $('#contactform').validate({
@@ -41,7 +43,8 @@
         });
     });
 </script>
- 
+}
+
 <div class="row featurette">
     <div class="col-md-5">
         <img class="featurette-image img-responsive" style="margin-top: 20px;" src="@Url.Content("~/Themes/SouleDesignsDark/Content/Images/Contact/souleovision.png")" alt="Soule Designs" />

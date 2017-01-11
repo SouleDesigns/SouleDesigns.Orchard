@@ -1,0 +1,72 @@
+
+body
+{
+	font-family: "Georgia", "Times New Roman", serif!important;
+	background-color: #c2e5df!important;
+	padding: 0!important;	
+}
+
+html, body {
+    height: 100%; width: 100%;
+    padding: 0; margin: 0;
+}
+
+#austin
+{
+	height: 100vh;
+	width: 100%;
+}
+
+#austin p
+{
+	margin-top: 30px;	
+	text-shadow: -1px -1px 1px #c2e5df;
+}
+
+#austin a
+{
+	margin-bottom: 10px;
+}
+
+#austin p, #austin a
+{
+	font-family: "Georgia", "Times New Roman", serif!important;
+	font-size: 20px;	
+}
+
+#austin p.small, #austin p.small a
+{
+	font-size: 14px;	
+}
+
+#austin p.small, #austin p.small a
+{
+	color: #68867f;
+}
+
+#austin .description
+{
+	margin-top: 60px;		
+}
+
+#by-line
+{
+	margin: -5px 0px 40px!important;
+}
+
+.content-item
+{
+	color: #0b1c19;
+	letter-spacing: 2px;
+	min-height: 800px;
+}
+
+#footer-wrapper, #navbar-wrapper
+{
+	display: none!important;	
+}
+
+#peck-peck-peck-title
+{
+	width: 100%;
+}

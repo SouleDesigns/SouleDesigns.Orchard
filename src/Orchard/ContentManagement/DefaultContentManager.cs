@@ -128,7 +128,15 @@ namespace Orchard.ContentManagement {
         }
 
         public virtual ContentItem Get(int id, VersionOptions options) {
-            return Get(id, options, QueryHints.Empty);
+            ContentItem result = null;
+            try
+            {
+                result = Get(id, options, QueryHints.Empty);
+            } catch(Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message);
+            }            
+            return result;                        
         }
 
         public virtual ContentItem Get(int id, VersionOptions options, QueryHints hints) {

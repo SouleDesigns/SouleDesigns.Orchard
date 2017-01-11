@@ -134,6 +134,7 @@
     position: relative;
     display: block;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .cbp-caption-defaultWrap,

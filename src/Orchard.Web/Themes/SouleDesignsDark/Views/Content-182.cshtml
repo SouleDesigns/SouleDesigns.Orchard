@@ -54,6 +54,11 @@
                 List<MediaPart> media = portfolioItem.PortfolioPiece.PieceMedia.MediaParts;
                 List<TermPart> terms = portfolioItem.PortfolioPiece.PortfolioCategories.Terms;
                 List<string> categories = terms.Select(t => t.Slug).ToList();
+                MediaPart thumb = ((List<MediaPart>)portfolioItem.PortfolioPiece.ThumbnailImage.MediaParts).FirstOrDefault();
+                if (thumb != null)
+                {
+                    media.Insert(0, thumb);
+                }
 
                 <li class="cbp-item @(string.Join(" ", categories.Select(c => c.Replace("/", "-")).ToList())) cbp-l-grid-masonry-height1">
                     <div class="cbp-caption">

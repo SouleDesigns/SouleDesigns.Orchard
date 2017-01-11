@@ -55,7 +55,7 @@
             <div class="col-md-12 topspace25">
                 <div class="project-title"><span>Similar Projects</span></div>
                 <ul style="list-style: none; margin: 0; padding: 0">
-                    @{
+@{
     // Iterate across the items
     foreach (dynamic portfolioItem in relatedItems)
     {
@@ -63,11 +63,17 @@
         // Find additional parts for display
         var route = portfolioItem.PortfolioPiece.AutoroutePart.Path;
         var title = portfolioItem.PortfolioPiece.TitlePart.Title;
-        List<MediaPart> media = portfolioItem.PortfolioPiece.PieceMedia.MediaParts;
+        List<MediaPart> mediaParts = portfolioItem.PortfolioPiece.PieceMedia.MediaParts;
+        MediaPart thumb = ((List<MediaPart>)portfolioItem.PortfolioPiece.ThumbnailImage.MediaParts).FirstOrDefault();
+        if (thumb != null)
+        {
+            mediaParts.Insert(0, thumb);
+        }
+        var mediaPart = mediaParts.First();
 
         <li style="width: 210px; margin: 0 20px 10px 0; float: left; text-align: center">
             <a href="@Url.Content("~/" + route)" class="">
-                <img src="@Display.ResizeMediaUrl(Width: 200, Height: 200, Mode: "crop", Alignment: "middlecenter", Path: media.First().MediaUrl)" alt="" width="100%">
+                <img src="@Display.ResizeMediaUrl(Width: 200, Height: 200, Mode: "crop", Alignment: "middlecenter", Path: mediaPart.MediaUrl)" alt="" width="100%">
                 <div>@title</div>
             </a>
         </li>

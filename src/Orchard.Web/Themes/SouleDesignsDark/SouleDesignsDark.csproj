@@ -82,7 +82,7 @@
     <Compile Include="Gravatar\Gremail.cs" />
     <Compile Include="Gravatar\Grofile.cs" />
     <Compile Include="Gravatar\GrofileInfo.cs" />
-    <Compile Include="Helpers\ThemeHelper.cs" />
+    <Compile Include="Helpers\ThemeHelper.cs" />    
     <Compile Include="Gravatar\Html\HtmlHelperExtensions.cs" />
     <Compile Include="Gravatar\Html\UrlHelperExtensions.cs" />    
   </ItemGroup>  

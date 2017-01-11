@@ -50,9 +50,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web" />
@@ -155,6 +152,7 @@
     <Content Include="SouleDesignsDark\Content\Images\Shared\orchard-logo.svg" />
     <Content Include="SouleDesignsDark\Content\Images\Shared\soule-designs-footer.png" />
     <Content Include="SouleDesignsDark\Content\Images\Shared\soule-designs-grn.svg" />
+    <Content Include="SouleDesignsDark\Content\Images\Shared\soule-designs-guest.png" />
     <Content Include="SouleDesignsDark\Content\Images\Shared\soule-designs-sprite.png" />
     <Content Include="SouleDesignsDark\Content\Images\Shared\soule-designs.svg" />
     <Content Include="SouleDesignsDark\Content\Images\Shared\textured-paper.png" />
@@ -186,6 +184,7 @@
     <Content Include="SouleDesignsDark\Scripts\bootstrap.js" />
     <Content Include="SouleDesignsDark\Scripts\bootstrap.min.js" />
     <Content Include="SouleDesignsDark\Scripts\holder.js" />
+    <Content Include="SouleDesignsDark\Scripts\holder.min.js" />
     <Content Include="SouleDesignsDark\Scripts\home.js" />
     <Content Include="SouleDesignsDark\Scripts\html5shiv.js" />
     <Content Include="SouleDesignsDark\Scripts\jquery.backstretch.min.js" />
@@ -197,7 +196,10 @@
     <Content Include="SouleDesignsDark\Scripts\respond.min.js" />
     <Content Include="SouleDesignsDark\Scripts\shared.js" />
     <Content Include="SouleDesignsDark\Scripts\sketchbook.js" />
-    <Content Include="SouleDesignsDark\SouleDesignsDark.csproj" />
+    <Content Include="SouleDesignsDark\Scripts\webfont.js" />
+    <Content Include="SouleDesignsDark\SouleDesignsDark.csproj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SouleDesignsDark\Styles\prettyPhoto.css" />
     <Content Include="SouleDesignsDark\Theme.png" />
     <Content Include="SouleDesignsDark\Theme.txt" />
@@ -252,6 +254,13 @@
     <Content Include="SouleDesigns\Content\Images\Shared\soule-designs-sprite.png" />
     <Content Include="SouleDesigns\Content\Images\Shared\soule-designs.svg" />
     <Content Include="SouleDesigns\Content\Images\Shared\textured-paper.png" />
+    <Content Include="SouleDesigns\Content\Pages\ppp\austin-jumpin.jpg" />
+    <Content Include="SouleDesigns\Content\Pages\ppp\peck-peck-peck-title.png" />
+    <Content Include="SouleDesigns\Content\Pages\ppp\peck-peck-peck-title.svg" />
+    <Content Include="SouleDesigns\Content\Pages\ppp\peck-peck-peck.css" />
+    <Content Include="SouleDesigns\Content\Pages\ppp\peck-peck-peck.js" />
+    <Content Include="SouleDesigns\Content\Pages\ppp\published-by-souledesigns.png" />
+    <Content Include="SouleDesigns\Content\Pages\ppp\published-by-souledesigns.svg" />
     <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap-theme.css" />
     <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap-theme.min.css" />
     <Content Include="SouleDesigns\Content\Styles\Bootstrap\bootstrap.css" />
@@ -263,17 +272,66 @@
     <Content Include="SouleDesigns\Content\Styles\Shared\font-awesome.min.css" />
     <Content Include="SouleDesigns\Content\Styles\Shared\main.css" />
     <Content Include="SouleDesigns\Content\Styles\Shared\recaptcha.css" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\aep.jpg" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\digits-backup.png" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\digits.png" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\flipcounter.js" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\index.css" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\index.html" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\index.js" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\the-final-countdown-backup.mp3" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\the-final-countdown.mp3" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\think-beachfront-backup.jpg" />
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\think-beachfront.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\aep.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\digits-backup.png" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\digits.png" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\flipcounter.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\index.css" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\index.html" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\index.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\the-final-countdown-backup.mp3" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\the-final-countdown.mp3" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\think-beachfront-backup.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Backup\think-beachfront.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Fence\fence-bg.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Fence\index.css" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Fence\index.html" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Fence\index.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Fence\the-final-countdown.mp3" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Fence\timer.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2014\digits.png" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2014\flipcounter.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2014\index.css" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2014\index.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2014\the-final-countdown.mp3" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2014\think-beachfront.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2015\16-bit-background.png" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2015\digits.png" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2015\flipcounter.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2015\index.css" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2015\index.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2015\obx-2015.png" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Obx2015\the-final-countdown.mp3" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\generator_config.txt" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\specimen_files\easytabs.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\specimen_files\grid_12-825-55-15.css" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\specimen_files\specimen_stylesheet.css" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\stylesheet.css" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-demo.html" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-webfont.svg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\lks-ultrasound-2015-06-08-bodyprofile.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\lks-ultrasound-2015-06-08-bottom.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\lks-ultrasound-2015-06-08-face-1.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\lks-ultrasound-2015-06-08-face-2.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\lks-ultrasound-2015-06-08-headprofile.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\lks-ultrasound-2015-06-08-leftleg.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\lks-ultrasound-2015-06-08-rightleg.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-03-24-1.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-04-23-1.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-04-23-2.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-04-23-3.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-04-23-4.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-04-23-5.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-04-23-6.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-09-15-boy.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-09-15-hand.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\images\ultrasound-2015-09-15-profile.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\index.css" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\index.js" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\nebula-tile.jpg" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\soule-designs-next-gen.png" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\the-final-countdown.mp3" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\timer.js" />
     <Content Include="SouleDesigns\index.html" />
     <Content Include="SouleDesigns\Scripts\blog-archives.js" />
     <Content Include="SouleDesigns\Scripts\blog-post.js" />
@@ -289,7 +347,9 @@
     <Content Include="SouleDesigns\Scripts\portfolio.js" />
     <Content Include="SouleDesigns\Scripts\respond.min.js" />
     <Content Include="SouleDesigns\Scripts\shared.js" />
-    <Content Include="SouleDesigns\SouleDesigns.csproj" />
+    <Content Include="SouleDesigns\SouleDesigns.csproj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SouleDesigns\Styles\prettyPhoto.css" />
     <Content Include="SouleDesigns\Theme.png" />
     <Content Include="SouleDesigns\Theme.txt" />
@@ -392,9 +452,33 @@
       <Name>Orchard.Framework</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\Orchard.AntiSpam\Orchard.AntiSpam.csproj">
+      <Project>{91bc2e7f-da04-421c-98ef-76d37cec130c}</Project>
+      <Name>Orchard.AntiSpam</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Orchard.Blogs\Orchard.Blogs.csproj">
+      <Project>{63fbd4d9-e1da-4a7b-aa6a-d6074fe50867}</Project>
+      <Name>Orchard.Blogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Orchard.Comments\Orchard.Comments.csproj">
+      <Project>{14c049fd-b35b-415a-a824-87f26b26e7fd}</Project>
+      <Name>Orchard.Comments</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\Orchard.Layouts\Orchard.Layouts.csproj">
       <Project>{6bd8b2fa-f2e3-4ac8-a4c3-2925a653889a}</Project>
       <Name>Orchard.Layouts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Orchard.Resources\Orchard.Resources.csproj">
+      <Project>{d4e8f7c8-2db2-4c50-a422-da1df1e3cc73}</Project>
+      <Name>Orchard.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Orchard.Search\Orchard.Search.csproj">
+      <Project>{4be4eb01-ac56-4048-924e-2ca77f509aba}</Project>
+      <Name>Orchard.Search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Orchard.Taxonomies\Orchard.Taxonomies.csproj">
+      <Project>{e649ea64-d213-461b-87f7-d67035801443}</Project>
+      <Name>Orchard.Taxonomies</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -424,7 +508,9 @@
     <Content Include="SouleDesignsDark\Content\Fonts\Japan\japan-webfont.ttf" />
     <Content Include="SouleDesignsDark\Content\Fonts\Japan\japan-webfont.woff" />
     <Content Include="SouleDesignsDark\Content\Web.config" />
-    <Content Include="SouleDesignsDark\Placement.info" />
+    <Content Include="SouleDesignsDark\Placement.info">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="SouleDesignsDark\Scripts\Web.config" />
     <Content Include="SouleDesignsDark\Styles\Web.config" />
     <Content Include="SouleDesignsDark\Views\CommentAuthor.cshtml" />
@@ -583,6 +669,16 @@
     <Content Include="SouleDesignsDark\Views\Pager.Next.cshtml" />
     <Content Include="SouleDesignsDark\Views\Pager.Previous.cshtml" />
     <Content Include="SouleDesignsDark\Views\Pager_Link.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\.DS_Store" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-webfont.eot" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-webfont.ttf" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-webfont.woff" />
+    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-webfont.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesignsDark\Views\SketchbookPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

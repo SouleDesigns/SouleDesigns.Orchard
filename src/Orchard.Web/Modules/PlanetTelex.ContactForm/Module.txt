@@ -5,5 +5,5 @@ Website: http://planettelex.net
 Version: 1.7.1
 OrchardVersion: 1.7.1
 Description: A simple contact form that is a content part and a widget. It sends an email to a specified address and integrates with Orchard spam protection, providing an option to send spam to an alternate email address.
-Dependencies: Orchard.Email, Orchard.Messaging, Orchard.jQuery, Settings
+Dependencies: Orchard.Email, Settings
 Category: Messaging

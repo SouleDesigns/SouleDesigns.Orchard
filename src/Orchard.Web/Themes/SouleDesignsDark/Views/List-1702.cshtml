@@ -1,0 +1,10 @@
+@using Orchard.ContentManagement;
+@{
+    // This is the 2016 sketchbook only, used by a blog post which is why it is 
+    // queried out separately 
+    ViewBag.Subtitle = "2016";
+    // Turn on auto load for this year of sketchbookery
+    ViewBag.LoadMore = false;
+    var model = ((List<dynamic>)Model.Items).Select(item => (ContentItem)item.ContentItem).ToList();
+    Html.RenderPartial("SketchbookPartial", model);
+}

@@ -8,19 +8,31 @@
     // Match first image src attribute in blog post html
     var imageMatch = Regex.Match(bodyHtml, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase);
     var imageUrl = string.Empty;
-    
+
     // Check if an image src found
-    if(imageMatch.Groups != null && imageMatch.Groups.Count > 0 && !string.IsNullOrEmpty(imageMatch.Groups[1].Value)) 
+    if(imageMatch.Groups != null && imageMatch.Groups.Count > 0 && !string.IsNullOrEmpty(imageMatch.Groups[1].Value))
     {
         // Get image from group and make thumbnail
         var imageMatchValue = imageMatch.Groups[1].Value;
         imageUrl = Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: imageMatchValue).ToString();
-    } 
-    else 
-    {    
+    }
+    else
+    {
         // Use holder.js if no image found for "No Preview" placeholder    
         imageUrl = Url.Content("~/Themes/SouleDesignsDark/Scripts/") + "holder.js/150x150/text:No Preview";
-    }   
+    }
+
+    var scriptResource = Url.RequestContext.HttpContext.Request.Url.Scheme + "://souledesigns.disqus.com/count.js";
+
+    //if (((Orchard.UI.Resources.ResourceRegister)Script).FindResource(new Orchard.UI.Resources.RequireSettings() { Type = "script", BasePath = scriptResource }) == null)
+    //{
+    var rs = Script.Include(scriptResource).AtFoot();
+    if (rs.Attributes.Select(a => a.Key == "id").Count() == 0)
+    {
+        rs.Attributes.Add("id", "dsq-count-scr");
+    }
+    //}
+
 }
 
 
@@ -47,7 +59,8 @@
 
                     <div class="post-comments pull-left">
                         <i class="fa fa-comments"></i>
-                        @Display(Model.CommentsCount)
+                        @*@Display(Model.CommentsCount)*@
+                        <span class="disqus-comment-count" data-disqus-identifier="@(blogPost.AutoroutePart.DisplayAlias)">No Comments</span>
                     </div>
 
                     <div class="taxonomy-field tags pull-left">

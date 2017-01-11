@@ -1,0 +1,6 @@
+@using Orchard.ContentManagement;
+@{
+    // This is the main sketchbook with a running log of all sketches, regardless of date    
+    var model = ((List<dynamic>)Model.Items).Select(item => (ContentItem)item.ContentItem).ToList();
+    Html.RenderPartial("SketchbookPartial", model);
+}

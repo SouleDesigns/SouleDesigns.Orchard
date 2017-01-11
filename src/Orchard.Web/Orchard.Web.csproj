@@ -279,7 +279,6 @@
       <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
     </PropertyGroup>
     <CallTarget Targets="ExcludeRootBinariesDeployment" />
-    <CallTarget Targets="CopySqlCeBinaries" />
     <!-- If this is an area child project, uncomment the following line:
 		<CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
 		-->

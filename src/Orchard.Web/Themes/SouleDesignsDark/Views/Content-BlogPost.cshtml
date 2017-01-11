@@ -8,10 +8,37 @@
     {
         Layout.Title = title;
     }
-    
-    
 
+    // Disqus integration
+    Script.Include(Url.RequestContext.HttpContext.Request.Url.Scheme + "://souledesigns.disqus.com/count.js").AtFoot().Attributes.Add("id", "dsq-count-scr");
+    using (Script.Foot())
+    {
+        <script type="text/javascript">
+            //<![CDATA[
+            var disqus_config = function () {
+                //this.page.url = '@("http://www.souledesigns.com/" + blogPost.AutoroutePart.DisplayAlias)';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = '@(blogPost.AutoroutePart.DisplayAlias)'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function () {
+                var d = document, s = d.createElement('script');
+                s.src = '//souledesigns.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    }
+    using (Script.Head())
+    {
+        <style type="text/css">
+            .comments, #commentform, #comment-form-beacon, .sharebar hr:last-child { display: none; }
+            .sharebar hr:first-child { border-top: 2px solid rgba(255,255,255,.08); }
+             .sharebar { margin: 40px 0px 20px;}
+        </style>
+    }
 }
+
 <div class="blogpost">
     <div class="post-header">
         <h3 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@title</a></h3>
@@ -30,7 +57,8 @@
             *@
             <div class="post-comments pull-left">
                 <i class="fa fa-comments"></i>
-                @Display(Model.CommentsCount)
+                @*@Display(Model.CommentsCount)*@
+                <span class="disqus-comment-count" data-disqus-identifier="@(blogPost.AutoroutePart.DisplayAlias)" >No Comments</span>
             </div>
 
             <div class="taxonomy-field tags pull-left">
@@ -43,6 +71,8 @@
     </div>
     <div class="post-content">
         @Display(Model.Summary)
-    </div>
+    </div>    
 </div>
 @Display(Model.Footer)
+
+<div id="disqus_thread"></div>

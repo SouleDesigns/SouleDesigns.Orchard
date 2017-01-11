@@ -12,7 +12,7 @@
 
 }
 
-<div class="carousel fade slide" id="home-carousel" data-ride="carousel" data-interval="false">    
+<div class="carousel carousel-fade slide" id="home-carousel" data-ride="carousel" data-interval="false">    
 @{
     if(rotatorSlides.Count > 1) 
     {
@@ -33,8 +33,11 @@
         dynamic ratotorSlide = rotatorSlides[index];
         var body = ratotorSlide.HomePageRotator.BodyPart.Text;
         var navigateUrl = ratotorSlide.HomePageRotator.NavigateUrl;
-        
-        <div class="item @(index == 0 ? "active" : "")" data-slide="@index">
+
+        // Bg image used on first slide only - prevents loading all images on first hit - remainder set with javascript at foot
+        var bgImageUrl = @ratotorSlide.HomePageRotator.RotatorImage.MediaParts[0].MediaUrl;
+
+        <div class="carousel-bg-fill item @(index == 0 ? "active" : "")" data-slide="@index" style="@(index == 0 ? "background-image: url('" + bgImageUrl + "');" : "");">            
             <div class="carousel-caption">
                 <p>
                     @Html.Raw(body)
@@ -46,7 +49,7 @@
                     <a href="@Url.Content(navigateUrl.Value)" onclick="window.location = '@Url.Content(navigateUrl.Value)';" class="btn btn-primary btn-lg">@(navigateUrl.Text == null ? navigateUrl.Target : navigateUrl.Text)</a>
                 </p>
                 }
-    }
+                }
             </div>
         </div>
     }       
@@ -58,20 +61,28 @@
     }
 }    
 </div>
-<script type="text/javascript">
-    // Called by home script, assures called after backstretch defined
-    function SetupHomeSlides() {
-    @{
-    for (var index = 0; index < rotatorSlides.Count; index++)
+
+@using (Script.Foot())
+{
+    <script type="text/javascript">
+//<![CDATA[
+$(document).ready(function () {
+@{for (var index = 1; index < rotatorSlides.Count; index++)
     {
         dynamic ratotorSlide = rotatorSlides[index];
-        MediaPart rotatorImage = ratotorSlide.HomePageRotator.RotatorImage.MediaParts[0];                
-            
-        @Html.Raw(string.Format(
-        "$('[data-slide={0}]').backstretch('{1}', {{ centeredY: false}});", 
-        index,
-        rotatorImage.MediaUrl))
-    }        
+        var body = ratotorSlide.HomePageRotator.BodyPart.Text;
+        var navigateUrl = ratotorSlide.HomePageRotator.NavigateUrl;
+        // Bg image used on first slide only - prevents emty carousel inital load
+        var bgImageUrl = @ratotorSlide.HomePageRotator.RotatorImage.MediaParts[0].MediaUrl;
+
+        // Output jquery to set background image - prevents loading all but 1st image until page 
+        // ready which lowers perceived inital load!
+        <text>
+        $('div[data-slide="@index"]').css('background-image', 'url("@bgImageUrl")');
+        </text>
     }
-    }
-</script>
+}
+})
+//]]>
+    </script>
+}

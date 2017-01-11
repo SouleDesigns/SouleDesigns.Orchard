@@ -2,17 +2,17 @@
 @using Orchard.UI.Resources;
 @{
     RegisterLink(new LinkEntry { Type = "image/x-icon", Rel = "shortcut icon", Href = Url.Content("~/Themes/SouleDesignsDark/Content/Images/Shared/favicon.ico") });
+    RegisterLink(new LinkEntry { Type = "image/png", Rel = "apple-touch-icon", Href = @Url.Content("~/Themes/SouleDesignsDark/Content/Images/Shared/apple-touch-icon.png") });
     Style.Include("~/Themes/SouleDesignsDark/Content/Styles/Bootstrap/bootstrap.min.css");
     Style.Include("~/Themes/SouleDesignsDark/Content/Styles/Bootstrap/bootstrap-theme.min.css");
     Style.Include("~/Themes/SouleDesignsDark/Content/Styles/Shared/font-awesome.min.css");
     Style.Include("~/Themes/SouleDesignsDark/Content/Styles/Shared/main.css");
-    Script.Require("jQuery").AtHead();
-    Script.Include("bootstrap.js");
-    Script.Include("holder.js");
-    Script.Include("shared.js");
-    Script.Include("html5shiv.js").UseCondition("lt IE 9").AtHead();
-    Script.Include("respond.min.js").UseCondition("lt IE 9").AtHead();
-
+    Script.Require("jQuery").AtFoot();
+    Script.Include("bootstrap.min.js").AtFoot();
+    Script.Include("holder.min.js").AtFoot();
+    Script.Include("shared.js").AtFoot();
+    Script.Include("html5shiv.js").AtFoot().UseCondition("lt IE 9");
+    Script.Include("respond.min.js").AtFoot().UseCondition("lt IE 9");
     string title = Convert.ToString(Model.Title);
     string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
 }<!DOCTYPE html>  
@@ -31,17 +31,13 @@
 <!--[if gt IE 9]><!-->
 <html lang="@WorkContext.CurrentCulture" class="no-js static @Html.ClassForPage() theme-@WorkContext.CurrentTheme.Name">
 <!--<![endif]-->
-<head>        
-    <link rel="apple-touch-icon" href="@Url.Content("~/Themes/SouleDesignsDark/Content/Images/Shared/apple-touch-icon.png")" />
-    @*<link rel="apple-touch-icon" sizes="72x72" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon-72.png"))" />
-    <link rel="apple-touch-icon" sizes="114x114" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon-114.png"))" />
-    <link rel="apple-touch-icon" sizes="144x144" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon-144.png"))" />*@    
+<head>            
     <title>@Html.Title(title, siteName)</title>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700|Oswald:400,300,700' rel='stylesheet' type='text/css' />    
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
     @Display(Model.Head)
 </head>
 <body>    
     @Display(Model.Body)
-    @Display(Model.Tail)
+    @Display(Model.Tail)       
 </body>
 </html>

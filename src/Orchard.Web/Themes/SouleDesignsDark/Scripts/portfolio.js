@@ -72,4 +72,12 @@ $(document).ready(function () {
     // activate counters
     gridContainer.cubeportfolio('showCounter', filtersContainer.find('.cbp-filter-item'));
 
+
+    $(".cbp-caption-activeWrap").on("click", function () {
+        var anchor = $(this).find("a").first();
+        if(anchor.length > 0)
+        {
+            window.location = anchor.first().attr("href");
+        }
+    });
 });

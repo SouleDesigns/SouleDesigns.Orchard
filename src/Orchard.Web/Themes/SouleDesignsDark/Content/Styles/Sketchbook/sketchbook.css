@@ -18,6 +18,24 @@ Sketchbook
     margin-top: 0;
 }
 
+
+.sketchbook-img 
+{
+    position: relative; 
+    width: 350px;
+}
+
+.sketchbook-img > div
+{
+    position: absolute; 
+    right: 15%;
+}
+
+.sketchbook-img > div > h3
+{
+    color: #f1f1f1;
+}
+
 .sketchbook-wrapper > ul
 {
     list-style-image: none;
