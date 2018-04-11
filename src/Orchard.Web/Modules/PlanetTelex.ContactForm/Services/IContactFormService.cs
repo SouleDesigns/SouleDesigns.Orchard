@@ -21,6 +21,6 @@ namespace PlanetTelex.ContactForm.Services
         /// <param name="message">The email message.</param>
         /// <param name="sendTo">The email address to send the message to.</param>
         /// <param name="requiredName">Bool of Name is required</param>
-        void SendContactEmail(string name, string email, string spamBotEmail, string subject, string message, string sendTo, bool requiredName);
+        void SendContactEmail(string name, string email, string spamBotEmail, string subject, string message, string sendTo, bool requiredName, string recaptcha);
     }
 }

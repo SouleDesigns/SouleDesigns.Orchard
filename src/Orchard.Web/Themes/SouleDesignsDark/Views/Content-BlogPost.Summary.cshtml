@@ -14,23 +14,19 @@
     {
         // Get image from group and make thumbnail
         var imageMatchValue = imageMatch.Groups[1].Value;
-        imageUrl = Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: imageMatchValue).ToString();
+        imageUrl = Display.ResizeMediaUrl(Width: 350, Height: 350, Mode: "crop", Alignment: "middlecenter", Path: imageMatchValue).ToString();
     }
     else
     {
         // Use holder.js if no image found for "No Preview" placeholder    
-        imageUrl = Url.Content("~/Themes/SouleDesignsDark/Scripts/") + "holder.js/150x150/text:No Preview";
+        imageUrl = Url.Content("~/Themes/SouleDesignsDark/Scripts/") + "holder.js/350x350/text:No Preview";
     }
 
-    var scriptResource = Url.RequestContext.HttpContext.Request.Url.Scheme + "://souledesigns.disqus.com/count.js";
-
-    //if (((Orchard.UI.Resources.ResourceRegister)Script).FindResource(new Orchard.UI.Resources.RequireSettings() { Type = "script", BasePath = scriptResource }) == null)
+    //var scriptResource = Url.RequestContext.HttpContext.Request.Url.Scheme + "://souledesigns.disqus.com/count.js";
+    //var rs = Script.Include(scriptResource).AtFoot();
+    //if (rs.Attributes.Select(a => a.Key == "id").Count() == 0)
     //{
-    var rs = Script.Include(scriptResource).AtFoot();
-    if (rs.Attributes.Select(a => a.Key == "id").Count() == 0)
-    {
-        rs.Attributes.Add("id", "dsq-count-scr");
-    }
+    //    rs.Attributes.Add("id", "dsq-count-scr");
     //}
 
 }
@@ -39,10 +35,10 @@
 <div id="blogpost-@blogPost.Id" class="blogpost summary">    
 
     <div class="row">
-        <div class="post-image col-md-2">
+        <div class="post-image col-md-4">
             <a href="@Url.ItemDisplayUrl((IContent)blogPost)"><img class="img-responsive" src="@imageUrl" /></a>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="post-header">
                 <h3 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
                 <div class="post-meta">
@@ -59,8 +55,8 @@
 
                     <div class="post-comments pull-left">
                         <i class="fa fa-comments"></i>
-                        @*@Display(Model.CommentsCount)*@
-                        <span class="disqus-comment-count" data-disqus-identifier="@(blogPost.AutoroutePart.DisplayAlias)">No Comments</span>
+                        <a href="@Url.ItemDisplayUrl((IContent)blogPost)#comments">@Display(Model.CommentsCount)</a>
+                        @*<span class="disqus-comment-count" data-disqus-identifier="@(blogPost.AutoroutePart.DisplayAlias)">No Comments</span>*@
                     </div>
 
                     <div class="taxonomy-field tags pull-left">

@@ -1,4 +1,6 @@
-﻿using Orchard.ContentManagement;
+﻿using Orchard;
+using Orchard.AntiSpam.Models;
+using Orchard.ContentManagement;
 using Orchard.ContentManagement.Drivers;
 using PlanetTelex.ContactForm.Models;
 using PlanetTelex.ContactForm.ViewModels;
@@ -7,6 +9,13 @@ namespace PlanetTelex.ContactForm.Drivers
 {
     public class ContactFormDriver : ContentPartDriver<ContactFormPart>
     {
+        private readonly IOrchardServices _orchardServices;
+
+        public ContactFormDriver(IOrchardServices orchardServices)
+        {
+            _orchardServices = orchardServices;         
+        }
+
         /// <summary>
         /// Defines the shapes required for the part's main view.
         /// </summary>
@@ -15,6 +24,7 @@ namespace PlanetTelex.ContactForm.Drivers
         /// <param name="shapeHelper">The shape helper.</param>
         protected override DriverResult Display(ContactFormPart part, string displayType, dynamic shapeHelper)
         {
+            
             var viewModel = new ContactFormViewModel();
             if (part != null && displayType.Contains("Detail"))
             {
@@ -22,6 +32,10 @@ namespace PlanetTelex.ContactForm.Drivers
                 viewModel.ShowSubjectField = !part.UseStaticSubject;
                 viewModel.ShowNameField = part.DisplayNameField;
                 viewModel.RequireNameField = part.RequireNameField;
+
+                // KLUDGE:  Pull recaptcah settings from antispam settings                
+                var settings = _orchardServices.WorkContext.CurrentSite.As<ReCaptchaSettingsPart>();
+                viewModel.RecaptchaPublicKey = settings.PublicKey;
             }
             return ContentShape("Parts_ContactForm", () => shapeHelper.DisplayTemplate(TemplateName: "Parts/ContactForm", Model: viewModel, Prefix: Prefix));
         }

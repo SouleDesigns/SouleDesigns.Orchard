@@ -49,18 +49,21 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent.IO">
-      <HintPath>Libraries\Fluent.IO.dll</HintPath>
+    <Reference Include="Fluent.IO, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FluentPath.1.2.1\lib\net4\Fluent.IO.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Fluent.Zip">
-      <HintPath>Libraries\Fluent.Zip.dll</HintPath>
+    <Reference Include="Fluent.Zip, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FluentPathZip.1.2.1\lib\net4\Fluent.Zip.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>Libraries\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.6.16.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\HtmlAgilityPack.1.6.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\dotnetzip\Ionic.Zip.dll</HintPath>
+      <HintPath>..\..\..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\..\..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
@@ -135,6 +138,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ionic.Zip.xml" />
     <Content Include="Scripts\admin-custom-sort.min.js.map">
       <DependentUpon>admin-custom-sort.js</DependentUpon>
     </Content>

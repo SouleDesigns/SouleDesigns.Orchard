@@ -1,23 +1,21 @@
+using M33.Layout.ViewModels;
+using Orchard;
+using Orchard.ContentManagement;
+using Orchard.Localization;
+using Orchard.Themes.Services;
+using Orchard.UI.Notify;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using M33.Layout.ViewModels;
-using Orchard.ContentManagement;
-using Orchard.Core.Contents.Controllers;
-using Orchard.Localization;
-using Orchard.Mvc.Extensions;
-using Orchard.Security;
-using Orchard.UI.Notify;
-using System.Collections.Generic;
-using Orchard.Themes.Services;
-using Orchard;
 
 /*
  * Author Rickard Magnusson, M33 2011
  */
 
-namespace M33.Layout.Controllers {
+namespace M33.Layout.Controllers
+{
     [ValidateInput(false)]
     public  class AdminController : Controller, IUpdateModel {
        
@@ -201,7 +199,7 @@ namespace M33.Layout.Controllers {
             return Settings();
         }
 
-        [FormValueRequired("submit")]
+        [Orchard.Mvc.FormValueRequired("submit")]
         [HttpPost, ActionName("Add")]
         public ActionResult AddPost()
         {

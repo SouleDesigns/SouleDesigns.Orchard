@@ -9,5 +9,7 @@
         public bool ShowNameField { get; set; }
 
         public bool RequireNameField { get; set; }
+
+        public string RecaptchaPublicKey { get; set; }
     }
 }

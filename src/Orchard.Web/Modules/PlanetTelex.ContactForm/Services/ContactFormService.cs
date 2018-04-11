@@ -10,6 +10,12 @@ using Orchard.Localization;
 using Orchard.Logging;
 using Orchard.UI.Notify;
 using PlanetTelex.ContactForm.Models;
+using System.Text;
+using System.IO;
+using System.Web.Script.Serialization;
+using System.Web;
+using System.Configuration;
+using Orchard.AntiSpam.Models;
 
 namespace PlanetTelex.ContactForm.Services
 {
@@ -17,8 +23,7 @@ namespace PlanetTelex.ContactForm.Services
     {
         private readonly IOrchardServices _orchardServices;
         private readonly INotifier _notifier;
-        private readonly IRepository<ContactFormRecord> _contactFormRepository;
-
+        private readonly IRepository<ContactFormRecord> _contactFormRepository;        
         public ILogger Logger { get; set; }
         public Localizer T { get; set; }
 
@@ -26,7 +31,7 @@ namespace PlanetTelex.ContactForm.Services
         {
             _notifier = notifier;
             _orchardServices = orchardServices;
-            _contactFormRepository = contactFormRepository;
+            _contactFormRepository = contactFormRepository;            
             Logger = NullLogger.Instance;
         }
         
@@ -51,9 +56,9 @@ namespace PlanetTelex.ContactForm.Services
         /// <param name="message">The email message.</param>
         /// <param name="sendTo">The email address to send the message to.</param>
         /// <param name="requiredName">Bool of Name is required</param>
-        public void SendContactEmail(string name, string email, string spamBotEmail, string subject, string message, string sendTo, bool requiredName)
+        public void SendContactEmail(string name, string email, string spamBotEmail, string subject, string message, string sendTo, bool requiredName, string recaptcha)
         {
-            if (ValidateContactFields(name, email, message, requiredName))
+            if (ValidateContactFields(name, email, message, requiredName, recaptcha))
             {
                 if (string.IsNullOrEmpty(name))
                     name = email;
@@ -127,9 +132,10 @@ namespace PlanetTelex.ContactForm.Services
             return mailClient;
         }
 
-        private bool ValidateContactFields(string name, string email, string message, bool nameRequired)
-        {
-            bool isValid = true;
+        private bool ValidateContactFields(string name, string email, string message, bool nameRequired, string recaptcha)
+        {            
+            var isValid = true;
+                
             const string emailAddressRegex = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
 
             if ((nameRequired && String.IsNullOrEmpty(name)) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(message)) {
@@ -146,8 +152,64 @@ namespace PlanetTelex.ContactForm.Services
                 }
             }
 
+            if(!ReCaptchaValid(recaptcha))
+            {
+                _notifier.Error(T("Are you a sure you're not a robot?"));
+                isValid = false;
+            }
+
             return isValid;
         }
+
+        /// <summary>
+        /// Check for recaptcah validity
+        /// </summary>
+        /// <returns></returns>
+        private bool ReCaptchaValid(string recaptchaResponse)
+        {
+            var isValid = false;
+            try
+            {
+                // KLUDGE:  Pull recaptcah settings from antispam settings                
+                var recaptchaSettings = _orchardServices.WorkContext.CurrentSite.As<ReCaptchaSettingsPart>();
+
+                // Post parameteters            
+                var remoteip = HttpContext.Current.Request.UserHostAddress;
+                var privateKey = recaptchaSettings.PrivateKey;
+                var postData = string.Format("secret={0}&response={1}&remoteip={2}",
+                        privateKey,
+                        recaptchaResponse,
+                        remoteip);
+                var postDataAsBytes = Encoding.UTF8.GetBytes(postData);
+
+                // Create web request
+                var request = WebRequest.Create("https://www.google.com/recaptcha/api/siteverify");
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = postDataAsBytes.Length;
+                var dataStream = request.GetRequestStream();
+                dataStream.Write(postDataAsBytes, 0, postDataAsBytes.Length);
+                dataStream.Close();
+
+                // Get the response.
+                using (var response = request.GetResponse())
+                {
+                    using (dataStream = response.GetResponseStream())
+                    {
+                        using (var reader = new StreamReader(dataStream))
+                        {
+                            var serializer = new JavaScriptSerializer();
+                            dynamic responseObject = serializer.DeserializeObject(reader.ReadToEnd());
+                            isValid = responseObject["success"];
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return isValid;
+        }
+
 
     }
 }

@@ -55,13 +55,13 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Orchard.Core">
-      <HintPath>..\..\NewWaveMode\Externals\Orchard.Source.1.5.1\src\Orchard.Web\bin\Orchard.Core.dll</HintPath>
+      <HintPath>..\..\Core\bin\Orchard.Core.dll</HintPath>
     </Reference>
     <Reference Include="Orchard.Framework">
-      <HintPath>..\..\NewWaveMode\Externals\Orchard.Source.1.5.1\src\Orchard\bin\Debug\Orchard.Framework.dll</HintPath>
+      <HintPath>..\..\..\Orchard\bin\Debug\Orchard.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Orchard.Themes">
-      <HintPath>..\..\NewWaveMode\Externals\Orchard.Source.1.5.1\src\Orchard.Web\Themes\bin\Orchard.Themes.dll</HintPath>
+      <HintPath>..\Orchard.Themes\bin\Orchard.Themes.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />

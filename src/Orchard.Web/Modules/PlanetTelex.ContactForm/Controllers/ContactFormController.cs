@@ -27,7 +27,7 @@ namespace PlanetTelex.ContactForm.Controllers
         /// <param name="subject">The subject.</param>
         /// <param name="message">The message.</param>
         /// <param name="confirmEmail">The actual email string</param>
-        public ActionResult SendContactEmail(int id, string returnUrl, string name, string email, string confirmEmail, string subject, string message)
+        public ActionResult SendContactEmail(int id, string returnUrl, string name, string email, string confirmEmail, string subject, string message, string recaptcha)
         {
             ContactFormRecord contactForm = _contactFormService.GetContactForm(id);
 
@@ -42,7 +42,7 @@ namespace PlanetTelex.ContactForm.Controllers
                         subject = subject.Replace("{DOMAIN}", Request.Url.Host);
                 }
 
-                _contactFormService.SendContactEmail(name, confirmEmail, email, subject, message, contactForm.RecipientEmailAddress, contactForm.RequireNameField);
+                _contactFormService.SendContactEmail(name, confirmEmail, email, subject, message, contactForm.RecipientEmailAddress, contactForm.RequireNameField, recaptcha);
             }
 
             return this.RedirectLocal(returnUrl, "~/");

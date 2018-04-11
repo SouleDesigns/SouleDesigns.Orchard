@@ -7,6 +7,15 @@
    var displaySubject = Model.ShowSubjectField ? string.Empty : displayNone;
    var displayName = Model.ShowNameField ? string.Empty : displayNone;
 }
+@using (Script.Foot())
+{
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript">
+    function RecaptchaCallback(response) {
+        $("#recaptcha").val(response);        
+    }
+    </script>
+}
 @{using (Html.BeginForm("sendcontactemail", "contactform", new { area = "PlanetTelex.ContactForm" }, FormMethod.Post, new { @class = "contact-form" }))
    {
        <ul>
@@ -29,6 +38,10 @@
            <li>
                <label for="Message">@T("Message")</label>
                <textarea id="Message" class="text" name="Message" placeholder="Comments or Inquiry" cols="50" rows="10"></textarea>
+           </li>
+           <li>               
+                <div id="recap-wrap" class="g-recaptcha" data-sitekey="@Model.RecaptchaPublicKey" data-callback="RecaptchaCallback"></div>
+                <input id="recaptcha" name="recaptcha" type="hidden" value="" />                   
            </li>
        </ul>
        <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="@Context.Request.ToUrlString()" />

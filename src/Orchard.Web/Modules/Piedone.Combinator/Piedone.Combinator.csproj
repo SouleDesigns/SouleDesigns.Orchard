@@ -51,47 +51,62 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\autofac\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="dotless.Core">
-      <HintPath>Libs\dotless\dotless.Core.dll</HintPath>
+    <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EcmaScript.NET">
-      <HintPath>Libs\YUICompressor\EcmaScript.NET.dll</HintPath>
+    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\YUICompressor.NET.NAnt.2.7.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="ExCSS">
-      <HintPath>Libs\ExCSS.dll</HintPath>
+    <Reference Include="ExCSS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ExCSS.1.0.9\lib\net40\ExCSS.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\YUICompressor\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="IronRuby">
-      <HintPath>..\..\..\..\lib\dlr\IronRuby.dll</HintPath>
+    <Reference Include="IronRuby, Version=1.1.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\IronRuby.1.1.3\lib\IronRuby.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="IronRuby.Libraries">
-      <HintPath>..\..\..\..\lib\dlr\IronRuby.Libraries.dll</HintPath>
+    <Reference Include="IronRuby.Libraries, Version=1.1.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\IronRuby.1.1.3\lib\IronRuby.Libraries.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IronRuby.Libraries.Yaml, Version=1.1.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\IronRuby.1.1.3\lib\IronRuby.Libraries.Yaml.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Dynamic">
-      <HintPath>..\..\..\..\lib\dlr\Microsoft.Dynamic.dll</HintPath>
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\IronRuby.1.1.3\lib\Microsoft.Dynamic.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Scripting">
-      <HintPath>..\..\..\..\lib\dlr\Microsoft.Scripting.dll</HintPath>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\IronRuby.1.1.3\lib\Microsoft.Scripting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Scripting.Metadata">
-      <HintPath>Libs\SassAndCoffee\IronRuby.1.1.3\Microsoft.Scripting.Metadata.dll</HintPath>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\IronRuby.1.1.3\lib\Microsoft.Scripting.Metadata.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NAnt.Core">
-      <HintPath>Libs\YUICompressor\NAnt.Core.dll</HintPath>
+    <Reference Include="NAnt.Core, Version=0.91.4312.0, Culture=neutral">
+      <HintPath>..\..\..\packages\YUICompressor.NET.NAnt.2.7.0.0\lib\NET20\NAnt.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SassAndCoffee.Core">
-      <HintPath>Libs\SassAndCoffee\SassAndCoffee.Core.dll</HintPath>
+    <Reference Include="SassAndCoffee.Core, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SassAndCoffee.Core.2.1.1.0\lib\net40-Client\SassAndCoffee.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SassAndCoffee.Ruby">
-      <HintPath>Libs\SassAndCoffee\SassAndCoffee.Ruby.dll</HintPath>
+    <Reference Include="SassAndCoffee.Ruby, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Shaz.SassAndCoffee.Ruby.2.1.2\lib\net40-Client\SassAndCoffee.Ruby.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -135,15 +150,17 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Yahoo.Yui.Compressor, Version=1.7.0.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\YUICompressor\Yahoo.Yui.Compressor.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\YUICompressor.NET.NAnt.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild">
-      <HintPath>Libs\YUICompressor\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Yahoo.Yui.Compressor.Build.Nant">
-      <HintPath>Libs\YUICompressor\Yahoo.Yui.Compressor.Build.Nant.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor.Build.Nant, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\YUICompressor.NET.NAnt.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.Nant.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -12,10 +12,10 @@
 }
 <div class="portfolio-piece summary">
     <div class="row">
-        <div class="piece-image col-md-2">
-            <a href="@Url.ItemDisplayUrl((IContent)portfolioPiece)"><img src="@Display.ResizeMediaUrl(Width: 150, Height: 150, Mode: "crop", Alignment: "middlecenter", Path: mediaPart.MediaUrl)" /></a>
+        <div class="piece-image col-md-4">
+            <a href="@Url.ItemDisplayUrl((IContent)portfolioPiece)"><img src="@Display.ResizeMediaUrl(Width: 350, Height: 350, Mode: "crop", Alignment: "middlecenter", Path: mediaPart.MediaUrl)" /></a>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="piece-header">
                 <h3 class="piece-title"><a href="@Url.ItemDisplayUrl((IContent)portfolioPiece)">@portfolioPiece.TitlePart.Title</a></h3>                                
             </div>

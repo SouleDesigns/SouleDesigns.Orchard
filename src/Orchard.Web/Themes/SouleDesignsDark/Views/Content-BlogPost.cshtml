@@ -9,7 +9,7 @@
         Layout.Title = title;
     }
 
-    // Disqus integration
+    @*// Disqus integration
     Script.Include(Url.RequestContext.HttpContext.Request.Url.Scheme + "://souledesigns.disqus.com/count.js").AtFoot().Attributes.Add("id", "dsq-count-scr");
     using (Script.Foot())
     {
@@ -36,7 +36,7 @@
             .sharebar hr:first-child { border-top: 2px solid rgba(255,255,255,.08); }
              .sharebar { margin: 40px 0px 20px;}
         </style>
-    }
+    }*@
 }
 
 <div class="blogpost">
@@ -57,8 +57,8 @@
             *@
             <div class="post-comments pull-left">
                 <i class="fa fa-comments"></i>
-                @*@Display(Model.CommentsCount)*@
-                <span class="disqus-comment-count" data-disqus-identifier="@(blogPost.AutoroutePart.DisplayAlias)" >No Comments</span>
+                <a href="#comments">@Display(Model.CommentsCount)</a>
+               @*<span class="disqus-comment-count" data-disqus-identifier="@(blogPost.AutoroutePart.DisplayAlias)" >No Comments</span>*@
             </div>
 
             <div class="taxonomy-field tags pull-left">
@@ -75,4 +75,4 @@
 </div>
 @Display(Model.Footer)
 
-<div id="disqus_thread"></div>
+@*<div id="disqus_thread"></div>*@

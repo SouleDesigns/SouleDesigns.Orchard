@@ -25,7 +25,7 @@
         }
     }
 
-    var gravatarUrl = Url.Gravatar(string.IsNullOrWhiteSpace(gravatarEmail) ? "dummy@foobar.com" : gravatarEmail, 60, "mm", Rating.G);
+    var gravatarUrl = Url.Gravatar(string.IsNullOrWhiteSpace(gravatarEmail) ? "dummy@foobar.com" : gravatarEmail, 60, "retro", Rating.G);
 }
 
 <img src="@gravatarUrl" alt="@T("Gravatar Image")" class="media-object" />

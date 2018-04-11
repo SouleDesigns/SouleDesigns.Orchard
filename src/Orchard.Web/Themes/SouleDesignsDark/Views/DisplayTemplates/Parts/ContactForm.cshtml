@@ -10,9 +10,12 @@
 
 @using (Script.Foot())
 {
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">
+
     $(document).ready(function () {
         $('#contactform').validate({
+            ignore: "",
             rules: {
                 Name: {                    
                     required: true
@@ -22,6 +25,9 @@
                     email: true
                 },
                 Message: {                    
+                    required: true
+                },
+                recaptcha: { 
                     required: true
                 }
             },
@@ -42,6 +48,12 @@
             }
         });
     });
+    
+    function RecaptchaCallback(response) {
+        $("#recaptcha").val(response);
+        $("#recaptcha").valid();
+    }
+
 </script>
 }
 
@@ -78,7 +90,14 @@
             <label for="Subject">@T("Subject")</label>
             <input id="Subject" class="text form-control" name="Subject" type="text" placeholder="Subject" />                             
         </div>
-                       
+
+        <div class="row">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-left: 1px; margin-top: 8px;">
+                <div id="recap-wrap" style="height: 80px" class="g-recaptcha" data-theme="dark" data-sitekey="@Model.RecaptchaPublicKey" data-callback="RecaptchaCallback"></div>
+                <input id="recaptcha" name="recaptcha" type="hidden" title="Are you sure you're not a robot?" value="" />
+            </div>
+        </div>
+
         <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="@Context.Request.ToUrlString()" />
         <input id="Id" name="Id" type="hidden" value="@Model.ContentRecordId" />
         @Html.AntiForgeryTokenOrchard()

@@ -135,6 +135,10 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Orchard.AntiSpam\Orchard.AntiSpam.csproj">
+      <Project>{91bc2e7f-da04-421c-98ef-76d37cec130c}</Project>
+      <Name>Orchard.AntiSpam</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Orchard.Email\Orchard.Email.csproj">
       <Project>{05660F47-D649-48BD-9DED-DF4E01E7CFF9}</Project>
       <Name>Orchard.Email</Name>

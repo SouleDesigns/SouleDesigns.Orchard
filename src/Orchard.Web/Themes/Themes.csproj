@@ -133,6 +133,7 @@
     <Content Include="SouleDesignsDark\Content\Fonts\Glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="SouleDesignsDark\Content\Fonts\Japan\japan-demo.html" />
     <Content Include="SouleDesignsDark\Content\Fonts\Japan\japan-webfont.svg" />
+    <Content Include="SouleDesignsDark\Content\Fonts\SouleDesigns\sd.svg" />
     <Content Include="SouleDesignsDark\Content\Images\Contact\souleovision.png" />
     <Content Include="SouleDesignsDark\Content\Images\Home\home-icons-cg.png" />
     <Content Include="SouleDesignsDark\Content\Images\Home\home-icons-cg.svg" />
@@ -679,6 +680,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SouleDesignsDark\Views\SketchbookPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesignsDark\Views\List-1583.cshtml" />
+    <Content Include="SouleDesignsDark\Views\List-1702.cshtml" />
+    <Content Include="SouleDesignsDark\Views\List-2155.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SouleDesignsDark\Content\Fonts\SouleDesigns\sd.eot" />
+    <Content Include="SouleDesignsDark\Content\Fonts\SouleDesigns\sd.ttf" />
+    <Content Include="SouleDesignsDark\Content\Fonts\SouleDesigns\sd.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
