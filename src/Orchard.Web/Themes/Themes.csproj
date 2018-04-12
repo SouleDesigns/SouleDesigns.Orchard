@@ -672,7 +672,6 @@
     <Content Include="SouleDesignsDark\Views\Pager_Link.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\.DS_Store" />
     <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-webfont.eot" />
     <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-webfont.ttf" />
     <Content Include="SouleDesigns\Content\TheFinalCountdown\Tng\fonts\TNG_Title-webfont.woff" />
