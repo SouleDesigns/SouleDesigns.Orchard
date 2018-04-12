@@ -23,9 +23,11 @@ namespace PlanetTelex.ContactForm.Services
     {
         private readonly IOrchardServices _orchardServices;
         private readonly INotifier _notifier;
-        private readonly IRepository<ContactFormRecord> _contactFormRepository;        
+        private readonly IRepository<ContactFormRecord> _contactFormRepository;                
         public ILogger Logger { get; set; }
         public Localizer T { get; set; }
+        private const string ReCaptchaSecureUrl = "https://www.google.com/recaptcha/api/siteverify";
+
 
         public ContactFormService(IOrchardServices orchardServices, INotifier notifier, IRepository<ContactFormRecord> contactFormRepository)
         {
@@ -56,6 +58,7 @@ namespace PlanetTelex.ContactForm.Services
         /// <param name="message">The email message.</param>
         /// <param name="sendTo">The email address to send the message to.</param>
         /// <param name="requiredName">Bool of Name is required</param>
+        /// <param name="recaptcha">Recaptcha response string to be validated prior to sending</param>
         public void SendContactEmail(string name, string email, string spamBotEmail, string subject, string message, string sendTo, bool requiredName, string recaptcha)
         {
             if (ValidateContactFields(name, email, message, requiredName, recaptcha))
@@ -138,7 +141,7 @@ namespace PlanetTelex.ContactForm.Services
                 
             const string emailAddressRegex = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
 
-            if ((nameRequired && String.IsNullOrEmpty(name)) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(message)) {
+            if ((nameRequired && String.IsNullOrEmpty(name)) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(message) || string.IsNullOrEmpty(recaptcha)) {
                 _notifier.Error(T("All contact fields are required."));
                 isValid = false;
             }
@@ -150,27 +153,27 @@ namespace PlanetTelex.ContactForm.Services
                     _notifier.Error(T("Invalid email address."));
                     isValid = false;
                 }
-            }
 
-            if(!ReCaptchaValid(recaptcha))
-            {
-                _notifier.Error(T("Are you a sure you're not a robot?"));
-                isValid = false;
-            }
+                if (!ReCaptchaValid(recaptcha))
+                {
+                    _notifier.Error(T("Are you a sure you're not a robot?"));
+                    isValid = false;
+                }
+            }            
 
             return isValid;
         }
 
         /// <summary>
-        /// Check for recaptcah validity
+        /// Check for recaptcha validity
         /// </summary>
-        /// <returns></returns>
+        /// <returns>bool true if valid false if invalid</returns>
         private bool ReCaptchaValid(string recaptchaResponse)
         {
             var isValid = false;
             try
             {
-                // KLUDGE:  Pull recaptcah settings from antispam settings                
+                // Pull recaptcha settings from antispam settings part
                 var recaptchaSettings = _orchardServices.WorkContext.CurrentSite.As<ReCaptchaSettingsPart>();
 
                 // Post parameteters            
@@ -183,7 +186,7 @@ namespace PlanetTelex.ContactForm.Services
                 var postDataAsBytes = Encoding.UTF8.GetBytes(postData);
 
                 // Create web request
-                var request = WebRequest.Create("https://www.google.com/recaptcha/api/siteverify");
+                var request = WebRequest.Create(ReCaptchaSecureUrl);
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = postDataAsBytes.Length;

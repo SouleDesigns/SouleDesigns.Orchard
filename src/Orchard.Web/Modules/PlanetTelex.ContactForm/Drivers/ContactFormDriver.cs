@@ -33,9 +33,9 @@ namespace PlanetTelex.ContactForm.Drivers
                 viewModel.ShowNameField = part.DisplayNameField;
                 viewModel.RequireNameField = part.RequireNameField;
 
-                // KLUDGE:  Pull recaptcah settings from antispam settings                
-                var settings = _orchardServices.WorkContext.CurrentSite.As<ReCaptchaSettingsPart>();
-                viewModel.RecaptchaPublicKey = settings.PublicKey;
+                // Pull recaptcha settings from antispam settings part
+                var recaptchaSettings = _orchardServices.WorkContext.CurrentSite.As<ReCaptchaSettingsPart>();
+                viewModel.RecaptchaPublicKey = recaptchaSettings.PublicKey;
             }
             return ContentShape("Parts_ContactForm", () => shapeHelper.DisplayTemplate(TemplateName: "Parts/ContactForm", Model: viewModel, Prefix: Prefix));
         }

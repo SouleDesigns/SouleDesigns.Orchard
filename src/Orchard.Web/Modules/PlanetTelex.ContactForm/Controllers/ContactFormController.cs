@@ -27,6 +27,7 @@ namespace PlanetTelex.ContactForm.Controllers
         /// <param name="subject">The subject.</param>
         /// <param name="message">The message.</param>
         /// <param name="confirmEmail">The actual email string</param>
+        /// <param name="recaptcha">Recaptcha response string to be validated prior to sending</param>
         public ActionResult SendContactEmail(int id, string returnUrl, string name, string email, string confirmEmail, string subject, string message, string recaptcha)
         {
             ContactFormRecord contactForm = _contactFormService.GetContactForm(id);
