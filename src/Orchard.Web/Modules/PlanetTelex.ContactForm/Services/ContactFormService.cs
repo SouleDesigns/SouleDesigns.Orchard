@@ -13,27 +13,30 @@ using PlanetTelex.ContactForm.Models;
 using System.Text;
 using System.IO;
 using System.Web.Script.Serialization;
-using System.Web;
-using System.Configuration;
 using Orchard.AntiSpam.Models;
+using Orchard.Services;
+using System.Globalization;
+using Orchard.AntiSpam.ViewModels;
 
 namespace PlanetTelex.ContactForm.Services
 {
     public class ContactFormService : IContactFormService
     {
-        private readonly IOrchardServices _orchardServices;
+        private readonly IJsonConverter _jsonConverter;
         private readonly INotifier _notifier;
+        private readonly IOrchardServices _orchardServices;        
         private readonly IRepository<ContactFormRecord> _contactFormRepository;                
         public ILogger Logger { get; set; }
         public Localizer T { get; set; }
         private const string ReCaptchaSecureUrl = "https://www.google.com/recaptcha/api/siteverify";
 
 
-        public ContactFormService(IOrchardServices orchardServices, INotifier notifier, IRepository<ContactFormRecord> contactFormRepository)
+        public ContactFormService(IOrchardServices orchardServices, INotifier notifier, IRepository<ContactFormRecord> contactFormRepository, IJsonConverter jsonConverter)
         {
             _notifier = notifier;
             _orchardServices = orchardServices;
-            _contactFormRepository = contactFormRepository;            
+            _contactFormRepository = contactFormRepository;
+            _jsonConverter = jsonConverter;
             Logger = NullLogger.Instance;
         }
         
@@ -154,7 +157,7 @@ namespace PlanetTelex.ContactForm.Services
                     isValid = false;
                 }
 
-                if (!ReCaptchaValid(recaptcha))
+                if (!ValidateRecaptcha(recaptcha))
                 {
                     _notifier.Error(T("Are you a sure you're not a robot?"));
                     isValid = false;
@@ -164,55 +167,41 @@ namespace PlanetTelex.ContactForm.Services
             return isValid;
         }
 
-        /// <summary>
-        /// Check for recaptcha validity
-        /// </summary>
-        /// <returns>bool true if valid false if invalid</returns>
-        private bool ReCaptchaValid(string recaptchaResponse)
+
+        private bool ValidateRecaptcha(string recaptcha)
         {
-            var isValid = false;
-            try
+            // Pull recaptcha settings from antispam settings part
+            var recaptchaSettings = _orchardServices.WorkContext.CurrentSite.As<ReCaptchaSettingsPart>();
+            var privateKey = recaptchaSettings.PrivateKey;
+            var remoteip = _orchardServices.WorkContext.HttpContext.Request.ServerVariables["REMOTE_ADDR"];
+            var result = string.Empty;
+
+            // Format post data
+            var postData = String.Format(CultureInfo.InvariantCulture,
+                "secret={0}&response={1}&remoteip={2}",
+                privateKey,
+                recaptcha,
+                remoteip
+            );
+
+            WebRequest request = WebRequest.Create(ReCaptchaSecureUrl + "?" + postData);
+            request.Method = "GET";
+            request.Timeout = 5000; //milliseconds
+            request.ContentType = "application/x-www-form-urlencoded";
+
+            // Get response result
+            using (WebResponse webResponse = request.GetResponse())
             {
-                // Pull recaptcha settings from antispam settings part
-                var recaptchaSettings = _orchardServices.WorkContext.CurrentSite.As<ReCaptchaSettingsPart>();
-
-                // Post parameteters            
-                var remoteip = HttpContext.Current.Request.UserHostAddress;
-                var privateKey = recaptchaSettings.PrivateKey;
-                var postData = string.Format("secret={0}&response={1}&remoteip={2}",
-                        privateKey,
-                        recaptchaResponse,
-                        remoteip);
-                var postDataAsBytes = Encoding.UTF8.GetBytes(postData);
-
-                // Create web request
-                var request = WebRequest.Create(ReCaptchaSecureUrl);
-                request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.ContentLength = postDataAsBytes.Length;
-                var dataStream = request.GetRequestStream();
-                dataStream.Write(postDataAsBytes, 0, postDataAsBytes.Length);
-                dataStream.Close();
-
-                // Get the response.
-                using (var response = request.GetResponse())
+                using (var reader = new StreamReader(webResponse.GetResponseStream()))
                 {
-                    using (dataStream = response.GetResponseStream())
-                    {
-                        using (var reader = new StreamReader(dataStream))
-                        {
-                            var serializer = new JavaScriptSerializer();
-                            dynamic responseObject = serializer.DeserializeObject(reader.ReadToEnd());
-                            isValid = responseObject["success"];
-                        }
-                    }
+                    result = reader.ReadToEnd();
                 }
             }
-            catch (Exception) { }
 
-            return isValid;
+            // Parse json result and return 
+            ReCaptchaPartResponseModel responseModel = _jsonConverter.Deserialize<ReCaptchaPartResponseModel>(result);
+            return responseModel.Success;
         }
-
 
     }
 }
